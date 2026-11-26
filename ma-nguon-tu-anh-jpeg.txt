@@ -1,0 +1,3770 @@
+BẢN CHÉP MÃ NGUỒN TỪ 49 ẢNH JPEG
+Nguồn ảnh: /Users/mac/Downloads/iCloud Photos/IMG_2086.jpeg – IMG_2134.jpeg
+
+Đây là bản chép OCR để đối chiếu với ảnh. Số dòng ở lề được ước lượng từ số dòng
+trong WebStorm. Mỗi đoạn ghi tên ảnh để tiện kiểm tra. Các đoạn chụp trùng được
+giữ lại vì ảnh sau có thể đọc rõ hơn ảnh trước.
+
+Ký hiệu ⟦…⟧ là ghi chú của bản chép. Một số số dòng bị bỏ qua có thể là dòng trống
+hoặc chỉ chứa dấu ngoặc. OCR cũng có thể nhận nhầm ký tự với độ tin cậy cao,
+đặc biệt là chuỗi pixel, dấu ngoặc, và gợi ý kiểu do WebStorm hiển thị. Chữ ở
+các vùng bị che hoặc nằm ngoài khung ảnh cần được đối chiếu sau.
+
+Các ảnh có hiển thị tên tệp PNG, package-lock.json và AGENTS.md trong cây dự án.
+Nội dung của những tệp đó không xuất hiện trong bộ ảnh. Tệp .gitignore cũng
+chỉ thấy tên trong giao diện.
+
+
+============================================================================
+src/components/Controls.tsx
+============================================================================
+
+--- IMG_2086.jpeg ---
+
+    1  [import React, ( useEffect, useRef, usestate } from 'react';
+    2  import { GestureResponderEvent, Platform, StyleSheet, Text, View } from 'react-native';
+    3  import { Input } from '../game/engine';
+    4  import { emptyInput, input } from '../input'; -r gme/renm /Anput*:  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 5: trống hoặc chưa nhận dạng được.⟧
+    6  export interface Layout f
+    7    W: number;
+    8    H: number;
+    9    Landscape: boolean;
+   10    viewW: number; // logical game width (game height is always 240)
+   11    scale: number;
+   12    gamex: number;
+   13    gameY: number;
+   14    gameW: number;
+   15    gameH: number;
+   16  btn: number; // A/B diameter
+   17  doad: { x: number; y: number; r: number };
+   18  a: { x: number; y: number P;
+   19  b: { x: number; y: number H
+   20  pause: { x: number; y: number;
+   21                      number; h: number };
+       ⟦Dòng 22: trống hoặc chưa nhận dạng được.⟧
+   23  const clamp : (v: number, lo: number, hi: number) => nu...
+   24                      : (v: number, to: number, hi: number) : number
+   25  export function => Math.max(Lo, Math.min(hi, v));
+   26  const Landscape : boolean computeLayout(W: number, H: number): Layout {
+   27  const btn : number = W > H * 1.05;
+   28  const R : number = clamp(Nath.min(W, H) * 0.17, 56, hi: 104);
+   29  const m : number = btn * 1.15;
+   30  let viewW: number. = bth * 0.35;
+   31              scale: number, gameX: number, gameY: number;
+   32  if (Landscape) € let padY: number, abY: number;
+   33    scale = H / 240;
+   34    view#l = Math.round(clamp(W / scale,
+   35                      lo: 256, hi: 427));
+   36    gamex = Math.round((W - viewW * scale) / 2); gameY = 8;
+   37    padY = H -
+   38    abY = H - - R;
+   39  } else f m - btn * 8.9;
+       ⟦Dòng 40: trống hoặc chưa nhận dạng được.⟧
+   41    viewll = 256;
+   42    scale = W / 256;
+   43    if (240 * scale > H * 8.6) {
+   44    scale =
+       ⟦Dòng 45: trống hoặc chưa nhận dạng được.⟧
+   46    gameX = Math.round((W - view * scale) / 2); game WI * scale) / 2);
+   47        = 0;
+   48    const top : number = 240 * scale;
+   49  pady = top + (H - top) / 2;
+   50  aby = padY;
+       ⟦Dòng 51: trống hoặc chưa nhận dạng được.⟧
+   52  const SRRg = 4x: m * B, y: padY, r: R };
+       ⟦Dòng 53: trống hoặc chưa nhận dạng được.⟧
+   54  const a = x; W - m - btn / 2, y: abY - btn * 0.35 }; const b = 4 x: W
+   55              m - btn * 1.75, y: abY + btn * 0.35 };
+   56  const pause = 1 x: W - 56, y: landscape ? 36 : 240 * scale + 8, w: 48, h: 36 };
+   57  return {W, H, landscape, view, scale, gamex, gameY, gameW: viewl * scate, gameH: 240 * scale, btn, gpag, a, b, pause &:
+       ⟦Dòng 58: trống hoặc chưa nhận dạng được.⟧
+   59  type Hit = 4 inp: Input; pause; boolean };
+       ⟦Dòng 60: trống hoặc chưa nhận dạng được.⟧
+   61  const o : Input
+   62  function hitTest(L; Layout, pts; 4 x; number; y: number }[]): Hit { = emptyinput();
+   63  Let pause : boolean = false;
+   64  for (const 4 %, y } of pts) 1
+       ⟦Dòng 65: trống hoặc chưa nhận dạng được.⟧
+   66  const p :(x: number; y: number; w: oumber; b: num.... • L,pause; w: number; b: num.... = L,pause;
+       ⟦Dòng 67: trống hoặc chưa nhận dạng được.⟧
+   68  const dx : number = % - L,dpad,x, dy :number = y • L,dpad.Wi if (x>= p.x s6 x <= p.x * p.w s6 y >= p.y 66 y <= p.y + p.h) ( pause = true; continue; }
+   69  const d anumber = Math,hypot(dx, dy); 1f (d < L.dpad,r * 1,6) 4
+       ⟦Dòng 70: trống hoặc chưa nhận dạng được.⟧
+   71    if (d < L.dpad,r * 9,2) continue; const ang :
+   72    const ang :number = (Math,atan2(dy, dx) * 189) / Hath,Pl;
+   73    1f (Math,abs(ang) < 67,5) 0,right = true}
+   74    1f (Hath,abs(ang) > 112,5) 0,left = true}
+   75    1f (ang > 22,5 86 ang < 157,5) 0,down = true;
+   76    continue; 1f (ang < +22,5 86 ang > +157,5) 0,up = true}
+   77                      Chrome File Edit
+   78                      ••• Viev
+   79  const r :number = L,btn * 9,72; const de : number = L,btn * 0,72; M View x
+       ⟦Dòng 80: trống hoặc chưa nhận dạng được.⟧
+   81  if (da < r) 0,a = true; const db : number = Math.hypot(x - L,b.%, y = L,b,V); = Nath,hypot(x - L,8,%, y - L,a,y); →
+   82                      = github.com/
+
+--- IMG_2087.jpeg ---
+
+   90                      = useRef(Layout);
+   91  const layoutRef : RefObject<Layout>
+   92  LayoutRef.current = Layout; const pauseRef : RefObject<0 => voids = useRef(onPause); useRef(onPause) ;
+       ⟦Dòng 93: trống hoặc chưa nhận dạng được.⟧
+   94  pauseRef.current = onPause; const wasPause : RefObject<boolean» = useRef(initialValue: false); eRef( initialValue: false);
+       ⟦Dòng 95: trống hoặc chưa nhận dạng được.⟧
+   96  const apply : (pts: (x: number; y: number )D) => void = (pts: { x: number; y: number }[]) :void =>
+       ⟦Dòng 97: trống hoặc chưa nhận dạng được.⟧
+   98    const h : Hit = hitTest(layoutRef.current, pts);
+   99    input.setTouch(h.inp);
+  100    if (h.pause && IwasPause.current) pauseRef.current();
+  101    wasPause.current = h.pause; => {
+  102    setPressed((prev : Input ) : Input for (const k of Object.keys(prev) as (keyof Input)[]) if (prev[k] I== h.inp[k]) return h.inp;
+       ⟦Dòng 103: trống hoặc chưa nhận dạng được.⟧
+  104    return prev;
+       ⟦Dòng 105–107: trống hoặc chưa nhận dạng được.⟧
+  108  // Web: pointer events (mouse + multi-touch), tracked per pointerId.
+  109  useEffect(() : (0 => void) | undefined •> {  ⟦OCR độ tin cậy thấp⟧
+  110  if (Platform.Os I== 'web' Il typeof window === 'undefined') return;
+  111  const pts = new Map‹number, { x: number; y: number }>();
+  112  const upd : 0 => void = () : void > apply([...pts.values()]); > { pts.set(e.pointerId, fx: e.clientX, y: e.clientY P); upd(; F;
+  113  const down : (e: PointerEvent) => void = (e: PointerEvent) : void
+  114  const move : (e: PointerEvent) => void = (e: PointerEvent) : void = (e: PointerEvent) : void => {
+  115    if (Ipts.has(e.pointerId)) return;
+  116    pts.set(e.pointerId, (x: e.clientX, y: e.clientY }); e.clientY });
+  117    updO:
+       ⟦Dòng 118: trống hoặc chưa nhận dạng được.⟧
+  119  const Up : (e: PointerEvent) => void = (e: PointerEvent) :void => { pts.delete(e.pointerId); upd(); };
+  120  window.addEventListener( type: 'pointerdown', down);
+  121  window.addEventListener(type: 'pointermove', move);
+  122  window.addEventListener(type: 'pointerup', up);
+  123  window.addEventListener(type: 'pointercancel', up);
+  124  return O : void =>{  ⟦OCR độ tin cậy thấp⟧
+  125    window.removeEventListener(type: 'pointerdown', down);
+  126    window.removeEventListener(type: 'pointermove', move);
+  127    window.removeEventListener(type: ItListener( type: 'pointerup', up);
+  128    window.removeEventlistener(type: 'pointercancel', up);
+  129    input.setTouch(emptyInput());
+       ⟦Dòng 130: trống hoặc chưa nhận dạng được.⟧
+  131  // eslint-disable-next-line react-hooks/exhaustive-deps
+  132  3. [D):
+       ⟦Dòng 133: trống hoặc chưa nhận dạng được.⟧
+  134  useEffect(O : 0 => void => ( : void > input.setTouch(emptyInput()), []);
+       ⟦Dòng 135: trống hoặc chưa nhận dạng được.⟧
+  136  const onTouch : (e: Readonly «Omit ‹Readonly<{ bubbles: boo... = (e: GestureResponderEvent) : void => {
+  137  const t : readonly Readonly<{ changedTouches: reado... = e.nativeEvent.touches;
+  138  applyCArray.from(t) .map((p : Readonly<{ changedTouches: readonly Reado...
+
+--- IMG_2088.jpeg ---
+
+       }. []);  ⟦OCR độ tin cậy thấp⟧
+       fect(C) : 0 => void : void > input.setTouch(emptyInput(), []);
+                           = (e: GestureResponderEvent) : void => {
+       : onTouch : (e: Readonly<Omit<Readonly<{ bubbles: boo...
+       ist t : readonly Readonly<{ changedTouches: reado... = e.nativeEvent.touches;
+       ply(Array.from(t) .map((p : Readonly<( changedTouches: readonly Reado... ) : (x: number; y: number) > ({ x: p.pagex, y: p.pageY F)));
+       t onTouchEnd : (e: Readonly <Omit <Readonly<{ bubbles: boo... = (e: GestureResponderEvent) : void => {
+       nst ended = new Set(Array.from(e.nativeEvent.changedTouches).map((p : Readonly<{changedTouches: readonly Reado... ) :number => p.identifier));
+       nst t : Readonly<{ changedTouches: readonly Reado... = Array.from(e.nativeEvent.touches).filter((p : Readonly<{changedTouches: readonly Reado... ) : boolean => Lende‹
+       oply(t.map((p : Readonly <{ changedTouches: readonly Reado... J : (x: number; y: number) => ({ x: p.pageX, y: p.pageY })));
+       St native : boolean = Platform.OS I== 'web';
+       st { dpad, btn} = layout;
+       nst R: number = dpad.r;
+       nst arm : number = R * 0.62; = R * 0.62;
+       nst armStyle : (on: boolean) => (false | (backgroundCol... • (on: boolean) : (false | (backgroundColor: string ))D
+                           => [styles.arm, on && styles.on];
+       turn (
+       <View
+         style={StyleSheet.absoluteFill}
+         onTouchStart={native ? onTouch : undefined}
+         onTouchMove={native ? onTouch : undefined}
+         onTouchEnd-{native ? onTouchEnd : undefined}
+         onTouchCancel={native ? onTouchEnd : undefined}
+         ‹View pointerEvents="none" style=([styles.pad, { left: dpad.x - R, top: dpad.y - R, width: R * 2, height: R * 2, borderRadius: R }l}>
+           ‹View style=(larmStyle(pressed.up), { left: R - arm / 2, top: R* 0.12, width: arm, height: arm }l}><Text style={styles.arrow}>A</Text></View>
+           ‹View style={[armStyle(pressed.down), { left: R - arm / 2, top: R * 1.88 - arm, width: arm, height: arm }]}><Text style={styles.arrow}>V</Text></Vie
+           ‹View style=(larmStyle(pressed.left), { left: R * 0.12, top: R - arm / 2, width: arm, height: arm }l}><Text style={styles.arrow}>*</Text></View>
+         ‹/View> ‹View style={[armStyle(pressed.right), { left: R * 1.88 - arm, top: R - arm / 2, width: arm, height: arm }}><Text style={styles.arrow}></Text></Vie
+         f(["b", "a'] as const).map((k : "a"| "b" ) : Element =>{
+           const c : {x number; y: number} | (x: number; y... ber› | {x: number; y... = Layout [k];
+                           = layout[k];
+           return (
+             <View
+               key=[k}
+               pointerEvents="none"
+               style=[[styles.btn, pressed[k] && styles.btnon, { left: c.x - btn / 2, top: c.y - btn / 2, width: btn, height: btn, borderRadius: btn / 2 }1}
+                           - btn / 2, width: btn, height: btn, borderRadius: btn / 2 }J}
+               «Text style=[[styles.btnText, { fontSize: btn * 0.32 }]}>{k === 'a' ? 'A' : 'B'}</Text>
+             <View «Text style={[styles.btnSub, { fontSize: Math.max(...values: 9, btn * 0.13) }]}>(k === 'a' ? 'JUMP' : 'RUN/FIRE']</Text>  ⟦OCR độ tin cậy thấp⟧
+             D:
+           303
+           «View pointerEvents="none" style={[styles.pause, { left: layout.pause.x, top: layout.pause.y, width: layout.pause.W, height: layout.pause.h Hl}> «Text style=[styles.pauseText}>II</Text>
+           </Vien> idth: layout.pause.w, height: layout.pause.h Hl)>
+           </Vien
+         const styles.
+         const styles :Readonly<(pad: (position: "absolute"; b...) = Stylesheet,create(f (sy pad:
+                           = StyleSheet,create(f
+         pad; 4 position; 'absolute', backgroundColor: 'rgba(255,255,255,8.12)', borderWidth: 2, borderColor: 'rgba(255,255,255,0.35)' },
+         arm: 4 position: 'absolute', borderRadius: 10, backgroundColor: 'rgba(48,40,48,0.55)', alignitems: 'center', justifyCohtent: 'centen' B, on; & backgroundColor; 'ngba(252,169,68,9,85)' },
+           arrow; & color; "#fff', fontsize; 18, fontWeight; 'bold' },
+       192
+           btn; 4 position; 'absolute', backgroundColor; 'rgba(200,30,30,9,6)', borderWidth: 3, borderColor: 'rgba(255,255,255,0.5)', alignItems: 'centen', justifyContents btnon; 4 backgroundColor; *ngba(255,98,69,9,95)', transform: It scele; 9,94 }] },
+           btoText; 4 color; '@fff', fontileight; 'bold' ),
+           btnSub: 4 color; '@fff', opacity; 0,85, fontHeight; '690' },
+       196 pausetext: 4 color; '#fff', fontioight; 'pold', fontsizes 16 },
+           pause: 4 posicion; 'absolute', backoroundcolors 'roba(o,9,9,9,49)", boroerhaglus: s, Dorcermiothi a, bordercotor: 'rgpa(cds ase ass,e.e)*, attanitema: *genten", dl
+
+============================================================================
+src/components/GameView.tsx
+============================================================================
+
+--- IMG_2089.jpeg ---
+
+    1  import React, { memo } from 'react'; import Svg, { Circle, Ellipse, 6, Path, Rect, Text as SvgText } from 'react-native-svg':
+       ⟦Dòng 2: trống hoặc chưa nhận dạng được.⟧
+    3  import { Ent, Game, TILE, VIEW_H } from '../game/engine';
+    4  import { debrisSprite, herosprite, HeroFrame, Layer, Sprite, SPRITES } from '../game/sprites'; import { Deco } from '../game/levels';
+    5  import { castleSprite, compileSection, QBLOCK_COLORS, THEME_PALETTES, TileLayer, tilesprite } from '../game/tiles';
+       ⟦Dòng 6: trống hoặc chưa nhận dạng được.⟧
+    7  const SpriteNode : MemoExoticComponent«(( sprite, x, y, flip. onent<(( sprite, x, y, flip...) = memo (function SpriteNode(f = memo(function SpriteNode(f
+       ⟦Dòng 8: trống hoặc chưa nhận dạng được.⟧
+    9  }: { spnite: Sprite; x: number; y: number; FLip?: boolean; VfuR?: boolean P:Element sprite, x, Y, flip = false, yflie = false,
+   10  const layers: Layerl] = flip ? sprite.flipped : sprite.layers;
+       ⟦Dòng 11: trống hoặc chưa nhận dạng được.⟧
+   12  const const layers: Layer[] + sprite.h}) scale(1 -1)*
+   13    ?'t  ⟦OCR độ tin cậy thấp⟧
+   14    : 't ti src/components/GameView.tsx
+   15  return
+   16    «G transform={tf]> => <Path key={i} d={l.d} fill=(L.filL} />)}
+   17    flayers.map((l : Layer i : number ) : Element
+   18    </G>
+   19  D:  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 20–21: trống hoặc chưa nhận dạng được.⟧
+   22  const SectionNode : MemoExoticComponent<([ layers, palette, q... = memo(function SectionNodeCf
+   23  layers, palette, qColor,
+   24  }: { layers: Tilelayer[]; palette: Record‹string, string>; qColor: string }) :Element
+   25  return (
+   26    <G>
+   27    {Layers.map((L : ileLayer ) : Element * <Path key=(L.key} d=(l.d} fill={l.key === 'Q' ? qColor : palette[l.key]} />)} == 'Q' ? qcolor : palette[l.key]} />)}
+   28    </G>
+       ⟦Dòng 29–31: trống hoặc chưa nhận dạng được.⟧
+   32  const DecoNode : MemoExoticComponent <(( d, theme ): ( d: D... = memo(function DecoNode({ d, theme }: { d: Deco; theme: Game['level']['theme'] }) : Element
+   33  if (d.type === 'castle') return «SpriteNode sprite={castleSprite(theme)} x={d.x} y={d.y - 80} />; 03 />:
+   34  if (d.type === 'cloud') f
+   35    const parts : anyl = 0;  ⟦OCR độ tin cậy thấp⟧
+   36    for (let i : number = 0; 1 ‹ d.size; i++) parts.push(<Circle key={1} cx={d.x + 16 + i * 16} cy={d.y + 6} r={10} fill="#fcfcfc" />); 5} cy={d.y + 6} r={10} fill="#fcfcfc" />);
+   37    return (
+   38    <G>
+   39      «Ellipse cx={d.x + 8 + d.size * 8 + 8} cy={d.y + 14} rx={8 + d.size * 8 + 6} ry={8} fill="#fcfcfc" />
+   40      {parts}
+   41    </G>
+   42    D:
+       ⟦Dòng 43: trống hoặc chưa nhận dạng được.⟧
+   44  if (d.type === 'bush') {
+   45    const parts : anyll = 0;  ⟦OCR độ tin cậy thấp⟧
+   46    for (let i: number
+   47    return ( = 0; 1 ‹ d.size + 1; i++) parts.push(‹Circle key={i} cx={d.x + 10 + i * 12} cy={d.y - 8} r={9} fill="#80d010" stroke="#005800" str‹
+   48    <G>
+   49      (parts}
+   50      ‹Rect x={d.x + 2} y={d.y
+   51    </G> - 8} width={(d.size + 1) * 12 + 16} height={8} f1ll="#80d810" />
+       ⟦Dòng 52: trống hoặc chưa nhận dạng được.⟧
+   53  }
+   54  const w : 80 | 112 = d.size === 1 ? 80 : 112;
+   55  const h : 20 | 36 = d.size === 1 ? 20 : 36;
+   56  return (
+   57    <G>
+   58                910.YS 0510
+   59    ‹Path d={'M${d.x} ${d.y} Q${d.x + w / 2} ${d.y - h * 2} $(d.x + w} ${d.y} Z'} f1LL="#00a800" stroke="#000" strokeWidth={1} />
+   60    «Ellipse cx={d.x + w / 2 - 6} cy={d.y - h * 0.6} rx={2} ry={4} fill="#000" />
+   61    </G> «Ellipse cx={d.x + w / 2 + 6} cy={d.y - h * 0.6} rx={2} rу={4} fill="#000" /> Y-14) TILL="#G
+       ⟦Dòng 62–65: trống hoặc chưa nhận dạng được.⟧
+   66  type SecCache = Map‹number, { v: number; hiddenKey: string; layers: TileLayer[] }>;
+   67  const caches = new WeakMap<6ane, SecCache>();
+       ⟦Dòng 68: trống hoặc chưa nhận dạng được.⟧
+   69  function sectionLayers(game: Game, sec: number): TileLayerl] f
+   70  let cache : Secçache | undefined = caches,get(game);
+   71  if (icache) 4 cache = new Map(); caches,set(game, cache); }
+   72  const y¿number = game,secVersion[sec] ?? 0;
+   73  const c : (y: number; hiddenKey; string; layers: T.... const c : (y: number; hiddenKey; string; layers: T.... • cache, get (sec);
+   74  1f (c 8& c,y =Fs y) return c,layers;
+   75  const layers:THeLayerl = compileSection(game,tiles, sec, game,hidden);
+   76  cache,set(sec, 4 v, hiddenKey; ", Layers });
+   77  return Layers;
+       ⟦Dòng 78–79: trống hoặc chưa nhận dạng được.⟧
+   80  Function heroFrame(game; Game); 4 sprite; Sprite; fLip: boolean } | null f
+   81  const p : Player = game,player;
+   82  const s : Session = game,session; = game,session;
+   83  1f (ip.visible) return null;
+       ⟦Dòng 84: trống hoặc chưa nhận dạng được.⟧
+   85  if (gane,stetus see 'dying') return 4 sprite; herosprite( blg:) falee, [t) 'die', (pal:] e), flip: false }; 1f (p.iny > 8 B& game,frame % 4 < 2 8& igane,freeze) return null;
+   86  Let big ; boolean = 8,size > 0;
+   87  let pal :number = 8,size m== 2 P 1 ; 0;
+   88  if (gane,freeze && gane,morph) 1
+   89    const alt : boolean = Math,floor(gane, frame / 4) % 2 ma= 9i
+   90    if (game,morph m== 'grow') big = alt;
+   91    if (gane,morph #== 'shrink') big = alt;
+   92    1f (game,morph === 'fire') pal = alt ? 1 ; 0;
+
+--- IMG_2090.jpeg ---
+
+   89  function heroFrame(game: Game): { sprite: Sprite; flip: boolean } | null ! Minh Le
+   90    it (game.morpn ===shrink) big = alt;
+   91    if (game.morph === 'fire') pal = alt ? 1 : 0;
+       ⟦Dòng 92: trống hoặc chưa nhận dạng được.⟧
+   93  if (p.star > 0) pal = Math.floor(game.frame / (p.star < 120 ? 6 : 2)) % 4;
+   94  let f: HeroFrame = 'stand';
+   95  if (p.crouch && big) f= 'crouch';
+   96  else if (game.status === 'flag') f = 'jump';
+   97  else if (Ip.onGround) f = 'jump';
+   98  else if (p.skid) f = 'skid';
+   99  else if (Nath.abs(p.vx) > 0.05) f = (['walk1', 'walk2', 'walk3'] as const)[Math.flLoor(p.walkPhase) % 31; 'walk3'] as const)[Math.fLoor(p.walkPhase) % 31;
+  100  return { sprite: herosprite(big, f, pal), flip: p.dir ‹ 0 };
+       ⟦Dòng 101–102: trống hoặc chưa nhận dạng được.⟧
+  103  function entityNode(game: Game, e: Ent) : Element | null {
+  104  const f : number = game.frame;
+  105  const key : number = e.id;
+  106  const bottom : (s: Sprite) => number = (s: Sprite) : number •> e.y + e.h - s.h;
+  107  switch (e.kind) {
+  108    case 'walker': f
+  109    const s : Sprite = e.squash != null ? SPRITES.walkerFlat : SPRITES.walker;
+       ⟦Dòng 110: trống hoặc chưa nhận dạng được.⟧
+  111    return <SpriteNode key={key} sprite={s} x={e.x} y={bottom(s)} flip={e.squash == null && Math.floor(f / 10) % 2 === 0} vfLip={e.flipped} /> I
+  112  case 'turtle': {
+  113    const arr : Spritel] = e.red ? SPRITES.redTurtle : SPRITES.turtle;
+  114    const s : Sprite = arr[Math.floor(f / 12) % 2];
+  115    const flip : boolean = e.vx > 0;
+  116    return (
+  117      <G key={key}>
+       ⟦Dòng 118: trống hoặc chưa nhận dạng được.⟧
+  119      fe.winged && le.flipped && ( ‹SpriteNode sprite={s} x={e.x} y={bottom(s)} flip={flip} vfLip={e.fLipped} />
+       ⟦Dòng 120: trống hoặc chưa nhận dạng được.⟧
+  121        <SpriteNode sprite={SPRITES.wings[Nath.floor(f / 8) % 2]} x={fLip ? e.x : e.x + 8} y={e.y + 4} flip={fLip} />
+       ⟦Dòng 122: trống hoặc chưa nhận dạng được.⟧
+  123    D:
+       ⟦Dòng 124: trống hoặc chưa nhận dạng được.⟧
+  125  case 'shell': f
+  126    const s : Sprite
+  127    const jitter : 0|1 = e.red ? SPRITES.redShell : SPRITES.shell;
+  128                = (e.revive ?? 0) > 360 && Math.floor(f / 4) % 2 ? 1 : 0;
+  129    return <SpriteNode key={key} sprite={s} x={e.x + jitter} y={bottom(s)} vfLip={e.fLipped} />;
+  130  case 'piranha': {
+  131    const s : Sprite
+  132              = SPRITES.piranha[Math.floor(f / 12) % 2];
+  133  } return ‹SpriteNode key={key} sprite={s} x={e.x} y={e.y} vfLip={e.fLipped} />;
+  134  case 'mushroom':
+       ⟦Dòng 135: trống hoặc chưa nhận dạng được.⟧
+  136  case 'oneve": return <SpriteNode key={key} sprite={SPRITES.mushroom} x={e.x} y={bottom(SPRITES.mushroom)} />;
+       ⟦Dòng 137: trống hoặc chưa nhận dạng được.⟧
+  138  case 'flower': f return <SpriteNode key={key} sprite={SPRITES.oneup} x=(e.x} y={bottom(SPRITES.oneup)} />;
+       ⟦Dòng 139: trống hoặc chưa nhận dạng được.⟧
+  140    const s : Sprite = SPRITES.fLower[Math.floor(f / 4) % 4];
+  141    return <SpriteNode key={key} sprite={s} x={e.x} y={bottom(s)} />;
+  142  case 'star': {
+  143    const s : Sprite
+  144            = SPRITES.star[Math.floor(f / 3) % 4];
+  145    return <SpriteNode key={key} sprite={s} x={e.x} y={bottom(s)} />;
+  146  case 'fireball': {
+  147    const r : number
+  148              = Math.floor(f / 4) % 4;
+       ⟦Dòng 149: trống hoặc chưa nhận dạng được.⟧
+  150  case 'firebar': f return ‹SpriteNode key={key} sprite={SPRITES.fireball} x={e.x} y={e.y} flip={r % 2 === 1} vfLip={r >= 2} />; 1} vfLip={r ›= 2} />;
+       ⟦Dòng 151: trống hoặc chưa nhận dạng được.⟧
+  152    const n:number = e.Len ?? 6; = e.len ?? 6;
+  153    const parts ; anyl = D;
+  154    for (let 1 : number = 0; 1 < n; 1++) {
+  155    const fx :number = (e.basex ?? 0) + Math.cos(e.angle ?? 0) * 1 * 8
+  156    const fy : number
+  157              = (e,baseY ?? 0) + Math.sin(e.angle ?? 0) * i* 8 - 4;
+  158    parts.push(<SpriteNode key=(1} sprite={SPRITES.fireball} x={fx} y={fy} fLip={Math.floor(f / 4) % 2 === 0} />);
+  159    return <G key={key}>{parts}</6>; 1oor(f / 4) % 2 === 03 />);
+       ⟦Dòng 160: trống hoặc chưa nhận dạng được.⟧
+  161  case 'Redeksa':
+       ⟦Dòng 162: trống hoặc chưa nhận dạng được.⟧
+  163  case 'bullet': return «SpriteNode key={key} sprite={SPRITES,podoboo} x={e.x} y={e,y} vfLip={e.vy > 0} />;
+       ⟦Dòng 164: trống hoặc chưa nhận dạng được.⟧
+  165  case 'boss': 1 return «SpriteNode key=(key} sprite={SPRITES,bullet} x={e.x} y={e,y} flip={e,vx > e} vflip={e,fLipped} />;
+  166    const s : Sprite
+  167            = e,hurt && f % 4 < 2 ? SPRITES,bossHurt ; SPRITES,boss;
+  168    return «SpriteNode key={key} sprite={s} x={e,x} y=(e,y} flip={game,player,x > e,x + 16} vflip={e.fLipped} />}
+  169  cose 'bessfice' :
+  170                      16} vflip=(e.fLipped} />;
+  171  case 'Lift': return <SpriteNode key={key} sprite={sPRITES,bossFire} x={e,x} y={e,y • 1} flip={e,vx > 0} />i
+  172    return ( 1) fLip(.x > 0} /}  ⟦OCR độ tin cậy thấp⟧
+  173    «6 кеу=(key}>
+       ⟦Dòng 174: trống hoặc chưa nhận dạng được.⟧
+  175      «Rect x=(e.x} y=(e.y} width=(e.»} height=(e.h} f1ll="#fca044" stroke="#7cäc80" strokeWidth={1} />
+  176    </G>
+  177      ([0, 1, 2, 8, 4, 5],map((1Enumber ) ¿Element) = «cincle key={1} ox={e,x + 4 + 1 * B} cy=(e.y + 4} r={2} f1l1='#7cäceo" />)} *> <cincle key={1} ex=(e.x + 4
+  178                      1 * 8} cy=(e.y + 4} r={2} f1L1=#7c5000" />)}
+  179  retuco autzi
+
+--- IMG_2091.jpeg ---
+
+  164    Cast DUSS.T  ⟦OCR độ tin cậy thấp⟧
+  165    const s : Sprite = e.hurt && f % 4 ‹ 2 ? SPRITES.bossHurt : SPRITES.boss;
+  166    return ‹SpriteNode key={key} sprite={s} x={e.x} y={e.y} flip={game.player x ax+ 16} vflip={e.fLipped} />;
+       ⟦Dòng 167: trống hoặc chưa nhận dạng được.⟧
+  168    case 'bossfice":
+  169    return «SpriteNode key={key} sprite={SPRITES.bossFire} x={e.x} y={e.y - 1} flip={e.vx > 0} />;
+  170    case 'Lift':
+  171    return (
+  172      <6 key={key}>
+  173      ‹Rect x={e.x} y={e.y} width={e.w} height={e.h} fill="#fca044" stroke="#7c3c00" strokeWidth={1} />
+  174      {[0, 1, 2, 3, 4, 5].map((i : number ) : Element *> ‹Circle key={i} cx={e.x + 4 + 1* 8} cy={e.y + 4} r={2} fill="#7c3c00" />)}
+  175      </G>
+       ⟦Dòng 176–177: trống hoặc chưa nhận dạng được.⟧
+  178  return nulti
+       ⟦Dòng 179–180: trống hoặc chưa nhận dạng được.⟧
+  181  export function GameView(f game, scale, vieww }: { game: Game; scale: number; viewW: number }) :Element {
+  182  const lv : LevelData = game. Levet;
+  183  const cam : number = Math.round(game.camX);
+  184  const pafette : Palette = THEME_PALETTES[1v,theme];
+  185  const qColor : string = QBLOCK_COLORS[Math.floor(game.frame / 8) % QBLOCK_COLORS.Length];
+  186  const bg : "#000000" | "#5c94fc"
+  187                    = Iv.theme === 'overworld' I| lv.theme === 'athletic' ? (lv.night ? '#000000' '#Sc94fc') : '#000000';
+  188  const firstSec : number
+  189  const lastSec : number = Math.max(...values: 0, Math.floor(cam / 256));
+  190  const sections : anyl] = (); = Math.min(game.secVersion.length - 1, Math.floor((cam + viewW) / 256));  ⟦OCR độ tin cậy thấp⟧
+  191  for (let s : number
+  192              = firstSec; s <= lastSec; s++) {
+  193  sections.push(<SectionNode key={s} layers={sectionLayers(game, s)} palette={palette} qColor={qColor} />);
+       ⟦Dòng 194: trống hoặc chưa nhận dạng được.⟧
+  195  const behind: React.ReactNode[] = [];
+  196  const front: React.ReactNode[] = [];
+  197  for (const e of game.ents) f
+  198    if (e.x + 200 ‹ cam || e.x - 200 >
+  199    const node : Element | null cam + viewW) continue;
+  200                  = entityNode(game, e);
+  201    if (e.kind === 'piranha' Il (e.emerge && e.emerge > )) behind.push(node);
+  202    else front.push(node);
+       ⟦Dòng 203: trống hoặc chưa nhận dạng được.⟧
+  204  const decos : Decol
+  205  const castle : Decol] = lv.decos.filter((d: Deco ) : boolean
+  206  const scenery : Decol] = decos.filter((d : Deco ) : boolean => d.type === 'castle'); => d.x + 120 > cam && d.x - 20 ‹ cam + viewW); 20 < cam + viewW);
+  207                = decos.filter((d : Deco ) : boolean => d.type I== 'castle');
+       ⟦Dòng 208: trống hoặc chưa nhận dạng được.⟧
+  209  const hero : (sprite: Sprite; flip: boolean) | nuil = heroFrame(game);
+  210  const p : Player = game.player; const flagCol : number | null
+  211                  = Iv.flagCol;
+  212  return (
+       ⟦Dòng 213: trống hoặc chưa nhận dạng được.⟧
+  214    <Svg width={viewW * scale} height={VIEW_H * scale} viewBox={'0 ${viewW} ${VIEW_H}'}>
+  215    <Rect x={8} y={8} width={viewW} height={VIEW_H) fil1={bg} />
+  216    <G transform={' translate(${-can}
+  217      {scenery.map((d : Deco , 1 : number ) : Element
+  218      {castle.map((d : Deco ) : Element {behind} ‹DecoNode key={'d${d.x}-${i}"} d={d} theme={Lv.theme} />)}
+  219      {sections} «DecoNode key={'c${d.x}"} d={d} theme={lv.theme} />)}
+       ⟦Dòng 220: trống hoặc chưa nhận dạng được.⟧
+  221      {game.bumps.map((b : Bump ) : Element | null
+  222      const s : Sprite | null = tileSprite(b.ch, lv.theme, qColor);
+  223      393
+  224      return s ? <SpriteNode key={ b$(b.c},${b.r}'} sprite={s} x=(b.c * TILE} y={b.r * TILE + game.bumpoffset(b.t)} /> : null;
+  225      {Plagcol 1= null && ( e.bumpoffset(b.t)} /> : null;
+  226      <G>
+       ⟦Dòng 227: trống hoặc chưa nhận dạng được.⟧
+  228        <Rect x={flagCol * TILE +7} y={2 * TILE + 8} width={2} height={10 * TILE -
+  229        «SpriteNode sprite={SPRITES,flag} x={flagCol * TILE - 8} «Circle cx={flagCol * TILE + 8} cy={2 * TILE + 4} r={4} fill="#00a800" stroke="#000" strokeWidth={1} /> 8) fill="#80d010" />
+  230      </G>
+  231                      y={game.FlagY} />
+  232      {(front}
+       ⟦Dòng 233: trống hoặc chưa nhận dạng được.⟧
+  234      {game,effects,map((fx : Effect, 1; number) ) :Element {hero && «SpriteNode sprite=(hero,sprite} x={p.x - 2} y={p.y + p.h - hero.sprite.h} flip={hero.fLip} />}
+  235      1f (fx,kind === 'score') { → {  ⟦OCR độ tin cậy thấp⟧
+  236        return (
+       ⟦Dòng 237: trống hoặc chưa nhận dạng được.⟧
+  238          (fx,text}
+  239          «SygText key={'e${1}'} x={fx.x} y={fx.y} f1ll="#fofcfo" fontSize={8} fontWeight="bold" stroke="#000" atrokeWidth={0.3}> </SvgTex₺>
+       ⟦Dòng 240: trống hoặc chưa nhận dạng được.⟧
+  241      }
+       ⟦Dòng 242–243: trống hoặc chưa nhận dạng được.⟧
+  244      if (fx.kind s=s 'coin') return «SpriteNode key={'e$(1}') eprite={SPRITES,coin[Hath.floon(fx.t / 3) % 4]} x={fx.x} y={fx.y} />;
+  245    </G> return «spritellode key={'e$t1}'} sprite={dehriesprite(palette)} x={fx.x} y=(fx,y} flip={Hath.floon(fx.t / 4) % 2 a== o} />;
+  246    </Svg>
+
+============================================================================
+src/components/Hud.tsx
+============================================================================
+
+--- IMG_2092.jpeg ---
+
+    1    import React from 'react';
+    2    import 1 Platform, Stylesheet, Text, View } from 'react-native':
+    3    import { Session } from '../game/engine';
+    4  export const MONO : string = Platform.select(f ios: 'Courier New', android: 'monospace', default: 'monospace' }); e', default: 'monospace' p; Show S a MIm Le
+    5                      fillString: '0'); & Mi
+    6  const pad : (n: number, w: number) => string = (n: number, W: number) : string > String(Math.max(...values: e, Math.floor(n))).padstart(w,
+       ⟦Dòng 7: trống hoặc chưa nhận dạng được.⟧
+    8                      er: left: number: fontSize: number }) FElement 1
+    9  export function Hud({ session, time, width, left, fontSize }: { session: Session; time: number; width: number; left: number; fontsize: number }) : Element ( :
+   10    const cells: [string, string][] = [
+   11    ['SCORE', pad(session.score, w: 6)],
+   12    I'COINS', '*' + pad(sepsion.coins, w: 2)1, pau(session.coins. W: 2)1,
+   13    ('WORLD', '${session.u session: Session
+   14    I'TIME', pad(time, w:
+   15    ['LIVES', '*' + Math.max(..values: 6, session.Lives)I,
+       ⟦Dòng 16: trống hoặc chưa nhận dạng được.⟧
+   17    return (
+   18    «View pointerEvents="none" style={[styles.row, { width, left }l}>
+   19      {cells.map(([k, v] : [string, string] ) : Element => (
+   20      ‹View key={k} style={styles.cell}>
+   21        «Text style={[styles.t, { fontSize }]}>{k}</Text>
+   22        «Text style={[styles.t, { fontSize }l}>{v}</Text>
+   23      </View»
+       ⟦Dòng 24: trống hoặc chưa nhận dạng được.⟧
+   25    </View>
+   26  D;
+       ⟦Dòng 27–28: trống hoặc chưa nhận dạng được.⟧
+   29  const styles : Readonly <{ row: (position: "absolute"; ... onst styLes : Readonlysirow:p = StyleSheet.create(f rec.createl
+   30  row: f position: 'absolute', top: 4, flexDirection: 'row', justifyContent: 'space-around' 1,
+   31  cell: { alignItems: 'center' },
+   32  t: 1  ⟦OCR độ tin cậy thấp⟧
+   33  color: '#fff', fontFamily: MONO, fontWeight: 'bold',
+   34  textShadowColor: '#000', textShadowoffset: { width: 1, height: 1 }, textShadowRadius: 1,
+
+============================================================================
+src/game/engine.ts
+============================================================================
+
+--- IMG_2093.jpeg ---
+
+    3  export const TILE = 16;
+    4  export const VIEW_H = 240; <, >'1:
+    5  const SOLID = new Set(['x', 'B', '?, 'N', 'S', 'm', 'C', 'E', '#', "[', "1', ", "H', 'N', 'n', 'E', 'T', '', '>'1);
+    6                  = [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000]; 000, 2000, 4000, 5000, 80001:
+    7  const STOMP_SCORES : numberl]
+    8  // Physics tuned to match the classic feel (pixels per frame at 60 fps).
+       ⟦Dòng 9: trống hoặc chưa nhận dạng được.⟧
+   10  const WALK_MAX = 1.5;
+   11  const RUN_MAX = 2.5;
+   12  const WALK_ACC = 0.045;
+   13  const RUN_ACC = 0.065;
+   14  const FRICTION = 0.06;
+   15  const SKID_DEC = 0.14;
+   16  const MAX_FALL = 4.5;
+       ⟦Dòng 17: trống hoặc chưa nhận dạng được.⟧
+   18  export interface Input f
+   19  left: boolean;
+   20  right: boolean;
+   21  up: boolean;
+   22  down: boolean;
+   23  a: boolean;
+   24  b: boolean;
+       ⟦Dòng 25–26: trống hoặc chưa nhận dạng được.⟧
+   27  export interface Session (
+   28  world: number;
+   29    stage: number;
+   30  Lives: number;
+   31  score: number;
+   32    coins: number;
+   33  size: number; // 0 small, 1 big, 2 fire
+   34    checkpoint: boolean;
+       ⟦Dòng 35–36: trống hoặc chưa nhận dạng được.⟧
+   37  export type EntKind =
+   38  | 'walker' | 'turtle' | 'shell' | 'piranha' | 'mushroom' | 'gneuR' | 'flower' | 'star'
+   39    | 'fireball' | 'firebar' | 'podebeg' | 'bullet' | 'boss' 'bessfice' I 'lift';
+       ⟦Dòng 40: trống hoặc chưa nhận dạng được.⟧
+   41  export interface Ent {
+   42    id: number;
+   43  kind: EntKind;
+   44    x: number;
+   45    y: number;
+   46    w: number:
+   47    h: number:
+   48    vx: number;
+   49    vy: number;
+   50    onGround: boolean;
+   51  dead: boolean;
+   52  flipped: boolean; // knocked-out, falling off.screen upside down ide down
+   53    t: number;
+   54  red?: boolean;
+   55  winged?: boolean;
+   56  squash?: number;
+   57  emerge?: number;
+   58  baseX?: number;
+   59  baseY?: number;
+   60  offset?: number;
+   61  phase?: number;
+   62  angle?: number;
+   63  speed?: number;
+   64  Len?: number;
+   65  range?: number;
+   66  dx?: number;
+   67  kickörace?: number;
+   68  revive?; number;
+   69  chain?: number;
+   70  hp?: number;
+   71  hurt?: number;
+   72  minx?: number;
+   73  maxx?: number;
+   74  fireT?: number;
+   75  jumpT?: number;
+   76  targetY?: number;
+       ⟦Dòng 77–79: trống hoặc chưa nhận dạng được.⟧
+   80  export interface Effect f
+   81  kind: 'score' | 'coin' | 'debris'; x: number;
+   82  y: number;
+   83  vx: number;
+   84  vy: number;
+   85  t: number;
+   86  text?: string;
+       ⟦Dòng 87–89: trống hoặc chưa nhận dạng được.⟧
+   90  export interface PLayer f x: number;
+   91  y: number;
+
+--- IMG_2094.jpeg ---
+
+   88  export interface Player {
+       ⟦Dòng 89: trống hoặc chưa nhận dạng được.⟧
+   90  x: number;
+   91  y: number;
+   92  w: number;
+   93  h: number;
+   94  vx: number;
+   95  vy: number;
+   96  dir: number;
+   97  onGround: boolean;
+   98  crouch: boolean;
+   99  inv: number;
+  100  star: number;
+  101  skid: boolean;
+  102  walkPhase: number; I
+  103  jumpHold: number;
+  104  jumpFall: number;
+  105  takeoff: number;
+  106  chain: number;
+  107  visible: boolean;
+  108  onLift: number | null;
+       ⟦Dòng 109–110: trống hoặc chưa nhận dạng được.⟧
+  111  export type Status = 'playing' I 'dying' | 'flag' | 'walk' | 'tally' | 'axe';
+       ⟦Dòng 112: trống hoặc chưa nhận dạng được.⟧
+  113  interface Bump { c: number; r: number; t: number; ch: string }
+       ⟦Dòng 114: trống hoặc chưa nhận dạng được.⟧
+  115  export class Game f
+  116  Level: LevelData;
+  117  session: Session;
+  118  viewN: number;
+  119  tiles: string[][];
+  120  cols: number;
+  121  player: Player;
+  122  ents: Ent[] = [];
+  123  effects: Effect[] = [];
+  124  camX : number = 0;
+  125  frame : number = 0;
+  126  time: number;
+  127  status: Status = 'playing';
+  128  result: 'dead' | 'clear' | null = null;
+  129  freeze : number = 0;
+  130  morph: 'grow' | 'shrink' | 'fire' | null = nutl;
+  131  secVersion: number[];
+  132  hidden : Set<string> = new Set<string>(;
+  133  bumps: Bump[] = [];
+  134  FlagY : number = 2 * TILE + 8;
+  135  statusT : number = 0;
+  136  Rcivate spawns: Spawn[];
+  137  private spawnIdx : number = 0;
+  138  private nextId : number = 1;
+  139  private prevA : boolean = false;
+  140  private prevB :boolean = false;
+  141  private multiCoin : Map<string, numbers
+  142  grivate cannonT: number[]; = new Map<string, number>(;
+  143  private bridgeleft : number = 0;
+       ⟦Dòng 144: trống hoặc chưa nhận dạng được.⟧
+  145  constructor(level: LevelData,
+  146  constructor(level: LevelData, session: Session, viewl: number) ( this.level = level;
+  147    this.session = session;
+  148    this.viewW = viewW;
+  149  this.tiles = level.tiles.map((r : stringl ) : stringl]
+  150  this.cols = level.width; => r.slice());
+       ⟦Dòng 151: trống hoặc chưa nhận dạng được.⟧
+  152  this,time = level.time; this.secVersion = new Array(Math.ceil(this.cols / 16)).fill( value: 0); [0);  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 153: trống hoặc chưa nhận dạng được.⟧
+  154  const startcol:number = session.checkpoint && level.checkpointcol I= null ? level.checkpointCol : level.startCol;
+  155  const big : boolean = session.size > 0; const h :16|32 = big ? 32 : 16;
+  156  Let groundRow : number = 13;
+       ⟦Dòng 157: trống hoặc chưa nhận dạng được.⟧
+  158  for (let Panumber = 3; P <ROWS; P++) if (this,solid(startCol, r)) { groundRow = r; break; } this,player = f = 3; r < ROWS; r++) 1f (this,solid(startcol, r)) {
+       ⟦Dòng 159: trống hoặc chưa nhận dạng được.⟧
+  160    x: startCol * TILE + 2, Y: groundRow * TILE - h, w: 12, h, vx: 0, VY: 0, dir: 1,
+  161    onGround: true, crouch: false, inv: 0, star: 0, skid: false, walkPhase: 0,
+  162    jumpHold: 0,125, jumpFall; 0,4375, takeoff: 8, chain: 0, visible: true, onLift: null, chain: 0, visible: true,
+       ⟦Dòng 163: trống hoặc chưa nhận dạng được.⟧
+  164  const startx ;number = this,player,x; = this,player,x;
+  165  this,spawns = level,spawns,filter((s :Spawn ):boolean
+  166  this,cannont = level,cannons,map(() &number => Math,floor(Math,random() * 120)); this,cannonT = level,cannons,map(() :nur > Math,Floor(Math.ran => 6,x > startX +64 || 8,x < startx - 400);
+  167  } this,camx = Math,max(..Values 0, Math,min(startX - 48, this.maxCamC)));
+       ⟦Dòng 168–169: trống hoặc chưa nhận dạng được.⟧
+  170  setViewll(w: number) : yoid 1 this.viewW = w;
+       ⟦Dòng 171: trống hoặc chưa nhận dạng được.⟧
+  172  this.camx = Hath,min(this,camx, this,maxCam()); axCam()):
+       ⟦Dòng 173: trống hoặc chưa nhận dạng được.⟧
+  174  maxCam () : number
+  175            f
+  176  return Math,max(...alues: 0, this,cols * TILE - this,ViewN) ; return Math,max(..
+       ⟦Dòng 177: trống hoặc chưa nhận dạng được.⟧
+  178  (1 --  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 179: trống hoặc chưa nhận dạng được.⟧
+  180  tile(c: number, r: number) E string 1 - tiles
+  181      11 -• плшр  ⟦OCR độ tin cậy thấp⟧
+
+--- IMG_2095.jpeg ---
+
+  176  export class
+  177                      tiles
+  178                      {
+  179  tile(c: number, r: number) : string if (r ‹ 0 || r ›= ROWS || c >= this.cols) return' ';
+       ⟦Dòng 180: trống hoặc chưa nhận dạng được.⟧
+  181    if (c < 0) return '#';
+  182    return this.tiles[r][c];
+       ⟦Dòng 183: trống hoặc chưa nhận dạng được.⟧
+  184  solid(c: number, r: number) : boolean
+  185  return SOLID.has(this.tile(c, r));
+       ⟦Dòng 186: trống hoặc chưa nhận dạng được.⟧
+  187  setTile(c: number, r: number, ch: string) : void r >= ROWS) return;
+  188    if (c ‹ 0 | c >= this.cols || r ‹ 0 ||
+  189    this.tiles[r][c] = ch;
+  190    this.secVersion[Math.floor(c / 16)]+;
+       ⟦Dòng 191: trống hoặc chưa nhận dạng được.⟧
+  192                      main step
+  193  I1 -  ⟦OCR độ tin cậy thấp⟧
+  194  step(inp: Input) : void {
+  195  this.frame++;
+  196  const jumpBtn : boolean = inp.a Il inp.up;
+  197  const aPressed : boolean = jumpBtn && Ithis.prevA;
+  198  const bPressed : boolean = inp.b && Ithis.prevB;
+  199  this.prevA = jumpBtn;
+  200  this.prevB = inp.b;
+  201  this.updateEffects();
+  202  this.updateBumps();
+  203  if (this.status === 'dying') return this.updateDying();
+  204  if (this,freeze > 0) f
+  205    this.freeze--;
+  206    if (this.freeze === 0) this.morph = null;
+  207    return;
+       ⟦Dòng 208: trống hoặc chưa nhận dạng được.⟧
+  209  switch (this.status) f
+  210    case 'playing':
+  211      this.updatePlaying(f...inp, a: jumpBtn }, aPressed, bPressed);
+  212      break;
+  213    case 'flag':
+  214      this.updateFlag();
+  215    break;
+  216    case 'walk':
+  217      this.updateWalk();
+  218      break;
+  219    case 'tally':
+  220      this.updateTally(;
+  221    break;
+  222    case 'axe':
+  223      this.updateAxe();
+  224    break;
+       ⟦Dòng 225–227: trống hoặc chưa nhận dạng được.⟧
+  228  private updatePlaying(inp: Input, aPressed: boolean, bPressed: boolean) :void {
+  229  if (this.frame % 24 === 0 && this.time > 0) f
+  230    this.time--;
+  231    if (this.time === 0) return this.die();
+  232  }
+  233  this.spawnAheadO;
+  234  for (const e of this.ents) if (e.kind === 'lift') this.updatelift(e);
+  235  this.updatePlayer(inp, aPressed, bPressed);
+  236  if (this.status Is= 'playing') return;
+  237  this.updateCannons();
+  238  for (const e of this.ents) if (le.dead && e.kind l== 'lift') this.updateEnt(e);
+  239  this.enemyInteractions();
+  240  this,playerCollisions();
+  241  this,ents = this,ents,filter((e :Ent) :boolean => le.dead);
+  242  this.updateCamera();
+       ⟦Dòng 243–244: trống hoặc chưa nhận dạng được.⟧
+  245  private updateCamera() ; void (
+  246  const p :Player = this,player;
+  247  const target :number = p,x * p.W / 2 - this.viewl * 0.42;
+  248  if (target > this,camx) this,camx = Math.min(target, this,maxCam());
+       ⟦Dòng 249–250: trống hoặc chưa nhận dạng được.⟧
+  251  private spawnAhead() : yold 4
+       ⟦Dòng 252: trống hoặc chưa nhận dạng được.⟧
+  253  while (this,spawnIdx ‹ this,spawns,length 6& this,spawns[this,spawnIdx],x < this,comx + this,viewW + 32) f this,spawn(this,spawns[this,spawnIdx++]);
+       ⟦Dòng 254–257: trống hoặc chưa nhận dạng được.⟧
+  258  private newEnt(kind: Entkind, *; number, y: number, w: number, h: number, extre: Partial<Enta = f}): Ent f
+  259  const e: Ent = 41d; this,nextId++, kind, %, Y,W, h, vx: 0, Vy: 0, onéround: felse, dead: false, flápped: false, t: 0, ...extra }: this,ents.push(e);
+  260  return e;
+       ⟦Dòng 261–263: trống hoặc chưa nhận dạng được.⟧
+  264  private spawn(s: Spawn) ; yoid 4 switch (s,kind) 1
+  265  case 'walker':
+       ⟦Dòng 266: trống hoặc chưa nhận dạng được.⟧
+  267    this,newEnt(kind: 'wetker', 8,%, 8.Y, (Wº) 16, (h:) 16, 1 Vx; -9,6 }); N: 16, h: 16, 1 Vx: -0.5 3);
+
+--- IMG_2096.jpeg ---
+
+  262  export class Game f 1
+  263    private spawn(s: Spawn) : void
+  264    switch (s.kind) {
+  265      UreaK,
+       ⟦Dòng 266–267: trống hoặc chưa nhận dạng được.⟧
+  268      case 'turtle':
+  269      case 'redturtle':
+  270      case 'paratroope': 16, 24, f vx: -0.5, red: s.kind === 'redtuctle', winged: s.kind === DeetutLe, winged: s.kind == 'Racatreopa' H);
+  271      this.newEnt( kind: 'turtle', s.x, s.Y,
+  272      break;
+  273      case 'piranha': w: 16, h: 24, { baseY: s.Y, offset: 24, phase: 0 }); O H:  ⟦OCR độ tin cậy thấp⟧
+  274      this.newEnt( kind: 'piranha', s.X, S.Y,
+  275      break;
+  276      case 'firebar': w: 8, h: 8, { baseX: s.x, baseY: s.Y, angle: Math.random() * Math.PI * 2, h: 8.1 basex: s.x, speed: s.speed ?? 0.03, Len: s Lel. s.Len er o +:
+  277      this.newEnt( kind: 'firebar', s.x, s.Y,
+  278      break;
+  279      case 'Rodoboo': : 14, h: 14, { baseY: 250, t: Math.floor(Math.random() * 90) 1); uс.тсo0r(naтл.randomo * 90 1•  ⟦OCR độ tin cậy thấp⟧
+  280      this.newEnt( kind: 'gedobee', s.x, y: 250, s.x, y: 250
+  281      break;
+  282    case 'boss': h: 32, { vx: -0.5, hp: 5, minx: s.min, maxX: s.maxx, fireT: 90, jumpT: 120 }); -0.5, hp: 5 X: s.maxx, fireT: 90, jumpT: 120 y);
+  283      this.newEnt( kind: 'boss', s.x, s.y, W: 32,
+  284      break;
+  285    case 'Lift': 0x. 0 P:  ⟦OCR độ tin cậy thấp⟧
+  286      this.newEnt( kind: 'Lift', s.x, s.Y, 48, h: 8, { basex: s.x, baseY: s.Y, range: s.range ?? 32, dx: 0 });
+  287      break;
+       ⟦Dòng 288–290: trống hoặc chưa nhận dạng được.⟧
+  291  /| -- - physics helpers  ⟦OCR độ tin cậy thấp⟧
+  292  private moveX(e: { x: number; y: number; w: number; h: number; vx: number }): boolean { VX: number F): boolean 1
+  293    e.x += e.vx;
+  294    const top : number Math.floor(e.y / TILE);
+  295    const bot : number = Math.floor((e.y + e.h - 0.01) / TILE); 0.01) ( TILE):
+  296    if (e.vx > 0) f
+  297    const c :number = Math.floor((e.x + e.w - 0.01) / TILE); = Math.Floorlu 0.01) / TILE):
+  298    for (let r : number = top; r «= bot; r++) if (this.solid(c, r)) { e.x = c * TILE - e.w; return true; } .w; return true; }
+  299    } else if (e.vx ‹ 0) {
+  300    const C : number = Math.floor(e.x / TILE);
+  301    for (let r : number = top; r <= bot; NH) if (this,solid(c, r)) { e.x = (c+ 1) *TILE; return true; } rJ) 1 e.x = (c + 1) * TILE; return true; }
+       ⟦Dòng 302: trống hoặc chưa nhận dạng được.⟧
+  303  return false;
+       ⟦Dòng 304–305: trống hoặc chưa nhận dạng được.⟧
+  306  /** Returns the column/row of a ceiling block hit (player only), else null. */
+  307  private moveY(e: { x: number; y: number; w: number; h: number; vy: number; onGround: boolean }, isPlayer = false) :(c: number; r number)|null
+  308    e.y += e.vy;
+  309    e.onGround = false;
+  310    const 1 : number = Math.floor(e.x / TILE);
+  311    const rr : number = Math.floor((e.x + e.w - 0.01) / TILE);
+  312  if (e.vy >= 0) 1
+  313    const r : number = Math.fLoor((e.y + e.h - 0.01) / TILE); 0.01) / TILE);
+  314    for (let c : number = L; c <= Pr; c++) {
+  315      if (this,solid(c, r)) {
+  316      e.y = r * TILE - e.h;
+  317      e.vy = 0;
+  318      e.onGround = true;
+  319      return null;
+       ⟦Dòng 320–321: trống hoặc chưa nhận dạng được.⟧
+  322  } else {
+  323    const r : number = Math.floor(e.y / TILE);
+  324    const hits: number[] = [];
+  325    for (let c :number = 1; c <= pr; c++) {
+  326    if (this,solid(c, r) I| (isPlayer && this.tile(c, r) === 'U')) hits.push(c);
+       ⟦Dòng 327: trống hoặc chưa nhận dạng được.⟧
+  328    if (hits,length) 4
+  329    e,y = (r + 1) * TILE;
+  330    e,vy = 0;
+  331    const center :number = Math,floor((e.x + e.w / 2) / TILE); / 2) / TILE);
+  332    const c : number = hits,includes(center) ? center : hits[e]; center : hits[0l;
+  333    return 4 c, r };
+       ⟦Dòng 334–335: trống hoặc chưa nhận dạng được.⟧
+  336  return null;
+       ⟦Dòng 337–338: trống hoặc chưa nhận dạng được.⟧
+  339  private overlapte
+  340  private overlap(a; 4 %; number; ys number; w; numbers h; number }, b: { x; number; y: number; wå number; h: number }, a = 2) aboolean De ne numger 2  ⟦OCR độ tin cậy thấp⟧
+  341  return a.x * s < b.x * b.w - 6 sô a,x + 8,W - s > b,x + 8 s& a,y + 6 ≤ b,y + b,h - s âã a,y + a,h - s > b.y + B; 5 S 09 + 9. 8 o A,y + 0n  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 342: trống hoặc chưa nhận dạng được.⟧
+  343  11 -..  ⟦OCR độ tin cậy thấp⟧
+  344                      *** player
+  345  private setPlayerH(h: number) & yoid 4 const p : Player = this,pLayer;
+  346  p.y += p.h - h;
+  347  p.h = h;
+       ⟦Dòng 348–349: trống hoặc chưa nhận dạng được.⟧
+  350  private canStandUp() : boolean
+  351  const p : Player = this,player; 4
+  352  const top :number = p.y + p.h - 32;
+       ⟦Dòng 353: trống hoặc chưa nhận dạng được.⟧
+  354  const L:number = Math,floor(p.x / TILE), PEnumber = Hath.floor(p.x / TILE), P:number = Hath.Floor((p.x + p.W - 0.01) / TILE); = Math,floor((p,x + p.w - 0,01) / TILE);
+  355  for (let row :number = Math,floor(top / TILE); row «= Math.floor((p.y - 0.01) / TILE); row++) { for (let c : number
+  356              = 1; c <= p; cH) 1f (this,solid(c, row)) return false;
+
+--- IMG_2097.jpeg ---
+
+  349  private canStandUp() : boolean {
+       ⟦Dòng 350: trống hoặc chưa nhận dạng được.⟧
+  351                      (LE); row++) (
+       ⟦Dòng 352–353: trống hoặc chưa nhận dạng được.⟧
+  354  for (Let row : number = Math.floor(top / TILE); row <= Math.floor((p.y - 0.01
+  355  for (let c : number = 1; c « r; c++) if (this.solid(c, row)) return false]
+       ⟦Dòng 356: trống hoặc chưa nhận dạng được.⟧
+  357  return true;
+       ⟦Dòng 358–359: trống hoặc chưa nhận dạng được.⟧
+  360  private updatePlayer(inp: Input, aPressed: boolean, bPressed: boolean) : void bPressed: boolean) : void {
+  361  const p : Player = this.player;
+  362  if (p.inv > 0) p.inv--;
+  363  if (p.star > 0) p.star--;
+       ⟦Dòng 364: trống hoặc chưa nhận dạng được.⟧
+  365  if (p.onLift I= null) f
+  366    const Lift : Ent | undefined = this.ents.find((e :Eft ) : boolean => e.id === p.onlift);
+  367    if (Lift && llift.dead) (
+  368    p.x += Lift.dx ?? 0;
+  369    p.y = lift.y - p.h;
+       ⟦Dòng 370–372: trống hoặc chưa nhận dạng được.⟧
+  373  const size : number = this.session.size;
+  374  if (size > 0 && p.onGround) {
+  375    if (inp.down && lp.crouch) f
+  376    p.crouch = true;
+  377    this.setPlayerH( h: 16);
+  378    } else if (linp.down && p.crouch && this.canStandUp()) { PO) (  ⟦OCR độ tin cậy thấp⟧
+  379    p.crouch = false;
+  380    this.setPlayerH(h: 32);
+       ⟦Dòng 381–383: trống hoặc chưa nhận dạng được.⟧
+  384  let dir : number = (inp.right ? 1 : 0) - (inp.left ? 1 : 0);
+  385  if (p.crouch && p.onGround) dir = 0;
+  386  const max : 1.5 2.5 = inp.b ? RUN_MAX : WALK_MAX;
+  387  const acc : 0.045 | 0.065 = inp.b ? RUN_ACC : WALK_ACC;
+  388  p.skid = false;
+  389  if (dir !== 0) {
+  390    if (p.onGround && p.vx * dir ‹ 0) {
+  391    p.vx += dir * SKID_DEC;
+  392    p.skid = true;
+  393    if (p.vx * dir > 0) p.vx = 0;
+  394    › else f
+  395    p.vx += dir * acc;
+  396    const Limit : number
+  397    if (Math.abs(p.vx) > Limit) { = p.onGround ? max : Math.max(max, p.takeoff); p.takeoff);
+       ⟦Dòng 398: trống hoặc chưa nhận dạng được.⟧
+  399      p.vx = p.onGround ? Math.sign(p.vx) * Math.max(Limit, Math.abs(p.vx) - FRICTION) : Math.sign(p.vx) * Limit;
+       ⟦Dòng 400: trống hoặc chưa nhận dạng được.⟧
+  401    if (p.onGround) p.dir = dir;
+  402  ) else if (p.onGround) f
+  403    if (Math.abs(p.vx) <= FRICTION) p.vx = 0;
+  404    else p.vx -= Math.sign(p.vx) * FRICTION;
+       ⟦Dòng 405–406: trống hoặc chưa nhận dạng được.⟧
+  407  if (aPressed && p.onGround) {
+  408    const s :number = Math.abs(p.vx);
+       ⟦Dòng 409: trống hoặc chưa nhận dạng được.⟧
+  410    if (s < 1) { p.vy = -4; p.jumpHold = 0.125; p.jumpFall = 0.4375; }
+  411    else if (s < 2.3) € p.vy = -4; p.jumpHold = 8.117; p.jumpFall = 0.375; }
+  412    else { p.vy = -5; p.jumpHold = 0.156; p.jumpFall = 0.5625; } p.takeoff = s;
+  413    p.onGround = false;
+  414    p.onLift = null;
+       ⟦Dòng 415–416: trống hoặc chưa nhận dạng được.⟧
+  417  p.vy = Math.min(MAX_FALL, p.vy + (p.vy < 8 && inp.a ? p.jumpHold : p.jumpFall)); ,jumpHold : p.jumpFall));
+       ⟦Dòng 418: trống hoặc chưa nhận dạng được.⟧
+  419  if (bPressed && size === 2 && Ip.crouch && this.ents.filter((e : Ent ) : boolean
+  420    this,newEnt(kind: 'fireball', p.dir > 0 ? p.x+ p.W : p.x - B, p.y + 6, => e.kind === 'fireball').length ‹ 2) {
+  421                      W: 8, h: 8, 1 vx: p.dir * 4, vy: 2 });
+       ⟦Dòng 422: trống hoặc chưa nhận dạng được.⟧
+  423  if (this,movex(p)) p.vx = 0;
+  424  1f (p.x < this,camx) 4 p.x = this,camx; if (p,vx < 0) p,vx = 0; }
+  425  1f (p.x > this,cols * TILE - p.W) 1 p.x = this,cols * TILE - p.W; p.vx = 0; }
+       ⟦Dòng 426: trống hoặc chưa nhận dạng được.⟧
+  427  const prevBotton :number = p,y + p,h;
+  428  const head :(c:number; r number) | nuil = this,moyeY (p, isPlayer; true);
+  429  1f (head) this,hitBlock(head,c, head,p);
+  430  p.onLift = null;
+  431  1f (ip.onGround && p,vy >= 0) 4
+  432    for (const 1 of this,ents) 4
+  433    if (L.kind i== 'lift') continue;
+       ⟦Dòng 434: trống hoặc chưa nhận dạng được.⟧
+  435    1f (p.%* p.w > 1,% 86 p.x < 1,% + 1,W && preyBotton s= L,y + 4 &8 p.y + p.h >= l,y) ( p.y = L,y - p,h;
+  436      p.vy = 0; + ( &8 p.y + poh >= 1.4) (  ⟦OCR độ tin cậy thấp⟧
+  437      p,onGround = true;
+  438      p.onLift = 1.1d;
+       ⟦Dòng 439–441: trống hoặc chưa nhận dạng được.⟧
+  442  if (p.onGround) €
+  443    p.chain = 0;
+  444    n fumnEo11 - A /375:
+
+--- IMG_2098.jpeg ---
+
+  439  private updatePlayer(inp: Input, aPressed: boolean, bPressed: boolean) :void
+  440  if (p.onGround) €
+       ⟦Dòng 441: trống hoặc chưa nhận dạng được.⟧
+  442    p.jumpFall = 0.4375; p.chain = 0;
+       ⟦Dòng 443–445: trống hoặc chưa nhận dạng được.⟧
+  446  // walking animation if (p.onGround) p.walkPhase += Math.abs(p.vx) * 0.12;
+       ⟦Dòng 447: trống hoặc chưa nhận dạng được.⟧
+  448  // tile pickups / hazards = Math.floor((p.x + p.w - 0.01) / TILE); - 0.01) / TILE);
+  449            = Nath.floor(p.x / TILE), c1 : number = Math.floor((p.y + p.h - 0.01) / TILE);
+  450  const cO : number = Nath.floor(p.y / TILE), r1 : number
+  451  for (let r:number = r0; r <= M1; r++) { const r0 : number
+  452              = c8; c < c1; c++) { I
+  453    for (let c : number = this.tile(c, r);
+  454    const ch : string
+  455    if (ch === 'o') { E • ;  ⟦OCR độ tin cậy thấp⟧
+  456      this.setTile(c, r,
+  457    } else if ((ch === 'L' || ch === "1') 6& p.y + p.h > r * TILE + 6) { this.addCoin(); r * TILE + 6) {
+       ⟦Dòng 458: trống hoặc chưa nhận dạng được.⟧
+  459      return this.die();
+       ⟦Dòng 460–462: trống hoặc chưa nhận dạng được.⟧
+  463  if (p.y > VIEW_H + 8) return this.die();
+       ⟦Dòng 464: trống hoặc chưa nhận dạng được.⟧
+  465  const lv : LevelData = this.level;
+  466  1f (lv.checkpointCol I= null && p.x > lv.checkpointCol * TILE) this.session.checkpoint = true; if (lv.flagCol != null && p.x + p.w >= lv.flagCol * TILE + 6) return this.startFlagO;
+       ⟦Dòng 467: trống hoặc chưa nhận dạng được.⟧
+  468  if (lv.axe) f
+  469    const ax = 1 x: Iv.axe.c * TILE, y: Iv.axe.r * TILE, w: TILE, h: TILE 1; s: 0)) return this.startAxe();
+  470    if (this.overlap(p, ax,
+       ⟦Dòng 471: trống hoặc chưa nhận dạng được.⟧
+  472  }
+  473                      -- blocks
+  474                      {
+  475  private hitBlock(c: number, r: number) : vold
+  476  const ch : string = this.tile(c, r);
+  477  const big : boolean = this.session.size › 0;
+  478  switch (ch) {
+  479    case '?':
+  480    this.coinPop(c, r);
+  481    this.setTile(c, r, 'E');
+  482    this.bump(c, r);
+  483    break;
+  484    case 'M':
+  485    case 'm':
+  486    this.spawnItem(c, r, big ? 'flower' 'mushroom');
+  487    this.setTile(c, r, [ch; 'E*);
+  488    this.bump(c, r);
+  489    break;
+  490    case 'S':
+  491    this.spawnItem(c, r, kind: 'star');
+  492    this.setTile(c, r, ch: 'E'); ch: "E*);
+  493    this.bump(c, r);
+  494    break;
+  495    case 'U':
+  496    this.spawnItem(c,r, kind: 'eneve");
+  497    this,setTile(c, r, ch: 'E');
+  498    this.bump(c, r);
+  499    break;
+  500  case 'C': {
+  501    const key = '$(c},${r)';
+  502    const start :number = this.multiCoin.get(key) ?? this.frame;
+  503    this,multicoin,set(key, start);
+  504    this,coinPop(c, r);
+  505    const hits :number = (this,multiCoin.get(key + 'n') ?? 0) + 1;
+  506    this,multicoin,set(key + 'n', hits);
+  507    if (hits >= 10 || this,frame - start > 240) this,setTile(c, p, ch: 'E');
+  508    this,bump(c, r);
+  509    break;
+       ⟦Dòng 510: trống hoặc chưa nhận dạng được.⟧
+  511  case 'B';
+  512    if (big) this,breakBrick(c, p);
+  513    else this,bump(c, r);
+  514    break;
+       ⟦Dòng 515–517: trống hoặc chưa nhận dạng được.⟧
+  518  private bump(c: number, p: number) : yold
+  519                      1
+  520  this,bumps,push(t c, P, t: 0, ch: this,tile(e, r) });
+  521  this,secVersion[Hath,floor(c / 16)]++;
+  522  this,bumpAbove(c, P);
+       ⟦Dòng 523–525: trống hoặc chưa nhận dạng được.⟧
+  526  private bumpAbove(c; number, p: number) : void const top :number = P* TILE; {
+  527  for (const e of this,ents) f
+       ⟦Dòng 528: trống hoặc chưa nhận dạng được.⟧
+  529  if (e.dead |l e.flipped) continue;
+  530  if (Math.abs(e.y + e,h - top) > 3 || e.x + e.W <e c * TILE || e.x >= c * TILE + TILE) continue;
+  531                      nttal il o bind
+
+--- IMG_2099.jpeg ---
+
+  522                      r: number) : void { Show
+  523  private bumpAbove(c: number, r: number) : void {
+  524    private bumpAbove(c: number,
+       ⟦Dòng 525: trống hoặc chưa nhận dạng được.⟧
+  526      it (e.dead Il e.riipped) continue;
+       ⟦Dòng 527: trống hoặc chưa nhận dạng được.⟧
+  528      if (Math.abs(e.y + e.h - top) > 3 || e.x + e.w « c * TILE || e.x >= c + TTE - TILE) continue;
+  529      if (e.kind === 'walker' || e.kind === 'turtle' || e.kind === 'shell') [
+  530      this.knockOut(e, score: 180, e.x + e.w / 2 ‹ c * TILE + 8 ? -1 : 1);
+  531      ) else if (e.kind === 'mushroom' Il e.kind aa= 'oneug' Il e.kind === 'star') f 'oneue' I| e.kind === 'star') {
+       ⟦Dòng 532: trống hoặc chưa nhận dạng được.⟧
+  533      e.vy = -4; e.vx = (e.x + e.w / 2 < c * TILE + 8 ? -1 : 1) * Math.abs(e.vx || 1);
+       ⟦Dòng 534–536: trống hoặc chưa nhận dạng được.⟧
+  537    if (this.tile(c, r - 1) === 'o') f ch: •'D:  ⟦OCR độ tin cậy thấp⟧
+  538      this.setTile(c, r - 1,
+  539      this.coinPop(c, r);
+       ⟦Dòng 540–541: trống hoặc chưa nhận dạng được.⟧
+  542                    {
+  543  private updateBumps() : void
+  544    for (const b of this.bumps) b.t++; => b.t >= 10);
+  545    const done : BumpU = this.bumps.filter((b : Bump ) : boolean
+  546    if (done.length) €
+  547    for (const b of done) {
+  548      this.hidden.delete( value: $(b.c},$(b.r}*);
+  549      this.secVersion[Math.floor(b.c / 16)]+;
+       ⟦Dòng 550: trống hoặc chưa nhận dạng được.⟧
+  551    this.bumps = this.bumps.filter((b:Bump ) :boolean => b.t < 10);
+       ⟦Dòng 552–554: trống hoặc chưa nhận dạng được.⟧
+  555  bumpOffset(t: number) : number 1
+  556    return -[0, 3, 5, 6, 6, 5, 4, 3, 2, 1][Math.min(t, 9)];
+       ⟦Dòng 557–558: trống hoặc chưa nhận dạng được.⟧
+  559  private breakBrick(c: number, r: number) : void f
+  560    this.setTile(c, r, ch: ' ");
+  561    this.addScore(n: 50);
+  562    this.bumpAbove(c, r);
+  563    const x : number = c * TILE, y : number = P * TILE;
+  564    for (const [dx, dy, vx, vy] of [[0, 0, -1, -6], [8, 0, 1, -6], [0, 8, -1, -4], [8, 8, 1, -6], [8, 0, • -411) {
+  565    this.effects.push({ kind: 'debris', x: x + dx, Y: y + dy, vx, VY, t: 0 });
+       ⟦Dòng 566–568: trống hoặc chưa nhận dạng được.⟧
+  569  private spawnItem(c: number, r: number, kind: 'mushroom' | 'flower' | 'star' | 'oneup') : void ( private spawnI | "flower' | 'star' | 'oneup'):
+  570  this.newEnt(kind, c * TILE, r* TILE, W: 16, h: 16, ( emerge: 32, vx: 0 });
+       ⟦Dòng 571–572: trống hoặc chưa nhận dạng được.⟧
+  573  private coinPop(c: number, r: number) : void {
+  574  this.addCoin( score: false);
+  575  this.effects.push({ kind: 'coin', x: c * TILE + 4, r * TILE - 16, vx: 0, vy: -5, x: 0, vy: -5, t: 0 }); t: 0 ›);
+       ⟦Dòng 576–577: trống hoặc chưa nhận dạng được.⟧
+  578  11 scoring
+  579  addScore(n: number, x?: number, y?: number) : void {
+  580  this.session.score += n;
+  581  if (x I= null && y I= null) this.effects.push({ kind: 'score', IUL Thc x, Y, vx: 0, vy: -1, t: 0, text: String(n) 3);  ⟦OCR độ tin cậy thấp⟧
+  582                      text: String(n) 1);
+       ⟦Dòng 583: trống hoặc chưa nhận dạng được.⟧
+  584  private addCoin(score = true) : void (
+  585  this.session.coins++;
+  586  this.session.score += 200;
+  587  if (this,session.coins ›= 100) {
+  588    this.session.coins -= 100;
+  589    this,session.lives++;
+       ⟦Dòng 590: trống hoặc chưa nhận dạng được.⟧
+  591  void score;
+       ⟦Dòng 592–593: trống hoặc chưa nhận dạng được.⟧
+  594  private oneUp(x: number, y: number) : void 1
+  595  this,session, lives+*;
+       ⟦Dòng 596: trống hoặc chưa nhận dạng được.⟧
+  597  this,effects,push(f kind; 'score', %, Y, vx: 0, vy: -1, t: 0, text: '1UP' 3); t: 0, text: '1UP' });
+       ⟦Dòng 598: trống hoặc chưa nhận dạng được.⟧
+  599  private chainscore(idx; number, x; number, y: number) :vold
+  600  1f (idx >= STOMP_SCORES,Length) this,oneUp(x, Y);
+  601  else this,addScore(STOMP_SCORES[idx], %, y);
+       ⟦Dòng 602–604: trống hoặc chưa nhận dạng được.⟧
+  605  private updateEffects() Eyold 4 for (const f of this,effects) f
+  606    f.чHi  ⟦OCR độ tin cậy thấp⟧
+  607    f.x += f,Vx;
+  608    f.y += f.vy;
+  609    1f (f,kind === 'score') 1
+       ⟦Dòng 610: trống hoặc chưa nhận dạng được.⟧
+  611  f.vy = f.t < 30 ? -1 ; 0; } else {
+       ⟦Dòng 612: trống hoặc chưa nhận dạng được.⟧
+  613    F.vy +s f.kind s=s 'coin' P 0,35 ; 0,3;
+       ⟦Dòng 614: trống hoặc chưa nhận dạng được.⟧
+  615  const spawned: Effect[] = [];
+       ⟦Dòng 616: trống hoặc chưa nhận dạng được.⟧
+  617  this,effects = this,effects,filter((f Effect ):boolean) = 1
+  618  1f (f.kind s== 'coin' && f.t >= 26) 4
+
+--- IMG_2100.jpeg ---
+
+  614  private updateEffects() : void {
+  615  this.effects = this.effects.filter((f :Effect ) :boolean const spawned: Effect[] = []; => {
+       ⟦Dòng 616: trống hoặc chưa nhận dạng được.⟧
+  617    if (f.kind === 'coin' 6& f.t ›= 26) { spawned.push({ kind: 'score', x: f.x, y: f.y, vx: 0, vy: -1, t: 0, text: '200' });
+       ⟦Dòng 618: trống hoặc chưa nhận dạng được.⟧
+  619      return false;
+       ⟦Dòng 620: trống hoặc chưa nhận dạng được.⟧
+  621    if (f.kind === 'score') return f.t < 50;
+  622    return f.y ‹ VIEW_H + 16;
+       ⟦Dòng 623: trống hoặc chưa nhận dạng được.⟧
+  624  this.effects.push(...spawned);
+       ⟦Dòng 625: trống hoặc chưa nhận dạng được.⟧
+  626                      entities
+  627  11 ---- : void
+  628  private knockout(e: Ent, score: number, dir: number)
+  629  e.flipped = true;
+  630  e.vy = -3;
+  631  e.vx = dir * 0.8;
+  632  if (e.kind === 'turtle' Il e.kind === 'shell') e.h = 16;
+  633  if (score) this.addScore(score, e.x, e.y);
+       ⟦Dòng 634: trống hoặc chưa nhận dạng được.⟧
+  635                      {
+  636  private gravityBody(e: Ent, g = 0.3) : void
+  637  e.vy = Nath.min(MAX_FALL, e.vy + g);
+  638  }
+       ⟦Dòng 639: trống hoặc chưa nhận dạng được.⟧
+  640  private updateLift(e: Ent) : void {
+  641  e.t++; e.range ?? 32);
+  642  const nx : number = (e.basex ?? e.x) + Math.sin(e.t * 0.02) * (e.range ?? 32);
+  643  e.dx = nx - e.x;
+  644  e.x = nx;
+       ⟦Dòng 645–646: trống hoặc chưa nhận dạng được.⟧
+  647  private updateEnt(e: Ent) : void
+  648  e.t++;
+  649  if (e.flipped) {
+  650    e.vy += 0.3;
+  651    e.x += e.vx;
+  652    e.y += e.vy;
+  653  if (e.y > VIEW_H + 32) e.dead = true;
+  654    return:
+       ⟦Dòng 655: trống hoặc chưa nhận dạng được.⟧
+  656  const offLeft : boolean = e.x + e.w ‹ this.camx - 96;
+  657  if (offleft && e.kind !== 'firebar' && e.kind !== 'boss') { e.dead = true; return; }
+  658  if (e.y > VIEW_H + 32 && e.kind I== 'godobog") ( e.dead = true; return; }
+       ⟦Dòng 659: trống hoặc chưa nhận dạng được.⟧
+  660  switch (e.kind) {
+  661  case 'walker': {
+  662    if (e.squash 1= null) f
+  663      if (--e.squash « 0) e.dead = true;
+  664      return;
+       ⟦Dòng 665: trống hoặc chưa nhận dạng được.⟧
+  666    this.gravityBody(e);
+  667    if (this.moveX(e)) e.vx = -e.vx;
+  668    this.moveY(e);
+  669    break;
+       ⟦Dòng 670: trống hoặc chưa nhận dạng được.⟧
+  671  case 'turtle': 1
+  672    1f (e.winged) 1
+  673    this.gravityBody(e, (g: 0.2);
+  674    if (this.moveX(e)) e.vx = -e.vx;
+  675    this,moveY(e);
+  676    1f (e.onGround) e.vy = -3,5;
+  677    break;
+       ⟦Dòng 678: trống hoặc chưa nhận dạng được.⟧
+  679    this,gravityBody(e);
+  680    if (this,moveX(e)) e,vx = -e,Vx;
+  681    this,moveY(e);
+  682    if (e,red && e,onGround) f
+  683    const ahead : number = 8,vx > 0 ? Math,floor((e,x + e,w) / TILE) : Math.floor((e.x - 1) / TILE); const ahead :n
+  684    const below : number = Math,floop((e,y + e,h + 1) / TILE);
+  685    if (ithis,solid(ahead, below)) e,vx s -e,Vx;
+       ⟦Dòng 686: trống hoặc chưa nhận dạng được.⟧
+  687    break;
+       ⟦Dòng 688: trống hoặc chưa nhận dạng được.⟧
+  689  case 'shell': 1
+  690    if (e.kickGrace) e.kickGrace-*;
+  691    this,gravityBody(e);
+  692    1f (e,Vx === 0) {
+  693    e,revive = (e,revive ?? 8) + 1;
+  694    1f (e.revive > 480) 1
+  695      e.kind = 'turtle';
+  696      e.y -= 8;
+  697      e,h = 24;
+  698      e.vx = this.player.x < в,x ? -0.5 ; 0.5;
+  699      e.revive = 0;
+       ⟦Dòng 700: trống hoặc chưa nhận dạng được.⟧
+  701  } else if (this.movex(e)) f
+  702    e.Vx = -e.Vx;
+       ⟦Dòng 703: trống hoặc chưa nhận dạng được.⟧
+  704  this.moveY(e);
+
+--- IMG_2101.jpeg ---
+
+  704    if (e.vx I== 0 && (e.x › this.camX + this.viewW + 64)) e.dead = true; this.moveY(e); this.viewW + 64)) e.dead = true;
+       ⟦Dòng 705: trống hoặc chưa nhận dạng được.⟧
+  706    break;
+       ⟦Dòng 707: trống hoặc chưa nhận dạng được.⟧
+  708  case 'piranha': {
+  709  const p : Player = this.player; = Math.abs(p.x + p.w / 2 - (e.x + 8)) < 28; (e.x + 8)) < 28;
+  710    const near : boolean
+  711    const phase : number = e.phase ?? 0;
+  712  if (phase === 0) {
+  713    1f (e.t > 90 && Inear) { e.phase = 1; e.t Te; ) e.offset = 24;
+       ⟦Dòng 714: trống hoặc chưa nhận dạng được.⟧
+  715  ) else if (phase === 1) {
+  716    e.offset = Math.max(...values: 0, (e.offset ?? 24) - 0.75);
+  717    if (e.offset === 0) { e.phase = 2; e.t = 0; }
+  718  ) else if (phase === 2) f
+  719    if (e.t > 60) { e.phase = 3; e.t = 0; }
+  720  } else {
+  721    e.offset = Math.min( ...values: 24, (e.offset ?? 0) + 0.75);
+  722    if (e.offset === 24) { e.phase = 0; e.t = 0; }
+       ⟦Dòng 723: trống hoặc chưa nhận dạng được.⟧
+  724  e.y = (e.baseY ?? e.y) - 24 + (e.offset ?? 24);
+  725  break;
+       ⟦Dòng 726: trống hoặc chưa nhận dạng được.⟧
+  727  case 'mushroom':
+  728  case 'aneUR":
+  729  case 'flower':
+  730  case 'star': {
+  731  if (e.emerge && e.emerge › 0) { erge > 0) {
+  732    e.emerge--;
+  733    e.y -= 0.5;
+  734    if (e.emerge === 0 && e.kind I== 'flower') e.vx = e.kind === 'star' ? 1.2 : 1; .2 : 1;
+  735    return;
+       ⟦Dòng 736: trống hoặc chưa nhận dạng được.⟧
+  737  if (e.kind === 'flower') return;
+  738  this.gravityBody(e, e.kind === 'star' ? 0.2 : 0.3);
+  739  if (this.movex(e)) e.vx = -e.vx;
+  740  this.moveY(e);
+  741  if (e.kind === 'star' && e.onGround) e.vy = -4.5; -4.5;
+  742  if (e.x › this.camx + this.viewW + 64) e.dead = true;
+  743  break;
+       ⟦Dòng 744: trống hoặc chưa nhận dạng được.⟧
+  745  case 'fireball':
+  746  e.vy = Hath.min(...values: : 4, e.vy + 0.35); + 0.35);
+  747  if (this.movex(e)) f e.dead = true; return; )
+  748  this.moveY(e);
+  749  if (e.onGround) e.vy = -3;
+  750  if (e.x ‹ this.camx - 16 || e.x › this.camx + this.viewW + 16) { e.dead = true; return; } return; }
+  751  for (const o of this.ents) f
+  752    if (o === e I| o.dead |l o.flipped || Ithis.overlap(e, o, 0)) continue;
+  753    if (o.kind === 'walker' I| o.kind ==* 'turtle' Il o.kind =** 'shell' Il (o.kind === 'piranha' && (o.offset ?? 24) < 22)) {
+  754    this,knockOut(o, score: 200, Math.sign(e.vx));
+  755    e.dead = true;
+  756    break;
+       ⟦Dòng 757: trống hoặc chưa nhận dạng được.⟧
+  758    if (o.kind === 'boss') {
+  759    e.dead = true;
+  760    o.hurt = 10;
+  761    o,hp = (o.hp ?? 5) - 1;
+  762    if (o,hp <= 0) this,knockOut(o, score: 5000, Math.sign(e.vx));
+  763    break;
+       ⟦Dòng 764–765: trống hoặc chưa nhận dạng được.⟧
+  766  break;
+       ⟦Dòng 767: trống hoặc chưa nhận dạng được.⟧
+  768  case 'firebar';
+  769  e,angle = (e,angle ?? 0) + (e,speed ?? 0,93);
+  770  break;
+  771  case 'godohes': 4
+  772  1f (e.y >= (e,basey 77 250) 68 e,Vy >=0) 1
+  773    e,y = e,baseY ?? 259;
+  774    в,yy = 0;
+  775    if (e,t > 150) 4 e,vy = +7,2} 0,t = 0; )
+  776  } else 1
+  777    e.vy += 9,2;
+       ⟦Dòng 778: trống hoặc chưa nhận dạng được.⟧
+  779  e.y += e.Vy;
+  780  break;
+       ⟦Dòng 781: trống hoặc chưa nhận dạng được.⟧
+  782  case 'bullet':
+  783  8,% += 8,VX;
+  784  1f (e.x ‹ this.camx - 48 |)
+  785  1f (e.x < this.camx - 48 lj e.x > this,camx + this,viewW + 48) e,dead = true} break; ewW + 48) e.dead = truet
+  786  case 'boss': 1
+  787  if (e.hurt) e,hurt=-;
+  788  const p:Player = this,player;
+  789  this.gravityBody(e, g: 0.25);
+       ⟦Dòng 790: trống hoặc chưa nhận dạng được.⟧
+  791  if (e.x < (e.minx ?? e.x)) e.vx = 0.5;
+
+--- IMG_2102.jpeg ---
+
+  788  switch (e.kind) (
+  789    this.gravityBody(e, g 0.25);
+  790    if (e.x ‹= (e.minx ?? e.x)) e.vx = 0.5;
+  791    if (e.x >= (e.maxX ?? e.x)) e.vx = -0.5;
+  792    e.x += e.Vx;
+  793    this.moveY(e);
+  794    e.jumpT = (e.jumpT ?? 0) - 1;
+  795    if (e.onGround && e.jumpT <= 0) {
+  796      e.vy = -4;
+  797      e.jumpT = 90 + Math.floor(Math.random() * 120);
+       ⟦Dòng 798: trống hoặc chưa nhận dạng được.⟧
+  799    e.fireT = (e.fireT P? 0) - 1;
+  800    const onScreen : boolean = e.x ‹ this.camx + this.viewW;
+  801    if (onScreen && e.fireT <= 0) f
+  802      const faceLeft : boolean = p.x ‹ e.x;
+  803      const ty :number = Math.random() ‹ 0.5 P p.y + p.h - 12 : e.y + 8; w: 24, h: 8, { vx: faceLeft ? -1.6 : 1.6, targetY: ty });
+  804      this.newEnt( kind: 'bossfice', faceLeft P e.x - 24 : e.x+ e.W, e.y + 8,
+  805      e.fireT = Math.max( ...values: 70, 170 - this.level.world * 9) + Math.floor(Math.random() * 60);
+       ⟦Dòng 806: trống hoặc chưa nhận dạng được.⟧
+  807    break;
+       ⟦Dòng 808: trống hoặc chưa nhận dạng được.⟧
+  809  case 'bossfice': 1
+  810    e.x += e.vx;
+  811    const ty : number = e.targetY ?? e.y;
+  812    if (Math.abs(e.y - ty) > 0.5) e.y += Math.sign(ty - e.y) * 0.5;
+  813    if (e.x ‹ this.camx - 48 |l e.x > this.camx + this.viewW + 48) e.dead = true;
+  814    break;
+       ⟦Dòng 815–818: trống hoặc chưa nhận dạng được.⟧
+  819  private updateCannons() : void 1S O: {  ⟦OCR độ tin cậy thấp⟧
+  820  const p : Player = this.player; this.player;
+  821  this.Level.cannons.forEach((cn : (c: number; r: number) , 1 : number ) : void er ) :void => f => {
+  822  const x :number = cn.c * TILE: - CH.C « IILE
+  823  if (x ‹ this.camx - 16 |l x > this.camx + this.viewW + 16) return; 16 x > tnis.cam
+  824  this.cannonT[i]++;
+  825  const period : number = 200 - Math.min( ...values: 80, this.level.world * 8);
+  826  if (this.cannonT[i] > period && Math.abs(p.x - x) › 36) f
+  827    this.cannonT[i] = Math.floor(Math.random() * 60); ( * 60);
+  828    const vx : 1.5 | -1.5 = p.x < x ? -1.5 : 1.5;
+  829    this.newEnt(kind: 'bullet', x, cn.r * TILE + 1, W: 16, h: 14, f vx }); h: 14, € vx 1);
+       ⟦Dòng 830–831: trống hoặc chưa nhận dạng được.⟧
+  832  }
+       ⟦Dòng 833: trống hoặc chưa nhận dạng được.⟧
+  834  private enemyInteractions() : vold {
+  835  const walkers :Entl] = this.ents.filter((e:Ent) :boolean > le.dead && le.flipped 6& e.squash == null 6& (e.kind == 'walker' I| e.kind === 'turtle' ||
+  836  for (let i:number = 0; i ‹ walkers.length; i++) €
+  837  const a:Ent = walkers[i];
+  838  for (let j:number = i+ 1; j ‹ walkers.length; j++) {
+  839    const b: Ent = walkers[j];
+  840    if (a.flipped Il b.flipped |l Ithis,overlap(a, b, 1)) continue;
+  841    const aMovingShell : boolean = a.kind === 'shell' S& a.vx I== 0;
+  842    const bMovingShell :boolean = b.kind === 'shell' : b.kind === 'shell' 6& b.vx I== 0 S& b.vx 1== 0;
+  843    if (aMovingShell |l bMovingShell) {
+  844    const shell : Ent = aMovingShell ? a : b;
+  845    const victim : Ent = aMovingShell ? b : a;
+  846    if (aMovingShell && bMovingShell) {
+  847      this,knockout(a, score: 0, Math.sign(a,vx));
+  848      this.knockOut(b, score: 0, Math.sign(b.vx));
+  849      continue;
+       ⟦Dòng 850: trống hoặc chưa nhận dạng được.⟧
+  851    shell,chain = (shell,chain ?? 2) + 1;
+  852    this,knockout(victim, score: 0, Math.sign(shell,vx));
+  853    this.chainScore(shell.chain, victim,x, victim.y);
+  854    } else if (a,kind I== 'shell' && b.kind I== 'shell') f
+  855    if ((a,x < b,x 8& a,Vx > 0) || (a,x > b,x && a,Vx < 0)) a,Vx = -8,Vx;
+  856    1f ((b.x < a,x 8ô b,vx > 0) || (b,x > a,x && b,Vx < 0)) b,Vx = -b,vx;
+       ⟦Dòng 857–861: trống hoặc chưa nhận dạng được.⟧
+  862  private playerCollisions() : void
+  863  const p : Player = this,player;
+  864  for (const e of this,ents) 4
+  865  if (e.dead Il e,flipped Il this,status l== 'playing') continue;
+  866  if (e.kind === 'firebar') f
+  867    const n :number = e,len ?? 6; = e,Len ?? 6;
+  868    for (Let 1 ; number = 0; 1 < n; 1++) (
+       ⟦Dòng 869: trống hoặc chưa nhận dạng được.⟧
+  870    const fx:number = (e,basex ?? 0) + Math,cos(e,angle ?? 0) * 1 * 8 - 4;
+  871    1f (this.overlap(p, 1x: f%, y: fy, w: B, h: B ), const fy:number = (e,baseY ?? 0) + Math,sin(e,angle ?? 0) * 1 * 8 = 4;
+  872                      G 2)) 1 this,hurt(); break; }
+  873    continue;
+       ⟦Dòng 874–875: trống hoặc chưa nhận dạng được.⟧
+  876  if (e.kind === 'Lift' Il e.kind ma= 'fireball' || ithis,overlap(p, e)) continue; switch (e.kind) f
+  877    case Imishroom!•
+
+--- IMG_2103.jpeg ---
+
+  873                    {
+  874  private playerCollisions() : void if (e.kind === 'Lift' || e.kind === 'fireball' || Ithis.overlap(p, e)) continue;
+       ⟦Dòng 875: trống hoặc chưa nhận dạng được.⟧
+  876  switch (e.kind) f
+  877    case 'mushroom':
+  878    e.dead = true;
+  879    this.addScore(n: 1000, e.x, e.y);
+  880    if (this.session.size === 0) this.growO;
+  881    break;
+  882    case 'flower':
+  883    e.dead = true;
+  884    this.addScore(n: 1000, e.x, e.y);
+  885    if (this.session.size === 0) this.growO; 8; this.morph = 'fire'; }
+  886    else if (this.session.size === 1) { this.session.size = 2; this.freeze = 40; this.morph = 'fire'; }
+  887    break;
+  888    case 'eneve':
+  889    e.dead = true;
+  890    this.oneUp(e.x, e.y);
+  891    break;
+  892    case 'star':
+  893    e.dead = true;
+  894    this.addScore( n: 1000, e.x, e.y);
+  895    p.star = 660;
+  896    break;
+  897    case 'piranha':
+  898    if ((e.offset ?? 24) ›= 22) break;
+  899    if (p.star > 0) this.knockout(e, score: 200, p.dir);
+  900    else this.hurt():
+  901    break;
+  902    case 'podebol":
+  903    case 'possfice':
+  904    this.hurt();
+  905    break;
+  906    case 'boss':
+  907    this.hurt();
+  908    break;
+  909    case 'walker':
+  910    case 'turtle':
+  911    case 'shell':
+  912    case 'bullet':
+  913    this.touchEnemy(e);
+  914    break;
+       ⟦Dòng 915–918: trống hoặc chưa nhận dạng được.⟧
+  919  private touchEnemy(e: Ent) : vold {
+  920  const p : Player = this.player;
+  921  if (e.kind === 'walker' && e.squash I= null) return;
+  922  if (e.kind === 'shell' && e.kickGrace) return;
+  923  if (p.star > 0) f
+  924  this.knockOut(e, score: 0, p.x ‹ e.x ? 1 : -1);
+  925  this.chainScore(Math.min(p.chain++, 9), e.x, e.y); 9), e.x, e.y);
+  926  return;
+       ⟦Dòng 927: trống hoặc chưa nhận dạng được.⟧
+  928  const stomp : boolean = p.vy > 0 && p.y + p.h - e.y < 10;
+  929  if (stomp) {
+  930  p.vy = -4;
+  931  p.jumpHold = 0.125;
+  932  if (e.kind === 'walker') {
+  933    e,squash = 30;
+  934    e,vx = 0;
+  935    this.chainScore(p.chain++, e.x, e.y);
+  936  } else if (e,kind === 'turtle') f
+  937    if (e.winged) f
+  938    e.winged = false;
+  939    e,vy = 0;
+  940    › else {
+  941    e,kind = 'shell';
+  942    B,y += B;
+  943    в,л = 16;  ⟦OCR độ tin cậy thấp⟧
+  944    6,VX = 0;
+  945    e,revive = 0;
+  946    e,kickörace = 10;
+       ⟦Dòng 947: trống hoặc chưa nhận dạng được.⟧
+  948    this,chainscore(p,chain++, e,%, e,y);
+  949  ) else if (e,kind ==s 'shell') f
+  950    1f (0,Vx I== 0) 1
+  951    8,VX = 0;
+  952    в,revive = 0;
+  953    e,kickGrace = 10;
+  954    this,chainscore(p,chein++, 9,%, e.y);
+  955    } else {
+  956    this,kickshell(e);
+       ⟦Dòng 957: trống hoặc chưa nhận dạng được.⟧
+  958  } else if (e,kind #== 'bullet') f
+  959    this,knockout(e, score: ê, dir: e);
+       ⟦Dòng 960: trống hoặc chưa nhận dạng được.⟧
+  961    this,chainScore(p,chain++, e,%, e,y);
+  962  return;
+
+--- IMG_2104.jpeg ---
+
+  962    return;
+       ⟦Dòng 963: trống hoặc chưa nhận dạng được.⟧
+  964  if (e.kind === 'shell' && e.vx === 0) {
+  965    this.kickShell(e);
+  966    return;
+       ⟦Dòng 967: trống hoặc chưa nhận dạng được.⟧
+  968  this.hurt();
+       ⟦Dòng 969–970: trống hoặc chưa nhận dạng được.⟧
+  971  private kickShell(e: Ent) : void
+  972  const p : Player = this.player;
+  973  e.vx = p.x + p.w / 2 < e.x + e.w / 2 ? 3 : -3; I
+  974  e.kickGrace = 12;
+  975  e.chain = 2;
+  976  e.revive = 0;
+  977  this.addScore( n: 400, e.x, e.y);
+       ⟦Dòng 978–979: trống hoặc chưa nhận dạng được.⟧
+  980  private grow() : void {
+  981  const p : Player = this.player;
+  982  this.session.size = 1;
+  983  p.crouch = false;
+  984  this.setPlayerH(h: 32) ;
+  985  this.freeze = 50;
+  986  this.morph = 'grow';
+       ⟦Dòng 987–988: trống hoặc chưa nhận dạng được.⟧
+  989  private hurt() : void 1
+  990  const p : Player = this.player;
+  991  if (p.inv > 0 |l p.star > 0 Il this.status I== 'playing') return;
+  992  if (this.session.size > 0) {
+  993    this.session.size = 0;
+  994    p.crouch = false;
+  995    this.setPlayerH( h: 16);
+  996    p.inv = 120;
+  997    this.freeze = 50;
+  998    this.morph = 'shrink';
+  999  › else f
+ 1000    this.die(;
+       ⟦Dòng 1001–1003: trống hoặc chưa nhận dạng được.⟧
+ 1004  die() : void
+ 1005  if (this.status === 'dying') return;
+ 1006  this.status = 'dying';
+ 1007  this.statusT = 0;
+ 1008  this.session.size = 0;
+ 1009  const p : Player = this.player;
+ 1010  p.vx = 0;
+ 1011  p.vy = 0;
+ 1012  if (p.h I== 16) this.setPlayerH(h: 16);
+       ⟦Dòng 1013–1014: trống hoặc chưa nhận dạng được.⟧
+ 1015  private updateDying() : void 1
+ 1016  const p : Player = this.player;
+ 1017  this.statusT++;
+ 1018  if (this.statusT === 30) p.vy = -5;
+ 1019  if (this.statusT > 30) {
+ 1020    p.vy += 8.25;
+ 1021    p.y += p.vy;
+       ⟦Dòng 1022: trống hoặc chưa nhận dạng được.⟧
+ 1023  if (this,statusT > 170) this.result = 'dead';
+       ⟦Dòng 1024–1025: trống hoặc chưa nhận dạng được.⟧
+ 1026  /] --. Level end
+ 1027  private startFlag() : void 4
+ 1028    const p : Player = this.player;
+ 1029    const lv ; LevelData = this,level;
+ 1030    if (lv.flagCol == null) return;
+ 1031    this,status = 'flag';
+ 1032    this,statusT = 0;
+ 1033    p.vx = 0;
+ 1034    p.vy = 0;
+ 1035    p.crouch = false;
+ 1036    1f (this,session,size > 0 && p.h I== 32) this,setPlayerH( h: 32);
+ 1037    const polex ;number = 1V,flagCol * TILE + 7;
+ 1038    p.x = polex - p.w + 1;
+ 1039    const height : number = 12 * TILE - (p,y + p,h);
+       ⟦Dòng 1040: trống hoặc chưa nhận dạng được.⟧
+ 1041    this,addscore(score, polex + 4, p.y);
+ 1042    this,ents = this,ents,filter((e :Ent) ) : boolean]
+ 1043                      •› e.kind === 'Lift');
+       ⟦Dòng 1044: trống hoặc chưa nhận dạng được.⟧
+ 1045  private updateFlag() :yoid 4
+ 1046    const p:Player = this,player;
+ 1047    const base :number = 12 * TILE;
+ 1048    if (p.y + p.h < base) p.y = Math,min(p.y + 2, base - p.h);
+ 1049    if (this.flagY < 11 * TILE - 4) this,flagY += 2j
+ 1050    if (o.v + n.h >a base && this.flaoy >a 11 * TTLE - 4) d
+
+--- IMG_2105.jpeg ---
+
+ 1038  private startFlag(): void { spoy T ponr ? 800 : height >= 32 ? 400 : 100;  ⟦OCR độ tin cậy thấp⟧
+ 1039    const nezgnt.hamoa IZN TILE = height ›= 128 ? 5000 height >= 96 ? 2000 : height ›= 64 ? 800 : height >= 32 ? 400 - 96 ? 2000 : height  ⟦OCR độ tin cậy thấp⟧
+ 1040    const score : 100 | 400 | 800 | 2000 | 5000
+ 1041    this.addScore(score, polex + 4, p.y); *> e.kind === 'Lift');
+ 1042    this.ents = this.ents.filter((e :Ent) :boolean
+       ⟦Dòng 1043: trống hoặc chưa nhận dạng được.⟧
+ 1044                    {
+ 1045  private updateFlag() : vold
+ 1046    const p : Player = this.player;
+ 1047    const base : number = 12 * TILE;
+ 1048    if (p.y + p.h < base) p.y = Math.min(p.y + 2, base - p.h);
+ 1049    if (this.flagY < 11 * TILE - 4) this.flagY += 2;
+ 1050    if (p.y + p.h >= base && this.flagY >= 11 * TILE - 4) f
+ 1051    this.statusT++;
+ 1052    if (this.statusT === 10) {
+ 1053      p.dir = -1;
+ 1054      p.x = (this,level.flagCol ?? 0) * TILE + 8;
+       ⟦Dòng 1055: trống hoặc chưa nhận dạng được.⟧
+ 1056    if (this.statusT > 35) €
+ 1057      p.dir = 1;
+ 1058      this.status = 'walk';
+       ⟦Dòng 1059–1062: trống hoặc chưa nhận dạng được.⟧
+ 1063  private updateWalk() : void -
+ 1064  const p : Player = this.player;
+ 1065  p.vx = 1.2;
+ 1066  p.vy = Math.min(MAX_FALL, p.vy + 0.4);
+ 1067  this.moveX(p);
+ 1068  this.moveY(p);
+ 1069  p.walkPhase += 0.15;
+ 1070  this.updateCamera();
+ 1071  if (p.x ›= (this,level.castleDoorx ?? 0)) f
+ 1072    p.visible = false;
+ 1073    this.status = 'tally';
+ 1074    this.statusT = 0;
+       ⟦Dòng 1075–1077: trống hoặc chưa nhận dạng được.⟧
+ 1078  private updateTally() : void {
+ 1079  if (this.time > 0) f
+ 1080    const n : number = Math.min(this.time, 2);
+ 1081    this.time -= n;
+ 1082    this.session.score *= 50 * n;
+ 1083    return;
+       ⟦Dòng 1084: trống hoặc chưa nhận dạng được.⟧
+ 1085  if (++this.statusT > 90) this.result = 'clear';
+       ⟦Dòng 1086–1087: trống hoặc chưa nhận dạng được.⟧
+ 1088  private startAxe() : void {
+ 1089  const p : Player * this.player;
+ 1090  this.status = 'axe';
+ 1091  this.statusT = 0;
+ 1092  p.vx = 0;
+ 1093  p.vy = 8;
+ 1094  this.ents = this.ents.filter((e :Ent):boolean => e.kind === 'boss');
+ 1095  const ax : (c: number; r. number) | null = this.Level.axe;
+ 1096  if (ax) this.setTile(ax.c, ax.r, ch:' ");
+ 1097  this.bridgeleft = this,level.bridge ? this,level.bridge.c1 - 1 : -1;
+       ⟦Dòng 1098–1099: trống hoặc chưa nhận dạng được.⟧
+ 1100  private updateAxe() : vold JpdateAxe() 1
+ 1101  this.statusT++;
+ 1102  const br : {c0; number; c1: number; r. number ] | n... = this,level,bridge;
+ 1103  if (br && this.bridgeLeft >= br.c0) {
+ 1104  if (this,statusT % 4 === 0) (
+ 1105    this,setTile(this.bridgeLeft, br.r,
+ 1106    this,bridgeLeft--;
+       ⟦Dòng 1107: trống hoặc chưa nhận dạng được.⟧
+ 1108  return;
+       ⟦Dòng 1109: trống hoặc chưa nhận dạng được.⟧
+ 1110  for (const e of this,ents) f
+ 1111  if (e,kind i== 'boss') continue;
+ 1112  e,vy = Hath,min (MAX_FALL, e,Vy + 0,25);
+ 1113  e,y += e,Vy;
+ 1114  1f (e.y > VIEW_H + 49) e,dead = true}
+       ⟦Dòng 1115: trống hoặc chưa nhận dạng được.⟧
+ 1116  this,ents = this,ents,filter((e:Ent ) ;boolean.
+ 1117  1f (this,ents,length === 0 6& this,statusT > 69) 1 > le,dead);
+ 1118  this,status = 'telly';
+ 1119  this,statusT = 0;
+
+============================================================================
+src/game/levels.ts
+============================================================================
+
+--- IMG_2106.jpeg ---
+
+    1  import { Theme } from './tiles';
+       ⟦Dòng 2: trống hoặc chưa nhận dạng được.⟧
+    3  export interface Spawn {
+    4    kind: 'walker' | 'turtle' | 'redtuctle' | 'pacatcoope' | 'piranha' | firebar' | 'podobos' | 'boss' | 'Lift'; ' | 'boss' | 'Lift';
+    5    x: number;
+    6    y: number;
+    7    speed?: number;
+    8    Len?: number;
+    9    range?: number;
+   10    minX?: number;
+   11    maxX?: number;
+       ⟦Dòng 12–13: trống hoặc chưa nhận dạng được.⟧
+   14  export interface Deco {
+   15    type: 'hill' | 'bush' | 'cloud' | 'castle';
+   16  x: number;
+   17  y: number;
+   18  size: number;
+       ⟦Dòng 19–20: trống hoặc chưa nhận dạng được.⟧
+   21  export interface LevelData f
+   22  world: number;
+   23  stage: number;
+   24  theme: Theme;
+   25  night: boolean;
+   26  width: number:
+   27  tiles: string[][];
+   28  spawns: Spawn[];
+   29  gecos: Deco[];
+   30  cannons: { c: number; r: number }[];
+   31  startCol: number:
+   32  checkpointCol: number | null;
+   33  FlagCol: number | null;
+   34  castleDoorx: number | null;
+   35  axe: { c: number; r: number } | null;
+   36  bridge: { cO: number; c1: number; r: number } | null;
+   37  time: number:
+       ⟦Dòng 38–39: trống hoặc chưa nhận dạng được.⟧
+   40  export const WORLDS = 10;
+   41  export const STAGES = 4;
+   42  export const ROWS = 15;
+   43  const SOLID = 'XB?MSmCE#[]{}Nn=T<>';
+       ⟦Dòng 44: trống hoặc chưa nhận dạng được.⟧
+   45  function mulberry32(seed: number) : 0=> number
+   46  Let a : number = seed ››> 0;
+   47  return () : number => {  ⟦OCR độ tin cậy thấp⟧
+   48    a = (a + 0x6d2b79f5) >>> 0;
+   49    Let t : number = a;  ⟦OCR độ tin cậy thấp⟧
+   50    t = Math.imul(t ^ (t ››> 15), t | 1);
+   51    t ^= t+ Math.imul(t^ (t ›>> 7), t | 61);
+   52    return ((t ^ (t ››> 14)) ›> 0) / 4294967296;
+       ⟦Dòng 53–55: trống hoặc chưa nhận dạng được.⟧
+   56  export function generateLevel(world: number, stage: number): LevelData { stage: number): LevelData { Sh
+   57  const rnd : 0=> number = mulberry32(world * 9973 + stage * 131 + 7);
+   58  const ri : (a: number, b: number) => number = (a: number, b: number) : number *> a + Math.FLoor(rnd() * (b - a + 1));
+   59  const chance : (p: number) => boolean = (p: number) : boolean number) : boolean => rndO < p: => rnd() < p;
+   60  const theme: Theme = (['overworld', 'underground', 'athletic', 'castle'] as Theme[])[stage - 1]; 'castle'] as Theme[])[stage - 1];
+   61  const diff :number = world - 1 + (stage - 1) * 0.25;
+       ⟦Dòng 62: trống hoặc chưa nhận dạng được.⟧
+   63  const MAXW = 600;
+   64  const g: string[1[] = Array.from({ length: ROWS }, () :anyl] => new Array(MAXW).fill(value: ' '));
+   65  const spawns: Spawn[] = [];
+   66  const geces: Deco[] = [];
+   67  const cannons: 1 c: number; r: number 3[] = [];
+   68  let checkpointCol: number | null = null;
+       ⟦Dòng 69: trống hoặc chưa nhận dạng được.⟧
+   70  const set : (c: number, r; number, ch: string) => vol... = (c: number, r: number, ch: string) : vold
+   71    if (c >= 0 8& c < MAXW && p >= 0 && p < ROWS) g[r][c] = ch;
+       ⟦Dòng 72: trống hoặc chưa nhận dạng được.⟧
+   73  const get ; (c: number, r; number) => string = (c; number, P: number) : string r) => string = (c: number, p: number) Estring => (c >= 0 6& c < MAXW 6& n >= 0 6& г < ROWS ? g[n][o] : 1 "); => (c >= 0 6& c < MAXW && г >= 0 && г ‹ ROWS ? g[r][c] : ");
+   74  const ground : (c0; number, c1: number, top?: number) =>... = (c8: number, c1; number, top = 13) : Void => 1
+   75  for (let c:number = c8; c & c1; c++) for (Let ranumber. = top; p < ROWS; P++) set(c, r, ch: 'x');
+       ⟦Dòng 76: trống hoặc chưa nhận dạng được.⟧
+   77  const surface : (c: number, from: number) =≥ number • (c; number, from: number) &number => {
+   78    for (let ranumber = from; p < ROWS; r++) if (SOLID,includes(get(e, r))) return ri
+   79  return -1;
+       ⟦Dòng 80: trống hoặc chưa nhận dạng được.⟧
+   81  const enemy : (kind: "walker* | "turtie | "redturtie. = (kind: Spawn['kind'1, e; numben, from = 10) : void) => f
+   82    const r :number = surface(c, from);
+   83    if (r ‹ 1 || SOLID,includes(get(c, p - 1))) return;
+   84    const h:16|24 = kind === 'walker' ? 16 ; 24;
+   85    spawns.push({ kind, x: c * 16, y: P * 16 - h });
+       ⟦Dòng 86: trống hoặc chưa nhận dạng được.⟧
+   87  const pickEnemy : 0 => "walker* | "turtie" | "redturtie" ...] = (): Spawn ['kind'] => {
+   88    const pool: Spawn['kind'][] = ['walker', 'walker'];
+   89    if (diff >= 0.5) pool,push(....tems; 'turtle');
+   90    if (diff >= 1.5) pool,push (...tems: 'RacatcegRe');
+   91    if (diff >= 2) pool,push(...tems: 'regtuctle');
+   92    ic (Atce so /) nenl nunhf
+
+--- IMG_2107.jpeg ---
+
+       :kground.png
+       export function generateLevel(world: number, stage: number): LevelData Controls.1
+                           ow usages levels.ts
+       const pickEnemy : 0 => "walker" | "turtle" | "redturtle" |...
+                           = (): Spawn['kind'] >
+       it (ait 1.5) pooL.pusn(...tems: "pacarCooe,  ⟦OCR độ tin cậy thấp⟧
+       if (diff ›= 2) pool.push(...ltems:
+                           'redtuctle');
+       if (diff »= 4) pool.push(...items: 'turtle', 'pacatcooge', 'redtuctle'); "turtle' "paratcooed
+                           redturtle');
+       return pool[ri( a: 0, pool.length - 1)1;
+       const enemyCount : 0 => number = () :number => Math.min(...values:
+       const placeEnemies : (c0: number, c1: number, from?: number) =... 4, ri( a: 1, 1 + Math.floor(diff / 2.5)));
+                           ges a Minh Le
+                           = (c8: number, c1: number, from = 10) : void
+       const n : number = enemyCount(; - enemycounte: => 1
+       Let cc : number
+                 = ri(c0, Math.max(c8, c1 - n * 2));
+       const kind : "walker" | "turtle" | "redturtle" | "para... = pickEnemy();
+       for (let i:number = 0; 1 < n 6& cc < c1; 1++) {
+         enemy(i === 0 ? kind : chance(p: 0.6) ? kind : pickEnemy(), cc, from);
+         cc += 2;
+       const pipe : (x: number, h: number, piranhaChance: num...
+                   = 13 - h; = (x: number, h: number, piranhaChance: number) : void => { per, pira  ⟦OCR độ tin cậy thấp⟧
+       const topp number number = 15 - h:
+       set(x, top, ch: '['); ch: "[');
+       set(x + 1, top, ch: ']');
+       for (let r:number = top + 1; p <= 12; P++) { set(x, P,
+                           ''); set (x + 1, r, ch: 'H"); }
+       if (chance(piranhaChance)) spawns.push(f kind: 'piranha', x: x * 16 + 8, y: top * 16 }); w.posmtt Kind: pinanh:
+                           * 16 + 8. V: top * 16 +)
+       /1 -  ⟦OCR độ tin cậy thấp⟧
+                           shared chunks
+       const chunkPlain : (c: number) > number
+                           = (c: number) : number
+       const w: number = ri( a: 8, b: 13); => { mnta  ⟦OCR độ tin cậy thấp⟧
+       ground(c, c + w);
+       placeEnemies(c + 2, c + w - 1);
+       return c + w;
+       const chunkBlocks : (c: number) => number
+                           = (c: number) : number
+       const W : number => {
+                 = ri( a: 10, b: 14);
+       ground(c, c + w);
+       const len : number = ri( a: 3,
+                           b: 6);
+       const bc : number c + ri( a: 2, w
+                           - len - 1):
+       for (let 1 : number
+                   = 0; i ‹ len; i++) set(bc + 1, 9, chance( p: 0.45)
+                           ce(p: 0.45 ? '?' : "B': P 'P' : 'B');
+       if (chance( p: 0.6)) set(bc + ri(a: 0, len - 1), 0.0)) set(bc + pir
+                           r. 9, chance( p: 0.5 P : 'm');
+       1f (chance( p: 0.18)) set(bc + ri( a: 0, len - 1),
+                           ch: "C');
+       1f (chance( p: 0.08)) set(bc + ri( a: 0, len - 1),
+                           C 9, ch: 'S');  ⟦OCR độ tin cậy thấp⟧
+       if (chance( p: 0.45)) f
+         const uc : number = bc + ri( a: 0, Math.max(
+                           ...values: 0, len - 2));
+         set(uc, r 5, ch: '?');
+         if (chance( p: 0.5)) set(uc + 1, 5, ch: 'B');
+       if (chance( p: 0.1) && get(c + w r. 9) === ' ') set (c + W - 2,
+                           F 9, ch: "U"); 'U'D;
+       placeEnemies(c + 1, c + w - 1);
+       return c + w;
+       const chunkPipes : (c: number, maxH: number) *> number
+                           = (c: number, maxH: number) ;numbei mber) numbe > {
+       Let x : number = c + ri( a: 2, b: 3);
+       const n : number = ri( a: 1, b: 2);
+       const pc : number = diff ›= 1 ? Math.min(...values
+                           0.85, 0.3 + diff * 0.08) : 0; .08) : 0;
+       for (let 1 :number = 0; 1 < n; 1++) {
+         рipe(x, ri( a: 2, maxн), pc);
+         x *= 2;
+         const gap : number = ri( a: 3, 6);
+         if (gap >= 4 && chance( p: 8.6)) enemy(kind: 'walker', x + 1);
+         x += gap;
+       ground(c, x);
+       return x;
+       const chunkGap ; (c: number) => number = (c: number) : number
+                           => s
+       const a:number = ri( a; 2, b: 4); = 01a: 2  ⟦OCR độ tin cậy thấp⟧
+       ground (c, c + a);
+       const gw:number = ri( a; 2, Math,min(...values; = P1L a: 2 Math.minC 4, 2 + Math.Floor(diff / 2)));
+       if (chance( p; 0,45)) for (let 1 ; number = 0; 1 ‹ gw; 1++) set(c + a + 1, 1 > 0 6& 1 ‹ qw
+       const b : number - 1 P 8 : 9, ch: 'o');
+                 = r1( a 2, b: 4); b: 4;  ⟦OCR độ tin cậy thấp⟧
+       ground(c + a + gw, c + a + gw + b); 1 + b);  ⟦OCR độ tin cậy thấp⟧
+       return c + a + gw + b;
+       const chunkStairs ; (c: number) => number
+                           = (c: number) Enumber => 1 ges - Minn Le
+       const h : number = r1( a; 8, DE 4);
+       ground (c, c + 1);
+       Let x ;number = c * 1; = c + 1;
+       for (Let k : number = 0; k < h; k++) (
+         ground(x * K, x + k + 1);
+         for (let ]:number
+                   = 0; j<= k; j**) set(x +K, 12 - J, ch');
+       x += h;
+       1f (diff >= 1 && chance(P: 0.6)) x +* 2; hance( p: 0,6)) x +* %;
+       for (Let k:number = 0; k ≤ h; k*+) €
+         ground(x + K, x + k + 1);
+         for (Let JEnumber = 0;j < h - k; j++) set(x + K, 12 - j, ch: #');
+       x *= h;
+       ground(x, x + 3);
+       return x + 3;
+       const chunkFloating : (c:number) => number = (c; number) :number => {
+
+--- IMG_2108.jpeg ---
+
+  179  const chunkFloatind
+  180  const w const w : number number = ri( a: 13, b: 16); [16);
+  181  ground(c, c + w);
+  182  if (diff >= 1 && chance( p: 0.5)) {
+  183    const g0 : number = c + ri( a: 5, b: 7), gL : number = ri( a: 2, (3);
+  184    for (let x : number = g8; x < gB + gL; x++) { set(x, 13, ch: ' "); set (x, E 14, ch:' "); }
+       ⟦Dòng 185: trống hoặc chưa nhận dạng được.⟧
+  186  for (let x : number = c + 2; x < c + 6; x++) set (x, r. 9, chance( p: 0.3) ? '?' : 'B');
+  187  for (let x : number 6; x < c + W - 1; x++) set (x, r. 5, chance( p: 0.25) ? '?' : 'B');
+  188  enemy( kind: 'walker', c + 8, from: 3) ;
+  189  if (diff >= 1) enemy( kind: 'walker', c + 10, from: 3) ;
+  190  return c + w;
+       ⟦Dòng 191: trống hoặc chưa nhận dạng được.⟧
+  192  const chunkCannons : (c: number) => number = (c: number) : number => {
+  193  const W : number = ri( a: 10, b: 13);
+  194  ground(c, c + w);
+  195  const n : pumber = ri( a: 1, b: 2);
+  196  for (let 1 : number = 0; 1 < n; 1++) {
+  197    const x : number = c+2+ 1* 5;
+  198    const hh : number = ri( a: 1, b: 2) ;
+  199    set(x, 13 - hh, ch: 'N');
+  200    for (let r : number = 14 - hh; r <= 12; r++) set(x, r, ch: 'n');
+  201    cannons.push({ c: x, r: 13 - hh });
+       ⟦Dòng 202: trống hoặc chưa nhận dạng được.⟧
+  203  return c + w;
+       ⟦Dòng 204: trống hoặc chưa nhận dạng được.⟧
+  205  const chunkRaised : (c: number) => number = (c: number) : number => 1
+  206  const W : number = ri( a: 7, 11), top : number = ri( a: 10, b: 11) ;
+  207  ground(c, c + 2);
+  208  ground(c + 2, c + 2 + w, top);
+  209  placeEnemies(c + 3, c + 1+W, from: 3);
+  210  ground(c + 2 + w, c + 4 + w);
+  211  return c + 4 + w;
+       ⟦Dòng 212: trống hoặc chưa nhận dạng được.⟧
+  213  const chunkPillars : (c: number) => number = (c: number) : number => {
+  214  const w = 12;
+  215  ground(c, c + w);
+  216  for (const x of [c + 3, c + 8]) {
+  217    const hh : number = ri( a: 2, b: 4) ;
+  218    for (let r : number = 12; r > 12 - hh; r--) { set(x, r, ch: 'B'); set(x + 1, г, ch: 'B'); set(x + 1, r, ch: "B'); } ch: 'B'); }
+  219    set(x, 12 - hh, ch: 'o');
+  220    set(x + 1, 12 - hh, ch: 'o');
+       ⟦Dòng 221: trống hoặc chưa nhận dạng được.⟧
+  222  enemy(pickEnemyO, c + 6);
+  223  return c + w;
+       ⟦Dòng 224: trống hoặc chưa nhận dạng được.⟧
+  225  const chunkCoinShelf : (c: number) => number => {
+  226  const w = 12;
+  227  ground(c, c + w);
+  228  for (let x : number x < c + 10; x++) {
+  229    set(x, 9, x === 5 ? 'М' : 'В');
+  230    set(x, 12, ch: 'o');
+       ⟦Dòng 231: trống hoặc chưa nhận dạng được.⟧
+  232  for (Let x : number = c + 3; x < c + 9; x++) set (x, E 8, ch: 'o'); h: 'o");
+  233  placeEnemies(c + 2, c + 10);
+  234  return c + w;
+       ⟦Dòng 235–236: trống hoặc chưa nhận dạng được.⟧
+  237  const ending : (c: number) => (flagCol: number; castleD... = (c: number) : {flagCol: number; castleDoorX: number; W... => {
+  238  ground (c, e + 3);
+  239  Let x;number = c + 3;
+  240  for (let k : number = 0; k < 8; k++) {
+  241    ground(x * k, x + k + 1);
+  242    for (let ) :number = 8; j <= k; J++) set(x + k, 12 - j, ch: '#');
+       ⟦Dòng 243: trống hoặc chưa nhận dạng được.⟧
+  244  x += 8;
+  245  ground(x, x + 1);
+  246  for (let j:number = 0; j < 8; j*+) set(x, 12 - 1, ch: #');
+  247    x += 1;
+  248  ground(x, x * 39);
+  249    const fLagcol ; number =%+ 4;  ⟦OCR độ tin cậy thấp⟧
+  250  set(FlagCol, F 12, ch: '#');
+  251    const castleCol¿number = flagCol + 5;
+  252    decos,push(f type; 'castle', x; castleCol * 16, y: 13 * 16, size; 1 });
+  253    return 4 FlagCol, castleDoor%: castleCol * 16 + 32, width; x + 30 }; Vidth: x + 30 3;
+       ⟦Dòng 254–255: trống hoặc chưa nhận dạng được.⟧
+  256  let width :number • 93  ⟦OCR độ tin cậy thấp⟧
+  257  let FlagCol: number | null = null}
+  258  let castleDoorx; number | null = null}
+  259  Let axe: LevelDate['axe'] = null}
+  260  let bridge: LevelDste['bridge'] = null}
+  261  const startCol = 3;
+       ⟦Dòng 262: trống hoặc chưa nhận dạng được.⟧
+  263  1f (theme a== 'overworld' Il theme mas 'underground') 4
+  264    ground ( co: 8, c1: 16);
+  265    Let c : number • 16;
+  266    const n:number = 8 + Hath,floor(diff * 0.9);
+  267    const under : boolean = theme #== 'underground';
+  268    const chunks: ((c: number) => number)[] = under
+
+--- IMG_2109.jpeg ---
+
+  266                      3 CoI TE levels.ts x  ⟦OCR độ tin cậy thấp⟧
+  267  export fu etion generatelevettworld: nundery scage: number) : Lettpetd (
+  268  const chunks: ((c: number) => number)[] = under
+  269    ? [chunkPlain, chunkBlocks, (x :number) :number > chunkPipes(x, maxH: 3), chunkGap, chunkPillars, chunkCoinshelf, chunkRaised]
+  270    : [chunkPlain, chunkBlocks, chunkBlocks, (x: number ) : number > chunkPipes(x, diff >= 2 ? 4 : 3), chunkGap, chunkStairs, chunkFloating, chunkRaise
+  271  if (lunder && diff >= 2) chunks.push(chunkCannons);
+  272  c = chunkBlocks(c);
+  273  for (Let i : number = 0; 1 ‹ n; 1++) {
+  274    if (i === Math.floor(n / 2)) {
+  275    ground(c, c + 8);
+  276    checkpointCol = c + 3;
+  277    C += 8;
+       ⟦Dòng 278: trống hoặc chưa nhận dạng được.⟧
+  279    c = chunks[ri( a: 0, chunks.length - 1)](c);
+  280  }
+  281  if (under) {
+  282    for (let x : number = 0; x < c; x*+) set(x, n 2, ch: 'B');
+  283    for (let r : number = 3; p < 12; r++) set( c: 0, P, ch: 'B');
+       ⟦Dòng 284: trống hoặc chưa nhận dạng được.⟧
+  285  const e : MhagCol: number, castieDoork: number; W... = ending(c);
+  286  FlagCol = e.flagCol;
+  287  castleDoorX = e.castleDoorX;
+  288  width = e.width;
+  289  } else if (theme === 'athletic') {
+  290  ground( co: 0, c1: 14) ;
+  291  let c : number = 14;
+  292  let tr : number = 13;
+  293  const n : number = 14 + Math.floor(diff);
+  294  const treetop : (x number, w: number, row: number) => vo... = (x: number, W: number, row: number) : void => {
+  295    set(x, row, ch: '<');
+  296    for (let 1 : number = 1; i < w - 1; i++) set(x + 1, row, ch: 'T');
+  297    set(x + w - 1, row, ch: '>);
+  298    for (let 1 : number = 1; i ‹ W - 1; 1++) for (let r: number = row + 1; r < ROWS; r++) set(x + *++) set(x + 1, p, ch: "|"); ch: "1'):
+       ⟦Dòng 299: trống hoặc chưa nhận dạng được.⟧
+  300  for (let i : number = 0; 1 < n; 1++) { 1++ 1  ⟦OCR độ tin cậy thấp⟧
+  301    if (i === Math.floor(n / 2)) f
+  302    C += 2;
+  303    ground(c, c + 8);
+  304    checkpointCol = c + 3;
+  305    C += 8;
+  306    tr = 13;
+       ⟦Dòng 307: trống hoặc chưa nhận dạng được.⟧
+  308    let maxUp : number = 3;
+  309    if (diff >= 1 && chance(p: 0.25)) { nce( p: 0.25)) {
+  310    const gw : number = ri( a: 5, b: 7);
+  311    spawns.push({ kind: 'Lift' : c * 16 + (gw * 16) / 2 - 24, y: Nath.min(tr, 12) * 16, range: Y. nath.min(tr, 12) * 16 (gw *: 48) / 2});
+  312    c += gw;
+  313    maxUp = 0;
+  314    } else {
+  315    const gap : number = ri( a: 2, Math.min(...values: 4, 2 + Math.floor(diff / 2))); ith.Floor(diff / 2)));
+  316    c += gap;
+  317    if (gap >= 4) maxUp = 2;
+       ⟦Dòng 318: trống hoặc chưa nhận dạng được.⟧
+  319    const newTr : number = Math.max( ...values: 6, Math.min(...values: 12, tr + ri(-maxUp, b: 2), tr === 13 P 12 : 99));
+  320    const minw :number = Math.max(...values: 3, 7 - Math.floor(diff / 2)); Math.floor(diff / 2));
+  321    const w:number = ri(minW, Math.max(minW, 9 - Math.floor(diff / 3)));
+  322    treetop(c, w, Math.max(newTr, tr - maxUp));
+  323    tr = Math.max(newTr, tr - maxUp);
+  324    if (chance( p: 0.4)) for (let x : number = c + 1; x < - 1; x++) set(x, tr - 2, ch: 'o°);
+  325    1f (w >= 4 6& chance(0.35 + diff * 0.05)) {
+  326    const k : "walker" | "turtle" | "redturtle" | "para... = pickEnemy();
+  327    enemy(k === 'turtle' ? 'pedtuctle' : k, c+ Math.floor(w / 2), from: 3);
+       ⟦Dòng 328: trống hoặc chưa nhận dạng được.⟧
+  329    if (chance( p: 0.15)) set(c + Math.floor(w / 2), tr - 4, chance( p: 8.5) ? 'N' : "P'); nce ( p: 0.5) ? "M' : '?');
+  330    C * W;  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 331: trống hoặc chưa nhận dạng được.⟧
+  332  c += 2;
+  333  const e : {flagCol: number; castleDoorx: number; W.. = ending(c);
+  334  FlagCol = e,FLagCol;
+  335  castleDoorx = e,castleDoorX;
+  336  width = e.width;
+  337  } else {
+  338  // castle
+  339  const ceil ; (co; number, c1: number, bottom?; number)... = (ce: number, c1; number, bottom = 2) : void number, bottom = 2) : Void => { г. (ена о => {  ⟦OCR độ tin cậy thấp⟧
+  340  for (let xanumber = c8; % ≤ c1; x*+) for (let rinumber = 0; r <e bottom; P++) set(x, P, (ch: 'x'); = c9; x < c1; x*+) for (let p = 0; p <= bottom; r++) set(x, p, (ch: 'X');
+       ⟦Dòng 341: trống hoặc chưa nhận dạng được.⟧
+  342  const Lava : (cO; number, c1: number) =≥ yoid = (c9; number, e1; numben) : vold => 1 = (c0: number n) : Void => (
+  343  for (Let x¿number) = cB; x < s1; *++) 4 set(x, (E 13, [ch:] 'L'); set(%, [E] 14, chi '1'); } = c0; x < c1; x*+) ( set(x,
+       ⟦Dòng 344: trống hoặc chưa nhận dạng được.⟧
+  345  const fbSpeed ; 0 => number = () number = C):number => (chance ( B2 9,5) ?1; *2) * (0,925 * Math,man (aar*, 9) * 9,905)1 > (chance( R: 0,5) ? 3 ; =2) * (0,925 + Nath.min(d1ff, 9) * 0.003); Sho
+  346  const TbLen 0>126 = (126 => (1ff chance(P9,4) 77;e)}  ⟦OCR độ tin cậy thấp⟧
+  347  ground ( co: 0, c1: 12);
+  348  set(c: 7, E]9, ch: 'W');
+  349  Let c:number = 12;
+  350  const n:number = 6 * Hath.Floor(d1ff * 9.7);
+  351  for (Let 1;number = 0; 1 < n; 1++) 1
+  352    const kind :number = M1(a 0, (D 4);  ⟦OCR độ tin cậy thấp⟧
+  353    if (kind === 0) f
+  354    // corridor with firebar block
+  355    const W:number = r1(a: 8, b: 12);
+  356    ground(c, e + W);
+  357    const bx : number = c + ri(a: 5, W • 3); = C + P1( a: 6
+
+--- IMG_2110.jpeg ---
+
+  411    set(c + 1, E 9, chance( p: 0.5) ? 'M' : '?');
+  412    C += 3;
+       ⟦Dòng 413–414: trống hoặc chưa nhận dạng được.⟧
+  415  // boss bridge
+  416  ground (c, c + 3);
+  417  ground(c + 3, c + 5, top: 11);
+  418  ground(c + 5, c + 10, top: 9);
+  419  C += 10;
+  420  const bB : number = C, b1 : number = c + 13; + 13;
+  421  for (Let x ;number = b8; x < b1; x*+) set(x, (E 9, ch: '=");
+  422  lava(b8, b1);
+  423  ground(b1, b1 + 4, top: 9);
+  424  ceil(b1, b1 + 4, bottom: 5);
+  425  for (Let r :number = 3; P <= 14; P*+) set(b1 + 4, P, 'x');  ⟦OCR độ tin cậy thấp⟧
+  426  set(b1, E 8, ch: 'A');
+  427  ахе = 1 с: b1, г; 8 };
+  428  bridge = 4 c0: b8, c1; b1, P; 9 };
+  429  spawns,push(f kind: 'boss', x: (b1 - 4) * 16, y: 9 * 16 - 32, minx; (b1 - 8) * 16, maxX; (b1 - 2) * 16 });
+  430  width = b1 + 5;
+  431  ceil(co; 8, width, (bottom; 2);
+       ⟦Dòng 432–433: trống hoặc chưa nhận dạng được.⟧
+  434  if (theme === 'overworld' Il theme s== 'athletic') 1
+  435  for (Let x:number = 0; % < width; x += Pi(BE 6, b: 12)) {
+  436    decos,push(t type: 'cloud', x; x * 16, y; Pi(e5 1, (b:] 4) * 16 + A, size; ri((a: 1, (b] 3) }); decos,push(1 type: 'cloud', x; x * 16, y: P1( a 2, lb:
+       ⟦Dòng 437–438: trống hoặc chưa nhận dạng được.⟧
+  439  if (theme === 'overworld') 4
+  440  for (Let xinumber = 0; x < width - 20; % += ri( a; 8, [b:] 16)) 1
+  441    1f (get(x, 13) l== 'X' || get(x + 3, E) 13) l=s '%' || get(%, [E)12) les / ') continue}
+  442    1f (chance(p: 0.5)) decos,push({ type; 'h1l1', x: x * 16, y: 13 * 16, size: r1(a: 1, De] 2) ));
+  443    else decos.push(t type: 'bush', x; x * 16, y: 13 * 16, size; ri( a] 1, [b:] 3) });
+
+--- IMG_2111.jpeg ---
+
+  381  export function generateLevel(world: number, stage: number Jata {
+  382      grounuse, o d,  ⟦OCR độ tin cậy thấp⟧
+  383      ground(c + 1, c + 1 + W, top: 10);
+  384      if (chance( p: 0.5)) €
+  385      const bx :number = c + 1 + Math.floor(w / 2);
+  386      set (bx, r. 6, ch: 'E');
+  387      spawns.push(f kind: 'firebar', x: bx * 16 + 8, 6 * 16 + 8, speed: fbSpeed(), len: 6 });
+       ⟦Dòng 388: trống hoặc chưa nhận dạng được.⟧
+  389      ground(c + 1 + W, c + 3 + w);
+  390      c += 3 + W;
+  391    } else {
+  392      // pillars over lava
+  393      const pillars : number = ri( a: 2, b: 3);
+  394    ground(c, c + 2);
+  395    C += 2;
+  396    for (let p : number = 0; p ‹ pillars; p++) {
+  397      const gw : number = ri( a: 2, b: 3);
+  398      Lava(c, c + gw);
+  399      a*f gance (i 0.5) spams,pushtt kdnd: "pedebse', xt 16) / 2 - 7, Y: 240 H);  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 400: trống hoặc chưa nhận dạng được.⟧
+  401      ground(c, c + 2, ri( a: 10, 12));
+  402      C += 2;
+       ⟦Dòng 403: trống hoặc chưa nhận dạng được.⟧
+  404    lava(c, c + 2);
+  405      C += 2;
+  406    ground(c, c + 2);
+  407      C += 2;
+       ⟦Dòng 408: trống hoặc chưa nhận dạng được.⟧
+  409    if (1 === Math.floor(n / 2)) {
+  410    ground(c, c + 3);
+  411    set(c + 1, r. 9, chance( p: 0.5) ? 'M' : "P');
+  412      C += 3;
+       ⟦Dòng 413–414: trống hoặc chưa nhận dạng được.⟧
+  415  // boss bridge
+  416  ground(c, c + 3);
+  417  ground(c + 3, c + 5 top: 11);
+  418  ground(c + 5, c + 10. top: 9);
+  419  c += 10;
+  420  const b9 : number C, b1 : number = c + 13;
+  421  for (let x : number = b0; x < b1; x++) set(x, ch: '=');
+  422  lava(b8, b1);
+  423  ground(b1, b1 + top: 9);
+  424  ceil(b1, b1 + 4, bottom: 5):
+  425  for (Let r : number = 3; г <= 14; r++) set(b1 + 4, r, r, ch: 'x'); 'x'):
+  426  set(b1, r. 8, ch: "A');
+  427  axе = { c: b1, r: 8 };
+  428  bridge = { c0: b0, c1: b1, r: 9 };
+  429  spawns.push({ kind: 'boss', x: (b1 - 4) * 16, y: 9 * 32, minx: (b1 - 8) * 16, maxx: (b1 - 2) * 16 });
+  430  width = b1 + 5;
+  431  ceil(co: 0, width, bottom: 2);
+       ⟦Dòng 432–433: trống hoặc chưa nhận dạng được.⟧
+  434  if (theme === 'overworld' Il theme === 'athletic') {
+  435  for (let x : number = 0; x < width; x + ri(a: 6, b: 12)) { b: 12))
+  436    decos.push({ type: 'cloud', x: x * 16, y: ri( a: 1, b: 4) * 16 + 4, size: ri( a: 1, b: 3) });
+       ⟦Dòng 437–438: trống hoặc chưa nhận dạng được.⟧
+  439  if (theme === 'overworld') {
+  440  for (Let x : number = 0; x < width - 20; x += ri( a ri(a: 8, b: 16)) { 8, 16)) {
+  441    if (get(x, G 13) I== 'X' Il get(x + 3, B 13) I== 'X' I| get(x, r 13) I== 'X' I1 get(x, G 12) I==' ") continue; r. 12) I== ' ') continue;
+  442    if (chance(p: 0.5)) decos.push(f type: 'hill', x: x * 16, y: 13 * 16, size: ri( a: 1, b: 2) ]); x: x * 16, V: 13 * 16, size: ri(a: 1, b: 2) 1);
+  443    else decos.push(f type: 'bush', x: x * 16, y: 13 * 16, size: ri( a: 1, b: 3) H;
+       ⟦Dòng 444–446: trống hoặc chưa nhận dạng được.⟧
+  447  spawns,sort((a : Spawn, b: Spawn) :number => 8.x - b.x);
+  448  return 4
+  449  world,
+  450  stage,
+  451  theme,
+  452  night: (theme #es 'overworld' Il theme === 'athletic') && world % 3 === 0,
+  453  wioth,
+  454  tiles: g,map((row ; etring! ) : string!) => row,slice(stark: 0, width)),
+  455  spawns,
+  456  seces,
+  457  cannons,  ⟦OCR độ tin cậy thấp⟧
+  458  startcol,
+  459  checkpointCol,
+  460  Flagcol,
+  461  castleDoorX,
+  462  exe,
+  463  bridge,
+  464  time: theme s=s 'castle' ? 390 : 400,
+
+============================================================================
+src/game/sprites.ts
+============================================================================
+
+--- IMG_2112.jpeg ---
+
+    9  v export function rowsToRuns(rows: string[]) : (ch: string; x: number; y: number; n: nu... f
+   10  const runs: { ch: string; x: number; y: number; n: number }[] = [];
+   11                      => {
+   12  rows.forEach((row : string , Y : number ) : void
+   13    Let x : number = 0;
+   14    while (x ‹ row.length) {
+   15    const ch : string = row[x];
+   16    if (ch === ',' I| ch ===' ") { xH; continue; )
+   17    let n : number = 1;
+   18    while (x+n ‹ row.length && row[x+ n] === ch) n++;
+   19    runs.push(f ch, x, Y, n });
+   20    x *= n;
+       ⟦Dòng 21–22: trống hoặc chưa nhận dạng được.⟧
+   23  return runs:
+       ⟦Dòng 24–25: trống hoặc chưa nhận dạng được.⟧
+   26  ~ export function runPath(x: number, y: number, n: number) : string {
+   27  return 'M$[x} ${y}h${n + EPS}v${1 + EPS}h${-(n + EPS)}2';
+       ⟦Dòng 28–29: trống hoặc chưa nhận dạng được.⟧
+   30  > export function makeSprite(input: stringll, pal: Palette): Sprite {
+   31  const rows : string[] = input.slice();
+   32  while (rows.length && /^\.*$/.test(rows[rows.length - 1])) rows.popC);
+   33  const W : number = Math.max(...rows.map((r : string ) : number *> r.length));
+   34  const h : number = rows.length;
+   35  const norm = new Map<string, string>();
+   36  const fLip = new Map<string, string>O:
+   37  for (const r of rowsToRuns(rows.map((r : string) : string > r.padEnd (w, fillString: '.')))) {
+   38    const fill : string = pal[r.ch]; = pal[r.ch];
+   39    if (Ifill) continue;
+   40    norm.set(fill, (norm.get(fill) ?? ") + runPath(r.x, r.y, r.n)); nPath(r.x, r.y, r.n));
+   41    fLip.set(fill, (fLip.get(fill) ?? ") + runPath(w - r.x - r.n, r.V, r.n)); nPath(w - r.x - r.n, p.V, r.n));
+       ⟦Dòng 42: trống hoặc chưa nhận dạng được.⟧
+   43  return {
+       ⟦Dòng 44: trống hoặc chưa nhận dạng được.⟧
+   45    h,
+   46    Layers: [...norm].map(([fill, d] : [string, string] ) : (fill: string; d: string) 1) : (fil: string; d: string) => (f F1lL, a })), > (f FiLL, d H)),
+   47    fLipped: [...fLip].map(([fill, d] : [string, string] ) : (fil: string; d: string) > ({ filL, d })),
+       ⟦Dòng 48–50: trống hoặc chưa nhận dạng được.⟧
+   51                      Hero
+   52  const HEAD : string[] = [
+   53      ..RRRRR.
+   54    •.•RERRBRRRB
+   55    • •BRBEWUBRRBR.
+   56    • •RRBRRBERBBARE'  ⟦OCR độ tin cậy thấp⟧
+   57    HHSSSNKSS.
+   58    HSHSSSWKSSSS
+   59    HSSSSSSSSSSSS.
+   60    USSSHHHИНу...
+       ⟦Dòng 61–62: trống hoặc chưa nhận dạng được.⟧
+   63  const SHALL_BODY: Record‹string, string[]> = {
+   64  stand: [
+   65  *...•SS555555  ⟦OCR độ tin cậy thấp⟧
+   66      BREB
+   67          RBREB-
+   68    SRRBBBABBRRSS
+   69    ,55,BBYBBYBB,SS
+   70    ••BREBARBS.  ⟦OCR độ tin cậy thấp⟧
+   71      нинн. .нинн..
+   72    • •НИННН• •КНННы.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 73–78: trống hoặc chưa nhận dạng được.⟧
+   79      ,BBYBBYBBB
+   80    ReBRE.,BBBB.
+   81        •нинн,  ⟦OCR độ tin cậy thấp⟧
+   82          •нннH,  ⟦OCR độ tin cậy thấp⟧
+
+--- IMG_2113.jpeg ---
+
+   88    walk2: [
+       ⟦Dòng 89: trống hoặc chưa nhận dạng được.⟧
+   90        •• •RBBBB8-  ⟦OCR độ tin cậy thấp⟧
+   91        •МААНИНН.  ⟦OCR độ tin cậy thấp⟧
+   92      .. •МННнННИЫ.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 93: trống hoặc chưa nhận dạng được.⟧
+   94    walk3: [
+   95      ...SSSSSSSS
+   96        •BRBRAARBRR.
+   97      ••SSRBBBRBBRR
+   98      ••SSRBBBBBBRR.
+   99        •BBYBBYBBSS.
+  100      ..BBBB.BBBBSS.
+  101      ..нинн...нннн.
+  102      ..ННН.....нннн.
+       ⟦Dòng 103: trống hoặc chưa nhận dạng được.⟧
+  104    jump: [
+  105        .SSSSSSSs. SS
+  106      ..BRBBARRERRSS•
+  107      -RRBBRERRERER  ⟦OCR độ tin cậy thấp⟧
+  108      •SSARBBBBBBRR
+  109      .SS.BBYBBYBBB
+  110      ..ВBBBBВBВВHH..  ⟦OCR độ tin cậy thấp⟧
+  111      ..HННH. .ВВВНИH..'
+  112    ',HHHH .HH..'  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 113: trống hoặc chưa nhận dạng được.⟧
+  114    skid: [
+  115      ...SSSSSSSS
+  116      • • SSRRBRRRBRR.
+  117      SSRRBRRRERRA.
+  118      •-BRRBBBBBBR
+  119      •BRYBBYBBE
+  120      • -BBBBBBBBR  ⟦OCR độ tin cậy thấp⟧
+  121    ..нннн.нннн.
+  122    •.нннн...нннн.
+       ⟦Dòng 123–125: trống hoặc chưa nhận dạng được.⟧
+  126  const SMALL_DIE : stringl =[
+  127      ...RRRR.
+  128      RBRBRRBR.
+  129    • •RRRRIUURRRB.
+  130    - RRRBREBRRRBR
+  131    • .HSSWKSSKWSSH..
+  132    SSHSSWKSSKWSSHSS
+  133  'SS.SSSSSSSSSS.SS'
+  134  'SS.SHHИHНHHHS.SS'
+  135  'RR. .SSSSSSSS. .RR'
+  136  * -BBRRBRRERERBER.'
+  137    - BRRBRBBRERBR
+  138      •BEBREBRE  ⟦OCR độ tin cậy thấp⟧
+  139    • -BBYBRBBYBB
+  140    ••BREBEBBBBE.  ⟦OCR độ tin cậy thấp⟧
+  141    . нннн. . Нннн  ⟦OCR độ tin cậy thấp⟧
+  142    ..HннH. . . нннн.
+       ⟦Dòng 143–144: trống hoặc chưa nhận dạng được.⟧
+  145  const BIG_TORSO : stringl =[
+  146      SSSSSSSE.
+  147      SSSSSSs  ⟦OCR độ tin cậy thấp⟧
+  148    ••RRERERAR..  ⟦OCR độ tin cậy thấp⟧
+  149    .•RREREBRERB
+  150    •BRRBREBRBRBR.  ⟦OCR độ tin cậy thấp⟧
+  151  •BRRRERERREREAA.  ⟦OCR độ tin cậy thấp⟧
+  152  •REERAREEBBEERR•  ⟦OCR độ tin cậy thấp⟧
+  153  "RRRARBEREBABBARB'
+  154  *SSBRRBRYBBYBBRSS
+  155  'SSS,RBBBBBBBBSSS
+  156  'SS. ,BBBBBBBBB,SS'
+  157  •"RESABRREВ»  ⟦OCR độ tin cậy thấp⟧
+  158  •.REERREBREES•  ⟦OCR độ tin cậy thấp⟧
+  159  ..,BBBBB,BBBBB,,
+       ⟦Dòng 160: trống hoặc chưa nhận dạng được.⟧
+  161  > const BIG_TORSO_JUMP : stringll = [
+  162  ....SSSSSSSS.SSS',
+  163  ...•SSSS55S..SSS'  ⟦OCR độ tin cậy thấp⟧
+  164  '.„RRRRRRRB,RRB',  ⟦OCR độ tin cậy thấp⟧
+  165  • RRRREBREERER.'
+  166  •• BURAREBRERRR..
+  167  * •BRRRBRREREEB•  ⟦OCR độ tin cậy thấp⟧
+  168  •BRARRREBBERB.
+  169  *RBBEBREREBBEB•  ⟦OCR độ tin cậy thấp⟧
+  170  SSRRRBBYBAYEB•
+  171  SSS„RBBBBBBBB,
+  172  'SS, „REBBEBREB»
+  173  .. •BERBEBEEE..  ⟦OCR độ tin cậy thấp⟧
+  174  •*•SRBBBBBEBER.  ⟦OCR độ tin cậy thấp⟧
+  175  ..,BBBBB,BBBBB.,'
+       ⟦Dòng 176–177: trống hoặc chưa nhận dạng được.⟧
+  178  const BIG_LEGS: Recordestring, string[]> = f
+
+--- IMG_2114.jpeg ---
+
+  175                      @ Controis.tsx B leve
+       ⟦Dòng 176–177: trống hoặc chưa nhận dạng được.⟧
+  178  const BIG_LEGS: Record‹string, stringl]> = f BIG_LEGS: tring, string[]> = {
+  179  stand: [
+  180    ...BBBB. ,BBBB..
+  181    ..BBBB. BBBB..
+  182    ...BBBB. .BBBB
+  183    •..BBBB. BBBB.
+  184    ..BBBB. BBBB
+  185    ...BBBB.. BBBB.
+  186    •• ННHНH ниННН.  ⟦OCR độ tin cậy thấp⟧
+  187    •ИИнынH..  ⟦OCR độ tin cậy thấp⟧
+  188    •HИНHЫH. НИНННН'  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 189: trống hoặc chưa nhận dạng được.⟧
+  190  walk1: [
+  191    • .BBBB BBBB.
+  192    .BBBB. BBB.
+  193    •BBBB BBB.'
+  194    *BBBB BBB.
+  195    *BBB BBB.
+  196    'BBB. BBB.
+  197    *HHHH HHHH.  ⟦OCR độ tin cậy thấp⟧
+  198    "НHННH. •нинНы"  ⟦OCR độ tin cậy thấp⟧
+  199    *НИННН- •БННн*  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 200: trống hoặc chưa nhận dạng được.⟧
+  201  walk2: [
+  202      - BBBBBBE
+  203      .BBBBB.
+  204      .BBBBB
+  205      .BBBBB
+  206      .BBBBB
+  207      ,BBBBB
+  208      • •НИНННН  ⟦OCR độ tin cậy thấp⟧
+  209      -нНнынНH.  ⟦OCR độ tin cậy thấp⟧
+  210      HИHИAHH.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 211: trống hoặc chưa nhận dạng được.⟧
+  212  walk3: [
+  213    ..BBBB..BBBB..
+  214    .BBBB BBBB
+  215    ..BBBB. BBBB.
+  216    ..BBB. •BBB
+  217    ..BBB. BBB
+  218    ..BBB.. .BBB
+  219    .нннн. HHHH  ⟦OCR độ tin cậy thấp⟧
+  220    •МоННы. • • нЫнНы•  ⟦OCR độ tin cậy thấp⟧
+  221    • НИНHH • нАнни.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 222: trống hoặc chưa nhận dạng được.⟧
+  223  jump: [
+  224      .BBBB •ВBBBH'
+  225    ..BBBB. НННH'  ⟦OCR độ tin cậy thấp⟧
+  226    .BBBB HHHH'
+  227    .BBBB HH.D  ⟦OCR độ tin cậy thấp⟧
+  228    .BBB
+  229    *ннкH.  ⟦OCR độ tin cậy thấp⟧
+  230    * НИННH  ⟦OCR độ tin cậy thấp⟧
+  231    'HHHH
+       ⟦Dòng 232–235: trống hoặc chưa nhận dạng được.⟧
+  236  const BIG_CROUCH : stringl =[
+  237  .. .HEAD,
+  238    ..SSSSSSSS
+  239  • - BRRRERRBRRRR.
+  240  -SSPRBBBBBRRRSS
+  241  'SSSRRBBYBYBBRSSS'
+  242  -SSEBBBBBBRBBSS
+  243  - -BRBBBRBBBBBB.  ⟦OCR độ tin cậy thấp⟧
+  244    • • ВИННН • • НИННИ.  ⟦OCR độ tin cậy thấp⟧
+  245  • НННННАНННИННЫН•  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 246–247: trống hoặc chưa nhận dạng được.⟧
+  248  export const HERO_PALETTES: Palette[] = [
+  249  1 R: '#d82800', B: '#2038ec', S: '#fcb890', H: '#7c3c80', K: '#7c3c80', K: '#800008', W: '#fcfcfc', Y: '#fce000' },  ⟦OCR độ tin cậy thấp⟧
+  250  {R: '#f8f8f8', B: '#d82800', S: '#fcb890', H: '#7c3c00', K: '#000088' H: #7CSCOO K: FO W: '#d82800', Y: '#fce000' },
+  251  { R: '#00a800', B: '#000008', S: '#fcb890', H: '#d82800', K: '#000000', W: '#fcfcfc', Y: '#fce000' },
+  252  { R: '#000000', B: '#d82880', S: 'Pfca844', H: '#7c3c88', K: '#fcfcfc', W: '#fofefc', Y: '#fceBeD' F.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 253–254: trống hoặc chưa nhận dạng được.⟧
+  255  export type HeroFrame = 'stand' | 'walk1' | 'walk2' | 'walk3' | 'jump' | 'skid' | 'crouch' | 'die';
+       ⟦Dòng 256: trống hoặc chưa nhận dạng được.⟧
+  257  ~ function heroRows(big: boolean, f: HeroFrame): stringl] {
+  258  if (f === 'die') return SMALL_DIE;
+  259  if (ibig) return [...HEAD, ..,SMALL_BODY[f #e= 'crouch' ? 'stand' : fl]; 'stand' : f1J;
+  260  if (f === 'crouch') return BIG_CROUCH;
+  261  const Legs :string[] = BIG_LEGS[f === 'skid' ? 'walk3' ; f];
+  262  return [...HEAD, ...(f === 'jump' ? BIG_TORSO_JUMP : BIG_TORSO), ...legs];
+       ⟦Dòng 263–264: trống hoặc chưa nhận dạng được.⟧
+  265  const heroCache = new Map<string, Sprite>();
+  266  export function herosprite(big: boolean, f: HeroFrame, pal: number): Sprite { ber): Sprite (
+  267  const key = '$(big}-${f}-$(pal}*;
+
+--- IMG_2115.jpeg ---
+
+  263    ground.png chrome.png levels.ts
+       ⟦Dòng 264: trống hoặc chưa nhận dạng được.⟧
+  265  const heroCache = new Map<string, Sprite>O;
+  266  export function heroSprite(big: boolean, f: HeroFrame, pal: number): Sprite {
+  267  const key = "$(big}-${f}-${pal}";
+  268  Let s : Sprite | undefined = heroCache.get(key);
+  269  if (!s) {
+  270    s = makeSprite(heroRows(big, f), HERO_PALETTES[pal]);
+  271    heroCache.set(key, s);
+       ⟦Dòng 272: trống hoặc chưa nhận dạng được.⟧
+  273  return s;
+       ⟦Dòng 274–275: trống hoặc chưa nhận dạng được.⟧
+  276                      Enemies
+  277  const WALKER : stringÜ = [
+  278    ......DDDD.
+  279    ....ODDDDDDD..
+  280    ...DDDDDDDDOD.
+  281    • • POKKОРRDKKОО.  ⟦OCR độ tin cậy thấp⟧
+  282  • . ОрОЖKКОРккиВоя.  ⟦OCR độ tin cậy thấp⟧
+  283  " „прожкиаринное.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 284: trống hoặc chưa nhận dạng được.⟧
+  285  'DDDDDDDODDODDDDD'
+  286  "RRRORKKKKKKPOO0D*  ⟦OCR độ tin cậy thấp⟧
+  287  * .RDRKKKKKKKKRRR•'  ⟦OCR độ tin cậy thấp⟧
+  288    •• мионнит.  ⟦OCR độ tin cậy thấp⟧
+  289    •манинитІ.  ⟦OCR độ tin cậy thấp⟧
+  290    •МАнтТКК.  ⟦OCR độ tin cậy thấp⟧
+  291    • .КККТТІТТКККК  ⟦OCR độ tin cậy thấp⟧
+  292    • КККККТІТTKКKKK.
+  293    -KKKKK. • - КККK.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 294: trống hoặc chưa nhận dạng được.⟧
+  295  const WALKER_FLAT : stringü =[
+  296    •...DDDDDDDD
+  297    • •ДKWwRDWKОр•  ⟦OCR độ tin cậy thấp⟧
+  298  • .DROROKKKKODDOR•  ⟦OCR độ tin cậy thấp⟧
+  299  'DDDDDDDDODDDDDOD'
+  300    • миннн  ⟦OCR độ tin cậy thấp⟧
+  301  * •KKKKK. • • KККKK
+       ⟦Dòng 302: trống hoặc chưa nhận dạng được.⟧
+  303  const WALKER_PAL: Palette = { D: '#c84cêc', T: "#fcb890', K: '#000000', '#fcfefc' );
+       ⟦Dòng 304: trống hoặc chưa nhận dạng được.⟧
+  305  const TURTLE_TOP : stringl] = [
+  306    ..YYY.
+  307    ...YYYYY
+  308    • -YYKWYХ  ⟦OCR độ tin cậy thấp⟧
+  309    •• ХУKИYХ  ⟦OCR độ tin cậy thấp⟧
+  310    -XXYYYYY
+  311    AXXYXY  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 312–313: trống hoặc chưa nhận dạng được.⟧
+  314    .YYY..SGGE
+  315      .YYY.GGWGGG.
+  316    ••XYYGGNGGNGE.
+  317    • •XYGENGGNGGE.
+  318      XYENEGWEGNGE
+  319      MED GGHGEGE*  ⟦OCR độ tin cậy thấp⟧
+  320        SEUENGES  ⟦OCR độ tin cậy thấp⟧
+  321      UNGGNGGINGW
+  322    XYXYUM NOSDT  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 323: trống hoặc chưa nhận dạng được.⟧
+  324      -XXXXXXXY
+       ⟦Dòng 325: trống hoặc chưa nhận dạng được.⟧
+  326  const TURTLE_LEGS : stringUD = [
+       ⟦Dòng 327: trống hoặc chưa nhận dạng được.⟧
+  328      ....YYY.YYY...',
+  329    ....YYYY, YYYY.
+  330      .нннн. ,нинн.
+  331      „Ниннн. нАнин.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 332–333: trống hoặc chưa nhận dạng được.⟧
+  334      ..YYY...YYY.
+  335          YYYY
+  336      ,нинн.. .нннн.  ⟦OCR độ tin cậy thấp⟧
+  337    ••й• •кннны.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 338–339: trống hoặc chưa nhận dạng được.⟧
+  340  const SHELL : stringl = [  ⟦OCR độ tin cậy thấp⟧
+  341    • •влеся..  ⟦OCR độ tin cậy thấp⟧
+  342    •• SEnScGGmEg.  ⟦OCR độ tin cậy thấp⟧
+  343  •• SONGENNGCwES  ⟦OCR độ tin cậy thấp⟧
+  344  ' •SENeGmECnECNeе  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 345: trống hoặc chưa nhận dạng được.⟧
+  346  •SNSenRCeGmeGNE.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 347: trống hoặc chưa nhận dạng được.⟧
+  348  •200000000000000000  ⟦OCR độ tin cậy thấp⟧
+  349  *VOOVTON UONVON*  ⟦OCR độ tin cậy thấp⟧
+  350  * •10X000000  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 351: trống hoặc chưa nhận dạng được.⟧
+  352    ••AEКKKKK• • BURAOWWEK  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 353: trống hoặc chưa nhận dạng được.⟧
+  354  const WINGS :stringOO = [
+
+--- IMG_2116.jpeg ---
+
+  352                      E android-lcon-foreground.png @ Controis.tsx
+       ⟦Dòng 353: trống hoặc chưa nhận dạng được.⟧
+  354  const WINGS : stringOD =[
+       ⟦Dòng 355–367: trống hoặc chưa nhận dạng được.⟧
+  368      WWWWAUS.
+  369      WWK.
+       ⟦Dòng 370–371: trống hoặc chưa nhận dạng được.⟧
+  372  const TURTLE_PAL: Palette = f Y: '#f8d878', 6: '#00a808', W: '#fcfcfc', K: '#000800', H: '#e89038' }; H: '#e09030' 3:
+  373  const RED_TURTLE_PAL: Palette = { ...TURTLE_PAL, G: '#d82800' ];
+       ⟦Dòng 374: trống hoặc chưa nhận dạng được.⟧
+  375  const PIRANHA_OPEN : string[]
+  376    ...R.. ..R...
+  377    . .RRR „RRR.
+  378    -RRWRB- •RRURR -
+  379  ' -BBRRB• •- RBRRR-  ⟦OCR độ tin cậy thấp⟧
+  380  'BRYRRBR• „BRBBURR*  ⟦OCR độ tin cậy thấp⟧
+  381  'BRBRRUR. -RWRBERE*  ⟦OCR độ tin cậy thấp⟧
+  382  *BRBERBRWRBBBERR*
+  383    - BRURBRWURBRURR.
+  384    •BRRRRWURRERR.  ⟦OCR độ tin cậy thấp⟧
+  385    -RRRUMWWIREB
+  386      • - RERBBRRB.
+  387      ..GGGG.
+  388  |J;  ⟦OCR độ tin cậy thấp⟧
+  389  v const PIRANHA_CLOSED : stringÜ =[  ⟦OCR độ tin cậy thấp⟧
+  390      ..RRRR.
+  391      -BBRWBRRR.
+  392    • •RRRRRRRWRB
+  393    - RWRBARRABRRE  ⟦OCR độ tin cậy thấp⟧
+  394    BRERRWRRBBUR.
+  395    •RRRBRRRRRRER  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 396: trống hoặc chưa nhận dạng được.⟧
+  397    -BERRRRBRBERR
+  398    •• BEURRRRRWRBR
+  399    -RRBRRBBRRB
+  400      •RERBBRRE
+  401      .GGGG
+       ⟦Dòng 402: trống hoặc chưa nhận dạng được.⟧
+  403  const PIRANHA_STEM : stringl] =[  ⟦OCR độ tin cậy thấp⟧
+  404      ..GG..
+  405    ..GG...66...GG..
+  406  ' GGGE..66. .SEGE.',  ⟦OCR độ tin cậy thấp⟧
+  407  'GGGGGG.66.66GG66',
+       ⟦Dòng 408–409: trống hoặc chưa nhận dạng được.⟧
+  410  .GEGGGGGEGGEE.  ⟦OCR độ tin cậy thấp⟧
+  411    ..SECCGEGGEGGS.  ⟦OCR độ tin cậy thấp⟧
+  412    • .GEGEGGGE.  ⟦OCR độ tin cậy thấp⟧
+  413      .GG..
+  414      .GG.
+  415      ..GG..
+       ⟦Dòng 416: trống hoặc chưa nhận dạng được.⟧
+  417  const PIRANHA_PAL: Palette = { R: '#d82800', W: '#fcfcfc', 6: '#00a800', 9: '#88d010' }; B: '#00a800', 9: '#80d010' 1;
+       ⟦Dòng 418: trống hoặc chưa nhận dạng được.⟧
+  419  const BULLET : stringü
+  420  *...•KKKKKKKKK..
+       ⟦Dòng 421: trống hoặc chưa nhận dạng được.⟧
+  422  * „КККККККККAККИUИ'•  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 423–431: trống hoặc chưa nhận dạng được.⟧
+  432      ККKКІ
+       ⟦Dòng 433–434: trống hoặc chưa nhận dạng được.⟧
+  435  const pAROBeg : string!) = [
+  436    ••XXXXXX.
+  437    XYBRBEBRYX
+  438  ••YRBRBRBRRBBY  ⟦OCR độ tin cậy thấp⟧
+  439  * YBRRWIRRWWEREY
+  440  •YBRRWKR
+  441  *YBBRRRRRBBEBBRRY  ⟦OCR độ tin cậy thấp⟧
+  442  *YBRRRRRERBRRERRY
+  443  *•XBBERBBEARBRRY
+  444  *..YRRBBBRRRRBY
+
+--- IMG_2117.jpeg ---
+
+  440  const PODOBOO : stringl =[
+       ⟦Dòng 441: trống hoặc chưa nhận dạng được.⟧
+  442  *YRRRR
+  443  * -YRRREER RERRY
+  444  •-YRRBRRRBRBRY
+  445    .-YRRBRBBRRY
+  446    -YERRRRRY
+  447      - YRRRRY
+  448      ..YRRY.
+  449      ..YY..
+       ⟦Dòng 450–451: trống hoặc chưa nhận dạng được.⟧
+  452  const BOSS : stringl =[
+  453        W.
+  454        wW.....Ww.
+  455        - WOWRRRRRUJWY.
+  456      -GGGRRRRRRRRRGG.
+  457      SGGGGGRBARRRGGES•
+  458      GGYKGG6GGG6GG6GGE
+  459    ..GGGWKGGGGGGGGGGGGGE
+  460    66GGG6G6GGGGGGG6GG6
+  461  • GYWGGGGG EEEGEGGGE.. SSS..  ⟦OCR độ tin cậy thấp⟧
+  462  * GYWWGGGGGGGGGGGGGGGG.. SWSWSS.
+  463  EKGGEGGGGGGGGG6GGGGG. .SSWSSSWSS
+  464  SEGGGE GGGGGGGGGE SSUSS
+  465                    35052  ⟦OCR độ tin cậy thấp⟧
+  466                    $5.SS  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 467: trống hoặc chưa nhận dạng được.⟧
+  468      JAAAYGE. -SSSSHS ESSSWSS  ⟦OCR độ tin cậy thấp⟧
+  469      -XXXXXXXXXYES: 55555  ⟦OCR độ tin cậy thấp⟧
+  470    -AXXXXX  ⟦OCR độ tin cậy thấp⟧
+  471    -SEXYYYYXXYYYYYSSSI
+  472    - SEGGYYYYYYYYYYYYSS
+  473    GIGWGYYYXXYYYYYYSWSSSSSISS
+  474    • SEGGYYYYY YYYYSSSSSSSS
+  475      -JAXXXYXYYYY YYSSSS  ⟦OCR độ tin cậy thấp⟧
+  476      YXXXXAXXXYXXXXYGE.  ⟦OCR độ tin cậy thấp⟧
+  477      •XYYYXXXXXYYYYYYGGGE
+  478        XXXXVXXXXXYYYEGGGGE
+  479        SEGGEG...GGGGEGGEEG  ⟦OCR độ tin cậy thấp⟧
+  480      • SEGGGGG. • SGGGGGG-
+  481      -SUGWGGGS - GNGWGGG  ⟦OCR độ tin cậy thấp⟧
+  482      - SGGGGGS• SEGGGG.
+       ⟦Dòng 483: trống hoặc chưa nhận dạng được.⟧
+  484  const BOSS_PAL: Palette = { G: '#00a800' '#fcfcfc', K: #000000 R: '#d82800', #f8d878', S: '#e09030' J;
+  485  const BOSS_FIRE : stringl] =[
+  486    •-RERRERRRYYYY..
+  487    - -RRYXYYXYYXYYRRE
+  488  "RRYYXYYWWWWXXXXYYRRE
+  489    - RRYXXXXXYXXYXYRBE
+  490      REBRRBRRYYYY
+       ⟦Dòng 491–492: trống hoặc chưa nhận dạng được.⟧
+  493                      Items
+  494  const MUSHROOM : stringl
+  495        RRRR
+       ⟦Dòng 496–503: trống hoặc chưa nhận dạng được.⟧
+  504    -BBRKILTITTKRRR
+  505    Мкинки  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 506–510: trống hoặc chưa nhận dạng được.⟧
+  511  const FLOWER : stringU
+
+--- IMG_2118.jpeg ---
+
+       435 const PODOBOO : stringl
+                 ДАННА  ⟦OCR độ tin cậy thấp⟧
+       443 'YRRRERRERAREE  ⟦OCR độ tin cậy thấp⟧
+       444 •. YRRRRREBRRB  ⟦OCR độ tin cậy thấp⟧
+       445 •.•YRRRRERREY
+       440 •• YRBRBERY ••.  ⟦OCR độ tin cậy thấp⟧
+       447 •.YRRRRY..
+       448 .YRRY..
+       449
+       450
+       451
+       452 const BOSS : stringl
+       453 .W..
+       454
+       455 • • WWWRBR
+       456 • •GGGRRRBR  ⟦OCR độ tin cậy thấp⟧
+       457 • SEEEGERRR
+       458 •..•SGUKEGEGGG
+       459 . .SEEUKGGEGGG  ⟦OCR độ tin cậy thấp⟧
+       460 ..GGGGGGEGGEGG  ⟦OCR độ tin cậy thấp⟧
+       461 • CINEGGEGGGGGG  ⟦OCR độ tin cậy thấp⟧
+       462 EWWWWGGGEGGEGE  ⟦OCR độ tin cậy thấp⟧
+       463
+       464
+       465 VEGGGEGGLGS  ⟦OCR độ tin cậy thấp⟧
+       466 GGGGGGGE  ⟦OCR độ tin cậy thấp⟧
+       467 WWIGGGGGGGG
+       468 ••XAYYYYG  ⟦OCR độ tin cậy thấp⟧
+       469
+                   •••AXAXXYXY  ⟦OCR độ tin cậy thấp⟧
+       478 • • XXXXAXXYYY
+       471 . .GGYYY JSRAA  ⟦OCR độ tin cậy thấp⟧
+       472 •• SESEXYYYYY  ⟦OCR độ tin cậy thấp⟧
+       473 • GNGWGYYYYYYY
+       474
+                   EEGEYYYYYYY
+       475
+                     • -XXXXXXXX  ⟦OCR độ tin cậy thấp⟧
+       476 YYXYXYYY
+                           AYGE
+       477 XXYYXXX!
+                           YYGGGG.
+       478
+                     ••XYYYYY VEGGEGE.
+       479
+                       .GEGGGS...GEGCGGEGGS.  ⟦OCR độ tin cậy thấp⟧
+       480
+                     .•CEGGGES...CEGGCGS.  ⟦OCR độ tin cậy thấp⟧
+       481
+                     • ENENGEGE• • • ENGNGGE•
+       482
+                     •LEGGGEC. ..GGGGES•  ⟦OCR độ tin cậy thấp⟧
+       483
+       484 const BOSS_PAL: Palette = { G:
+                           '#00a800' W: '#fcfcfc', K: '#000000'
+       485 : '#d82800',
+               const BOSS_FIRE : stringl =[ Y: '#f8d878', S: '#e09030' };
+       486
+                 ...-RBRRBRRRYYXY..
+       487
+                 *. .BRYXYXXXXXYYYYRRB-
+       488 "RRYXXAYIWWWAX  ⟦OCR độ tin cậy thấp⟧
+                           LYYBRE  ⟦OCR độ tin cậy thấp⟧
+       489
+                 • •BRYYYYYYYYYY YRRB
+       490
+                   ...RERRBARRYY
+       491
+       492
+       493
+       494 Items
+               const MUSHROOM : stringl) = [  ⟦OCR độ tin cậy thấp⟧
+       495 .RRRR....
+       496
+                   ...PRUWWRR...
+       497
+                 •..RRWWWWRB.  ⟦OCR độ tin cậy thấp⟧
+       498
+                 • • BRRIN
+       499 -PRRRBYYWRRERR  ⟦OCR độ tin cậy thấp⟧
+       See * -BWNRBRRBBRRWNE
+       501 * RYWWRERBEE  ⟦OCR độ tin cậy thấp⟧
+       502 ROSRRRERRYNN  ⟦OCR độ tin cậy thấp⟧
+       503 *RBYWIRBRRERRRWON  ⟦OCR độ tin cậy thấp⟧
+       504
+                 • •BBRKIUTTTTKRRE
+       505
+                 •••.КВНАКТ..  ⟦OCR độ tin cậy thấp⟧
+       S06
+                   ••KTIКИ..  ⟦OCR độ tin cậy thấp⟧
+       507
+                   ••мни..  ⟦OCR độ tin cậy thấp⟧
+       508
+                   •MATT...  ⟦OCR độ tin cậy thấp⟧
+       509
+       510
+       511 const FLOWER : stringl
+       512
+                 ' ...•EEEFEESE•.•
+       513
+                 ' .EE000000005E•  ⟦OCR độ tin cậy thấp⟧
+       514
+                 * ,EX0XXXXXXXXBRE•  ⟦OCR độ tin cậy thấp⟧
+       515
+                 *FROXXKXXXXKYXRRE
+       516
+                 •ROYXXXXXXYOOE  ⟦OCR độ tin cậy thấp⟧
+       517
+                 ' EEGOGOC9OREE.  ⟦OCR độ tin cậy thấp⟧
+       518
+                 EFFE..  ⟦OCR độ tin cậy thấp⟧
+       519
+                 .............  ⟦OCR độ tin cậy thấp⟧
+       520
+                 •GG....,66.....GG  ⟦OCR độ tin cậy thấp⟧
+       521
+                 GGB...,66,..,000'  ⟦OCR độ tin cậy thấp⟧
+       522
+                 •,060...66...000.  ⟦OCR độ tin cậy thấp⟧
+       523
+                 '.,090.,60,,060..
+       524
+                 '..•S099069009...  ⟦OCR độ tin cậy thấp⟧
+       $25
+                 ...Segeesse....  ⟦OCR độ tin cậy thấp⟧
+       526
+                   ..896698.....  ⟦OCR độ tin cậy thấp⟧
+       527
+                 .....60GG.....  ⟦OCR độ tin cậy thấp⟧
+       528
+       529
+               const STAR : stringl)
+       530
+                 .......YY....  ⟦OCR độ tin cậy thấp⟧
+       531
+                 *.....,YYYY...
+       532
+                 *......YYYY..
+
+--- IMG_2119.jpeg ---
+
+  532      ...YYYY.
+  533    ....- MAXYX  ⟦OCR độ tin cậy thấp⟧
+  534  'XYXXXXXXXXXXXXXY'  ⟦OCR độ tin cậy thấp⟧
+  535  • -УХХХААААННАА•  ⟦OCR độ tin cậy thấp⟧
+  536    •.УУХУКУУКУАХ
+  537    •.•YYYKYYKYYY.
+  538    ....XVXXXXX*-  ⟦OCR độ tin cậy thấp⟧
+  539    ..•XAXNYYXY.  ⟦OCR độ tin cậy thấp⟧
+  540    •.УХХХУ**ИХАХ••  ⟦OCR độ tin cậy thấp⟧
+  541    •.XXYVY.-YXYXY  ⟦OCR độ tin cậy thấp⟧
+  542    .YYYY......YYYY.'
+  543  •.YYY.. ..YYY.'
+  544  ' YY.. ...YY',
+       ⟦Dòng 545: trống hoặc chưa nhận dạng được.⟧
+  546  const FIREBALL : stringt = [
+  547  '..RRRR..'
+  548  -BYYXYR.',
+  549  'RYYWWYYR",
+  550  'BYWWWWYR'.
+  551  "RYUNNIYR"  ⟦OCR độ tin cậy thấp⟧
+  552  'RYYWWYYR'.
+  553  ' •BYYXYR.'
+  554  '..RRRR..',
+       ⟦Dòng 555: trống hoặc chưa nhận dạng được.⟧
+  556  const DEBRIS : stringÜ
+  557  '..DDOD..'
+  558  ' •200000.'
+  559  'ROOPOOIR"  ⟦OCR độ tin cậy thấp⟧
+  560  'ROPOCOOR'  ⟦OCR độ tin cậy thấp⟧
+  561  'DoaceaaR'.  ⟦OCR độ tin cậy thấp⟧
+  562  'DOOO00OR'.  ⟦OCR độ tin cậy thấp⟧
+  563  '.200000.'  ⟦OCR độ tin cậy thấp⟧
+  564  ..DDDD..',
+       ⟦Dòng 565: trống hoặc chưa nhận dạng được.⟧
+  566  const FLAG : string[]
+  567  WUYDN  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 568: trống hoặc chưa nhận dạng được.⟧
+  569    JUNNGGGGY  ⟦OCR độ tin cậy thấp⟧
+  570    •• •JGGINGGWNN  ⟦OCR độ tin cậy thấp⟧
+  571    ••NGUGGWGWWWW  ⟦OCR độ tin cậy thấp⟧
+  572      SGIVNG GYOYWUN  ⟦OCR độ tin cậy thấp⟧
+  573      • •VGGGGWWWWW*
+       ⟦Dòng 574–579: trống hoặc chưa nhận dạng được.⟧
+  580            www' .
+       ⟦Dòng 581: trống hoặc chưa nhận dạng được.⟧
+  582            .W' .
+       ⟦Dòng 583–584: trống hoặc chưa nhận dạng được.⟧
+  585  function coinRows(width: number): string[] { Siwidth:
+  586  const rows: string[] = [];
+  587  const half : number = width / 2;
+  588  for (Let y : number = 0; y < 14; y++) {
+  589    Let row : string =
+  590    const dy :number = (y - 6.5) / 7;
+  591    for (Let x : number = 0; x < 8; x++) (
+  592    const dx : number = (x - 3.5) / Math.max(half, 0.5); 0.5);
+  593    const d : number = dx * dx + dy * dy;
+  594    if (d > 1) row += '.';
+  595    else if (d > 0.6) row += '0';
+  596    else 1f (width > 3 6& x === 3) row += 'W';
+  597    else row += 'Y';
+       ⟦Dòng 598: trống hoặc chưa nhận dạng được.⟧
+  599    rows,push(row) ;
+       ⟦Dòng 600: trống hoặc chưa nhận dạng được.⟧
+  601  return rows;
+       ⟦Dòng 602–603: trống hoặc chưa nhận dạng được.⟧
+  604  const COIN_PAL; Palette = 4 Y: '#fcbc3c', 0; '#c84c8c', W: 'Pfofefc' };
+  605  const FIRE_PAL; Palette = 1R; '#dB2800', Y: 'Pfca844', W: 'Pfce080' D;
+       ⟦Dòng 606: trống hoặc chưa nhận dạng được.⟧
+  607  const FLOWER_PALS; Palette[] = [
+  608  1 F: '#d82808', 0; 'Afca944', Y: 'Afefefo', K: '#909000' G:
+  609  1 F: '#008800', 0; 'Afefefe', Y: '#fea044', K: '#990900', '#000800  ⟦OCR độ tin cậy thấp⟧
+  610  4 F: '#fca044', 0; '#d82800', Y: 'Afc0900', K: '#009000', #000800' 1  ⟦OCR độ tin cậy thấp⟧
+  611  {F: '#2838ec', 0; 'Afefefc', Y: 'Afea844', Kt '#000000', 0; '#00a800' }, 0: '#00a800' },
+       ⟦Dòng 612: trống hoặc chưa nhận dạng được.⟧
+  613  const STAR_PALS; Palette[] = [
+  614  1 Y: '#fce000', | K: '#000000' 1,
+  615  1 Y: 'Afca044', K: '#000000' 1,
+  616  1 Y: '#fefcfc', K: '#000000' 1,
+  617  { Y: '#800010', K: '#000000'}
+       ⟦Dòng 618–619: trống hoặc chưa nhận dạng được.⟧
+  620  export const SPRITES = 1
+  621  walkeps makeSnniterWAIKER. WALKER PAL). Minh Le
+
+--- IMG_2120.jpeg ---
+
+  566  const FLAG : stringl
+       ⟦Dòng 567–568: trống hoặc chưa nhận dạng được.⟧
+  569  .• Ивввои  ⟦OCR độ tin cậy thấp⟧
+  570  •. .WNGGINGGN  ⟦OCR độ tin cậy thấp⟧
+  571    ...ИСHEСИЕнИ  ⟦OCR độ tin cậy thấp⟧
+  572    .. SENNEONIU  ⟦OCR độ tin cậy thấp⟧
+  573      •GEESN  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 574–580: trống hoặc chưa nhận dạng được.⟧
+  581            ww•
+  582            .W' •  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 583–584: trống hoặc chưa nhận dạng được.⟧
+  585  v function coinRows(width: number): string[] {
+  586  const rows: string[] = [];
+  587  const half : number = width / 2;
+  588  for (let y : number = 0; y < 14; y++) {
+  589    let row : string
+  590    const dy : number = (y - 6.5) / 7;
+  591    for (let x : number = 0; x < 8; x++) {
+  592    const dx : number = (x - 3.5) / Math.max(half, 0.5);
+  593    const d : number = dx * dx + dy * dy;
+  594    if (d > 1) row +=
+  595    else if (d > 0.6) row += '0';
+  596    else if (width > 3 && x === 3) row += 'W':
+  597    else row += 'Y';
+       ⟦Dòng 598: trống hoặc chưa nhận dạng được.⟧
+  599    rows.push(row);
+       ⟦Dòng 600: trống hoặc chưa nhận dạng được.⟧
+  601  return rows:
+       ⟦Dòng 602–603: trống hoặc chưa nhận dạng được.⟧
+  604  const COIN_PAL: Palette = { Y: '#fcbc3c', 0: '#c84c0c', W: '#fcfcfc' };
+  605  const FIRE_PAL: Palette = { R: '#d82800', Y: '#fca844', W: '#fce000' J;
+       ⟦Dòng 606: trống hoặc chưa nhận dạng được.⟧
+  607  const FLOWER_PALS: Palette[] = [
+  608  { F: '#d82800', 0: '#fca044', Y: '#fcfcfc' K: '#000000', G: '#00a800' 1
+  609  1 F: '#00a800' 0: '#fcfcfc' '#fca044', K: '#000000 '#00a800'
+  610  1 F: '#fca044' 0: '#d82800' '#fce000' K: '#000000' G: '#00a800*
+  611  { F: '#2038еc', 0: '#fcfcfc' '#fca844' K: '#000000' '#00a800' 1,
+       ⟦Dòng 612: trống hoặc chưa nhận dạng được.⟧
+  613  const STAR_PALS: Palette[] = Palette =  ⟦OCR độ tin cậy thấp⟧
+  614  {Y: '#fce000', K: '#000000'
+  615  { Y: '#fca044', K: '#000000'
+  616  { Y: '#fcfcfc', K: '#008000' },
+  617  { Y: '#80d010', K: '#000000' },
+       ⟦Dòng 618–619: trống hoặc chưa nhận dạng được.⟧
+  620  export const SPRITES =
+  621  walker: makeSprite(WALKER, WALKER_PAL),
+  622  walkerFlat: makeSprite(WALKER_FLAT, WALKER_PAL),
+  623  turtle: [0, 1].map((i :number ) : Sprite => makeSprite([...TURTLE_TOP, ...TURTLE_LEGS[i]], TURTLE_PAL)), HaReSprLte(L.•.TURTLE TOP. ..TURTLE_LEGS[1]1, TURTLE_PAL)),  ⟦OCR độ tin cậy thấp⟧
+  624  redTurtle: [0, 11.map((1 : number ) : Sprite => makeSprite([...TURTLE_TOP, ...TURTLE_LEGS[1]], RED_TURTLE_PAL)),
+  625  shell: makeSprite(SHELL, TURTLE_PAL),
+  626  redShell: makeSprite(SHELL, RED_TURTLE_PAL),
+  627  wings: WINGS.map((w:stringD ) :Sprite => makeSprite(w, { W: '#fcfcfc', K: '#080000' })), , K: '#000000' })),
+  628  piranha: [PIRANHA_OPEN, PIRANHA_CLOSED].map((h :stringD ) :Sprite => makesprite([...h, ...PIRANHA_STEN], PIRANHA_PAL)), ] > makeSprite([...h, ...PIRANHA_STEM], PIRANHA_PAL)).
+  629  bullet: makeSprite(BULLET, { K: '#282828', W: '#bcbcbc' }),
+  630  gedobes: makeSprite(PODOBOO, { R: '#fc7400', Y: '#fceB80', W: '#fcfcfc', K: '#000008' }),
+  631  boss: makeSprite(BOSS, BOSS_PAL),
+  632  bossHurt: makeSprite(BOSS, 1...BOSS_PAL, 6: '#fcfcfc', Y: '#fca044' ),
+  633  bossFire: makeSprite(BOSS_FIRE, FIRE_PAL),
+  634  mushroom: makeSprite(MUSHROOM, { R: 'HdB2800', W: '#fofcfc', T: '#fcd8a8', K: '#008000' }),
+  635  QДЕUR: makeSprite(MUSHROOM, (R: '#ова800', W: '#fcfcfc', T: '#fcd8a8', K: '#0в8008' }),
+  636  Flower: FLOWER_PALS,map((p : Palette ) : Sprite => makeSprite(FLOWER, p)),
+  637  star; STAR_PALS,map((p : Palette ) ;Sprite => makeSprite(STAR, p)),
+  638  Fireball; makeSprite(FIREBALL, FIRE_PAL),
+  639  coin; 18, 5, 2, 5],map((W : number ) : Sprite => makeSprite(coinRows(w), COIN_PAL)),
+  640  Flag; makeSprite(FLAG, f W: '#fofcfc', G; '#0BaB80' }),
+       ⟦Dòng 641–642: trống hoặc chưa nhận dạng được.⟧
+  643  const debrisCache = new Mepsstring, Sprite>();
+  644  > export function debrisSprite(pel: Pelette): Sprite {
+  645  const key : string. = pal.0;
+  646  let s ¿Sprite] undefined] = debrisCache,get (key);
+  647  3f (1s) 4
+  648    s = makeSprite(DEBRIS, pal);
+  649    debrisCache,set (key, s);
+       ⟦Dòng 650: trống hoặc chưa nhận dạng được.⟧
+  651  return s;
+
+============================================================================
+src/game/tiles.ts
+============================================================================
+
+--- IMG_2121.jpeg ---
+
+    2                      Iite';  ⟦OCR độ tin cậy thấp⟧
+    3    export type Theme = 'overworld' | 'underground' | 'athletic
+       ⟦Dòng 4: trống hoặc chưa nhận dạng được.⟧
+    5    const COMMON: Palette = {
+    6      K: '#000000',
+    7      W: '#fcfcfc',
+    8      w: '#bcbcbc',
+    9      s: '#7c7c7c',
+   10      q: '#7c3e00',
+   11      e: '#b0542a'
+   12      G: '#00a8 color
+   13  • g: '#b8f8
+   14    h: '#0058 Widely avallable across major browsers
+   15    L: '#d828 The color CSS & property sets the foreground color value * of an
+   16    1: '#fcae element's text and text decorations >, and sets the currentColor A ns ›, and sets the currentcolor
+   17    Y: '#fcbc value. currentColor may be used as an Indirect value on other
+   18    t: *#e8aC properties and is the default for other color properties, such as
+   19    u: '#a05€ border-color a,
+   20            For an overview of using color in HTML, see Applying color to HTML
+   21            elements using CSS 7. n Le
+   22    export cons
+   23    overworld Syntax:
+   24    athletic: ‹color>
+   25    undergrou
+   26    castle: f Values: <coLor» - Sets the color of the textual and decorative
+   27                parts of the element.
+   28                currentColor - Sets the color to the element's color
+   29  export cons property value. However, if set as the value of color, #e87020', '#c84c8c', '#e07020'1;
+   30                currentColor is treated as inherit
+   31  const grid ) *> string, w = 16, h = 16) : string[] X : number J : string => fn(x, v)).j
+   32    Array.fro By Mozilla Contributors 2, CC BY-SA 2.5 A p(f length: w }, C: unknown,
+   33            *color' on developer.mozilla.org a
+   34  const GROUN
+   35    'RepepeepPopepeRe',  ⟦OCR độ tin cậy thấp⟧
+   36    'POORCOOOOPPO0OOD'  ⟦OCR độ tin cậy thấp⟧
+   37    'PAOOP000D'  ⟦OCR độ tin cậy thấp⟧
+   38    'P00000000DP0002'  ⟦OCR độ tin cậy thấp⟧
+   39    'POO0ODPOOD  ⟦OCR độ tin cậy thấp⟧
+   40    'P0000090000P0000
+   41    'P0000000ODPPPO0R'  ⟦OCR độ tin cậy thấp⟧
+   42    'POOO000OOPPPPORD',
+   43    'P00000OPO0D  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 44: trống hoặc chưa nhận dạng được.⟧
+   45    'PPRROOLOPPOCOOD'  ⟦OCR độ tin cậy thấp⟧
+   46    'PROPODOPPO  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 47–69: trống hoặc chưa nhận dạng được.⟧
+   70  const QUESTION : string!]
+   71  * ,дяяяяяяяядяяяя •',
+   72  'Asлеляаенленек',  ⟦OCR độ tin cậy thấp⟧
+   73  'ядкодддддолодкок',  ⟦OCR độ tin cậy thấp⟧
+   74  'яводвяяаялоддлек',  ⟦OCR độ tin cậy thấp⟧
+   75  'ядяяляккКаядяяяь',  ⟦OCR độ tin cậy thấp⟧
+   76  'ядддлякавляколек',  ⟦OCR độ tin cậy thấp⟧
+   77  'ядодякковляколек',
+   78  'AоgдеggлякKояеK',  ⟦OCR độ tin cậy thấp⟧
+   79  'яводевдлеккодаок',  ⟦OCR độ tin cậy thấp⟧
+   80  'яделяяколаь',  ⟦OCR độ tin cậy thấp⟧
+   81  'явддедлекнеоллек',  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 82–83: trống hoặc chưa nhận dạng được.⟧
+   84  'ядкевдлаккеддкак',
+   85  'AggrsgaLeK'  ⟦OCR độ tin cậy thấp⟧
+   86  *KKKKKKKKKKKKKKKK',
+       ⟦Dòng 87: trống hoặc chưa nhận dạng được.⟧
+   88  const USED : string!) gridl(x:
+   89  if ((x === 0 || x === 15) 6& (y === 0 || y === 15)) return,1; = 15) && (y eee 0 II y se= 15)) return 1,'
+   90  if (x === 0 |1 y === 0 ||x === 15 || y === 15) return K'; = 15) return °K';
+   91  if ((x === 2 |1 x === 13) && (y === 2 || y === 13)) return K';
+
+--- IMG_2122.jpeg ---
+
+   88                      onong • .giti  ⟦OCR độ tin cậy thấp⟧
+   89                = grid((x : number , Y : number :""
+   90    const USED : stringl • string1
+   91    if ((x === 2 |1 x === 13) && (y === 2 |1 y === 13)) return K
+   92    return 'e':  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 93: trống hoặc chưa nhận dạng được.⟧
+   94  const HARD : stringl = grid((x : number • Y : number ) : "O" | "D" | "P"
+   95    const t : number = Y, 3 : number • X, b : number = 15 - Y, r : number = 15 - x;
+   96    const m : number = Math.min(t, 1, b, r);
+   97    if (m >= 4) return '0';
+   98    if (m === b Il m === r) return;
+   99    return 'I':
+       ⟦Dòng 100–101: trống hoặc chưa nhận dạng được.⟧
+  102  function pipeShade(x: number, x0: number, x1: number) :"K" | "G"|"g" |"h
+  103    if (x === x0 || x === x1) return 'K';
+  104    const rel : number = (x - x8) / (x1 - x0);
+  105    if (rel < 0.12) return '6';
+  106    if (rel < 0.3) return 'g';
+  107    if (rel < 0.38) return '6';
+  108    if (rel ‹ 0.45) return 'g';
+  109    if (rel < 0.75) return '6';
+  110    return 'h';
+       ⟦Dòng 111: trống hoặc chưa nhận dạng được.⟧
+  112  const pipeLip : (ox: number) => stringll = (ox: number) : stringl
+  113    grid((x : number , Y : number ) : "K" |"G" | "g"| "h" (y === 0 Il y === 15 ? 'K' : pipeShade(x + ox, x0: 0, x1: 31)));
+  114  const pipeBody : (ox: number) => stringl] = (ox: number) : stringl] =>
+  115    grid((x : number ) :""| "K" | "G"| "g"| "h" => {
+  116      const gx : number = x + ox;
+  117    1f (gx ‹ 2 11 gx > 29) return '
+  118    return pipeShade(gx, x0: 2, x1: 29);
+       ⟦Dòng 119–120: trống hoặc chưa nhận dạng được.⟧
+  121  const COIN_TILE : stringll = grid((x : number | • Y : number ) :""|"q" |"W" | "Q" •> {  ⟦OCR độ tin cậy thấp⟧
+  122    const dx : number • (x - 7.5) / 5, dy : number = (y - 7.5) / 7.5;
+  123    const d : number = dx * dx + dy * dy;
+  124    if (d > 1) return ' -':
+  125    if (d > 0.65) return 'q';
+  126    if (x === 6 8& Math.abs(y - 7.5) < 4) return 'W';
+  127    return 'Q':
+       ⟦Dòng 128: trống hoặc chưa nhận dạng được.⟧
+  129  const LAVA_TOP : stringl] = grid((x : number • V : number""|"["[ "ET Pe  ⟦OCR độ tin cậy thấp⟧
+  130    const wave : number = 2 Math.round(Math.sin((x / 16) * Nath.PI * 2) * 1.5);
+  131    if (y ‹ wave) return
+  132    if (y < wave + 2) return '1';
+  133    return (x * 5 + y * 3) % 13 === 0 P '1'
+       ⟦Dòng 134: trống hoặc chưa nhận dạng được.⟧
+  135  const LAVA : string[ = grid((x : number (Cx * 5 + % 13 = 0? '1' : 'L'>);
+  136  const BRIDGE : stringl = grid((x :number ber )E|k |e |w  ⟦OCR độ tin cậy thấp⟧
+  137  if (y < 3) return (x + y) % 4 ===
+  138    if (y === 3 |l y === 9) return 'K
+  139    if (y < 9) return x % 8 === 7 ? 'K
+  140    return '.';
+       ⟦Dòng 141: trống hoặc chưa nhận dạng được.⟧
+  142  const AXE : stringl =[
+       ⟦Dòng 143: trống hoặc chưa nhận dạng được.⟧
+  144    - •VOwWwwWW.  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 145: trống hoặc chưa nhận dạng được.⟧
+  146          KиK
+  147          NКUК  ⟦OCR độ tin cậy thấp⟧
+  148          UKКUК  ⟦OCR độ tin cậy thấp⟧
+  149          W..uK..
+  150        w...UK..',
+  151      .www.. .UUK.',
+  152          ,UUK.',
+  153          UUK.',
+  154          .UUK.',
+  155          UUK.
+       ⟦Dòng 156–159: trống hoặc chưa nhận dạng được.⟧
+  160  const treeTop : (kind: ">""T") "<") e> stringl] • (kind: '<' | 'T' | '>') : string!] =>
+  161  grid((x¿number, y ¿number ) &"2|"K"| "Q"]"g"| "h"
+  162    const 1x : number = Kind FEF '>' ? 15 - X : X;
+  163    1f (kind las 'T' 8& 1x + y < 3) return ',';
+  164    1f (y Fes 8 1] (kind je= 'T' 6& lx + y =e= 3)) return K';
+  165    1f (y < 3) return 'g';
+  166    1f (y > 13) return 'h';
+  167    return (x * 7 + y * 3) % 11 #== 0 ? °g' ; 10';
+  168  H0;  ⟦OCR độ tin cậy thấp⟧
+  169  const STEM: stringl] = rid((xumber)]]  ⟦OCR độ tin cậy thấp⟧
+  170  if (x < 2 |l x > 13) return ',';
+  171  if (x === 2 11 % === 13 |1 % sEE 7) peturn 'u';
+  172  return 't';
+       ⟦Dòng 173: trống hoặc chưa nhận dạng được.⟧
+  174  const CANNON : stringl) = grid((x :number , Y ¿Dumber ) E%] "K]"W" "e] => { N]0 => (  ⟦OCR độ tin cậy thấp⟧
+  175  1f (y < 1 |1 x < 1 |1 x > 14) return/,';
+  176  1f (y > 13) return 's';
+  177  1f (y >= 4 8& y « 9 8& x >= 5 68 x <= 10) return (% + y) % 3 a=e 0 ? K' ; 'W';
+  178  1f (y a== 2 8& x > 2 8& x < 13) return '6';
+  179  return 'K';
+
+--- IMG_2123.jpeg ---
+
+  178    const CANNON : string[] = grid((x : number, y : number
+  179    TeSUITr  ⟦OCR độ tin cậy thấp⟧
+  180                      • Y : number ) Re RIE →t →> 1  ⟦OCR độ tin cậy thấp⟧
+  181    const PEDESTAL : stringl = grid((x : number
+  182    if (x < 3 |l x > 12) return'.';
+  183    if (x === 3|| x === 12 || y % 8 === 0) return 'K';
+  184    return 's';
+       ⟦Dòng 185–186: trống hoặc chưa nhận dạng được.⟧
+  187  export const TILE_ART: Record‹string, string[]> = {
+  188    X: GROUNT,
+  189    B: BRICK,
+  190    S: BRICK,
+  191    m: BRICK,
+  192    C: BRICK,
+  193    *P': QUESTION,
+  194    M: QUESTION,
+  195    E: USED,
+  196    '#': HARD,
+  197    '[': pipeLip( ox: 0),
+  198    ']': pipeLip( ox: 16),
+  199    '{': pipeBody( ox: 0),
+  200    '}': pipeBody( ox: 16),
+  201    o: COIN_TILE,
+  202    L: LAVA_TOP,
+  203    1: LAVA,
+  204    '=': BRIDGE,
+  205    A: AXE,
+  206    '<': treeTop( kind: <').  ⟦OCR độ tin cậy thấp⟧
+  207    T: treeTop(kind: 'T'),
+  208    ">': treeTop( kind: ">'),
+  209    'I': STEM,
+  210    N: CANNON,
+  211    n: PEDESTAL,
+       ⟦Dòng 212–213: trống hoặc chưa nhận dạng được.⟧
+  214  const TILE_RUNS: Record<string, ReturnType<typeof rowsToRuns»> = U;
+  215  for (const k of Object.keys(TILE_ART)) TILE_RUNS[k] = rowsToRuns(TILE_ART[k]);
+       ⟦Dòng 216: trống hoặc chưa nhận dạng được.⟧
+  217  export type Tilelayer = { key: string; d: string };
+       ⟦Dòng 218: trống hoặc chưa nhận dạng được.⟧
+  219  /** Compile 16 columns of tiles into one SVG path per palette key. */
+  220  export function compileSection(
+  221    tiles: string[][],
+  222    sec: number,
+  223  hidden: Set<string›,
+  224  ): TileLayer[] {
+  225    const out = new Map<string, string[]>O;
+  226    const c0 :number = sec * 16;
+  227    const width : number = tiles[0].length;
+  228    for (let c : number = c8; c < Math.min(c0 + 16, width); c++) {
+  229    for (let r :number = 0; r ‹ tiles,length; r++) {
+  230      const ch : string = tiles[r][c];
+  231      const runs : (ch: string; x: number; y: number; n: nu... = TILE_RUNS[ch];
+  232      if (lruns Il hidden.has( value: '$(c},${r}")) continue;
+  233      const ox : number = c * 16, oy : number = г * 16;
+  234      for (const run of runs) (
+  235      Let arr : string[) | undefined = out.get(run.ch);
+  236      if (larr) { arr = []; out.set(run.ch, arr); }
+  237      arr.push(runPath(ox + run.x, oy + run.Y, run.n));
+       ⟦Dòng 238–240: trống hoặc chưa nhận dạng được.⟧
+  241  return [...out].map(([key, parts] ; [string, string[]] ) E (key: string; d: string} => (f key, d: parts.join(separator: "*) h));
+       ⟦Dòng 242–243: trống hoặc chưa nhận dạng được.⟧
+  244  const tileSpriteCache = new Map<string, Sprite>();
+  245  export function tileSprite(ch: string, theme: Theme, qColor: string): Sprite | null {
+  246  const art : stringl] = TILE_ART[ch];
+  247  1f (lart) return null;
+  248  const key = '$(ch}-${theme}-$(qColor}';
+  249  Let s ; Sprite undefined = tileSpriteCache,get(key);
+  250  1F (16) €
+  251    s = makeSprite(art, 4...THEME_PALETTES[theme], Q; qColor });
+  252    tileSpriteCache,set(key, s);
+       ⟦Dòng 253: trống hoặc chưa nhận dạng được.⟧
+  254  return s;
+       ⟦Dòng 255–256: trống hoặc chưa nhận dạng được.⟧
+  257  const CASTLE_ART : stringl] const CASTLE_ART : string!) = grid((% :number, Y ¿number ) ¡"O"|"D"|""| "K" => { • grid((x :number Y Enumber ) : "O
+  258  const brick ; (bx: number, by: number) => "O"| "D = (Фx: numben, by: number) (Eo°[0] * by; number) O |*D*] •
+  259  by % 8 === 7 |] (bx + (Hath,Floor(by / B) % 2) * 8) % 16 =в= 15 ? 'D' : '0';
+  260  // tower ав= 16 P 'D' : 1018
+  261  1F (y < 40) f
+  262  if (x ≤ 16 11 x > 63) return ',';
+  263    if (y < 8) return (Hath,Floor((x - 16) / 8) % 2 mme 0) ? brick(x, y) : ','i
+  264    if (y >= 16 6& y < 32 6& ((x >= 24 88 x ≤ 32) || (x >= 48 88 x < 56))) return K';
+  265  return brick(x, y);
+       ⟦Dòng 266: trống hoặc chưa nhận dạng được.⟧
+  267  1f (y < 48) return Math.floor(x / 8) % 2
+  268  1f (x >= 32 68 x < 48 66 y >= 56) 1 == 0 ? brick(X, y)
+  269  const dx :number = x - 39.5, dy : number
+  270                      = У - 64;
+
+--- IMG_2124.jpeg ---
+
+  198  export const TILE_ART: Record‹string, string[l> = { Sho Minh Le
+  199      papeDouy on or  ⟦OCR độ tin cậy thấp⟧
+  200    '}': pipeBody( ox: 16),
+  201    o: COIN_TILE,
+  202    L: LAVA_TOP,
+  203    L: LAVA,
+  204    '=': BRIDGE,
+  205    A: AXE,
+  206    '<': treeTop( kind: '<'),
+  207    T: treeTop( kind: 'T'),
+  208    ">': tre Top (kind: '>'),
+  209    '|': STEM,
+  210    N: CANNON,
+  211    n: PEDESTAL,
+       ⟦Dòng 212–213: trống hoặc chưa nhận dạng được.⟧
+  214  const TILE_RUNS: Record‹string, ReturnType<typeof rowsToRuns»> = (};
+  215  for (const k of Object.keys(TILE_ART)) TILE_RUNS[k] = rowsToRuns(TILE_ART[k]);
+       ⟦Dòng 216: trống hoặc chưa nhận dạng được.⟧
+  217  export type Tilelayer = { key: string; d: string H;
+       ⟦Dòng 218: trống hoặc chưa nhận dạng được.⟧
+  219  /** Compile 16 columns of tiles into one SVG path per palette key. */
+  220  export function compileSection(
+  221  tiles: string[]l].
+  222    sec: number,
+  223  hidden: Set<string>,
+  224  ): TileLayer[] {
+  225  const out = new Map<string, string[]>O;
+  226    const cB : number = sec * 16;
+  227  const width: number = tiles[0].Length;
+  228  for (Let c :number = c8; c < Math.min(c0 + 16, width); c++) €
+  229    for (let r:number = 0; r ‹ tiles.length; r++) {
+  230      const ch : string = tiles[r][c];
+  231      const runs : { ch: string; x: number; y: number; n: nu... = TILE_RUNS[ch];
+  232      if (lruns |l hidden.has(value: '${c},${r}')) continue;
+  233      const ox : number = c * 16, oy : number = r * 16;
+  234      for (const run of runs) {
+  235      Let arr : string[] | undefined = out.get (run.ch);
+  236      if (larr) { arr = []; out.set(run.ch, arr); }
+  237      arr.push(runPath(ox + run.x, oy + run.y, run.n));
+       ⟦Dòng 238–240: trống hoặc chưa nhận dạng được.⟧
+  241  return [...out].map(([key, parts] : [string, string[]] ) :(key: string; d: string} > (f key, d: parts.join( separator: "') }));
+       ⟦Dòng 242–243: trống hoặc chưa nhận dạng được.⟧
+  244  const tileSpriteCache = new Map<string, Sprite>();
+  245  export function tileSprite(ch: string, theme: Theme, qColor: string): Sprite | null {
+  246  const art : stringl] = TILE_ART[ch];
+  247  if (lart) return null;
+  248  const key = '$(ch}-$(theme}-$(qCoLor}";
+  249  Let s : Sprite | undefined = tileSpriteCache.get(key);
+  250  if (ls) €
+  251    s = makeSprite(art, { ...THEME_PALETTES[theme], Q: qColor });
+  252    tileSpriteCache.set(key, s);
+       ⟦Dòng 253: trống hoặc chưa nhận dạng được.⟧
+  254  return s;
+       ⟦Dòng 255–256: trống hoặc chưa nhận dạng được.⟧
+  257  const CASTLE_ART : stringl = grid((x : number • Y : number [):"0"|"D"|""|"K" → {  ⟦OCR độ tin cậy thấp⟧
+  258  const brick : (bx: number, by: number) => "O" | "D" = (bx: number, by: number) : "O" | "D" =>
+  259  by % 8 === 7 |1 (bx + (Math.floor(by / 8) % 2) * 8) % 16 === 15 ? 'D' : '0'; == 15 ? 'D* : '0";
+  260  // tower
+  261  1f (y < 40) f
+  262    if (x « 16 11 x > 63) return '.';
+  263    if (y ‹ 8) return (Math.Floor((x - 16) / 8) % 2 = == 0) ? brick(x, y) :
+  264    if (y >= 16 86 y < 32 86 ((x >= 24 88 x < 32) || (x >= 48 8 x < 56))) return "K';
+  265    return brick(x, y);
+       ⟦Dòng 266: trống hoặc chưa nhận dạng được.⟧
+  267  if (y < 48) peturn Math,Floor(x / 8) % 2 === 8 P brick(x, y) : ',';
+  268  1f (x >= 32 86 x < 48 88 y >= 56) 1
+  269    conSt dx : number = x - 59,5, dy :number = Y - 64;
+  270    1f (y >= 64 1| dx * dx + dy * dy <= 64) return 'K';
+       ⟦Dòng 271: trống hoặc chưa nhận dạng được.⟧
+  272  return brick(x, y);
+  273  NE 89, h: 80); (h: 80);  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 274: trống hoặc chưa nhận dạng được.⟧
+  275  export function castleSprite(theme; Theme): Sprite 1 Show useges
+  276  const key = 'castle-${theme}';
+  277  Let s : Sprite | undefined = tileSpriteCache,get(key);
+  278  1f (ls) 1
+       ⟦Dòng 279: trống hoặc chưa nhận dạng được.⟧
+  280    tileSpriteCache,set(key, s); s = makeSprite(CASTLE_ART, THEME_PALETTEs[theme m=e 'cestle' ? 'gastle' : 'overworld']);
+       ⟦Dòng 281: trống hoặc chưa nhận dạng được.⟧
+  282  return s;
+
+============================================================================
+src/input.ts
+============================================================================
+
+--- IMG_2125.jpeg ---
+
+    1    import { Platform } from 'react-native';
+    2    igort { Input } from './game/engine';
+       ⟦Dòng 3: trống hoặc chưa nhận dạng được.⟧
+    4    const BINS: Btni] = ['left', 'right', 'up', 'down', 'a', 'b'l; export type Btn = keyof Input;
+       ⟦Dòng 5: trống hoặc chưa nhận dạng được.⟧
+    6    export function emptyInput(): Input {
+    7    return { left: false, right: false, up: false, down: false, a: false, b: false };
+       ⟦Dòng 8–10: trống hoặc chưa nhận dạng được.⟧
+   11  /** Shared input state: touch/pointer contacts and keyboard are merged on read. */
+   12  class InputState {
+   13    touch: Input = emptyInput();
+   14    keys: Input = emptyInput();
+   15    pausePressed : boo export function emptyInput(): Input
+       ⟦Dòng 16: trống hoặc chưa nhận dạng được.⟧
+   17    read(): Input { E src/input.ts
+   18      const o : Input
+   19      for (const b of BINS) oib] = this.touchib] TT this.keys[b];
+   20    return o;
+       ⟦Dòng 21–22: trống hoặc chưa nhận dạng được.⟧
+   23    setTouch(next: Input) : void {
+   24    this.touch = next;
+       ⟦Dòng 25–26: trống hoặc chưa nhận dạng được.⟧
+   27    reset() : void {
+   28    this.touch = emptyInput();
+   29    this.keys = emptyInput();
+       ⟦Dòng 30–32: trống hoặc chưa nhận dạng được.⟧
+   33  export const input = new InputState(); ew InputState();
+       ⟦Dòng 34: trống hoặc chưa nhận dạng được.⟧
+   35  const KEYMAP: Record‹string, Btn> = {
+   36    ArrowLeft: 'left', KeyA: 'Left',
+   37    ArrowRight: 'right', KeyD: 'right',
+   38    ArrowUp: 'up', KeyW: 'up',
+   39    ArrowDown: 'down', KeyS: 'down',
+   40    KeyZ: 'a', Space: 'a', KeyК: 'a',
+   41    Keyx: 'b', ShiftLeft: 'b', ShiftRight: 'b', KeyJ: 'b',
+       ⟦Dòng 42–43: trống hoặc chưa nhận dạng được.⟧
+   44  /** Installs keyboard listeners and touch-friendly CSS on web. Returns cleanup. */
+   45  export function installWebInput(onPause: () => void): () => void {
+   46    if (Platform.OS I== 'web' I| typeof window === 'undefined') return ():void => U;
+   47  const down : (ev: KeyboardEvent) => void = (ev: KeyboardEvent) : void ardEvent) > void = (ev: KeyboardEvent) F void => f => f
+   48    if (ev.code === 'KeyP' Il ev.code === 'Escape') f
+   49      if (lev.repeat) onPause();
+   50      ev.preventDefault();
+   51      return;
+       ⟦Dòng 52: trống hoặc chưa nhận dạng được.⟧
+   53    const b :keyof Input = KEYMAP[ev.code];
+   54    1f (b) €
+   55    input.keys[b] = true;
+   56    ev.preventDefault();
+       ⟦Dòng 57–58: trống hoặc chưa nhận dạng được.⟧
+   59  const up : (ev: KeyboardEvent) => void = (ev: KeyboardEvent) : void => {
+   60    const b : keyof input = KEYMAP[ev.code];
+   61    if (b) input.keys[b] = false;
+       ⟦Dòng 62: trống hoặc chưa nhận dạng được.⟧
+   63  const blur : 0=> void = () : void => input.reset();
+   64  window,addEventListener(type: 'keydown', down);
+   65  window,addEventListener(type: 'keyup', up);
+   66  window,addEventListener(type: 'blur', blur);
+       ⟦Dòng 67: trống hoặc chưa nhận dạng được.⟧
+   68  const style :HTMLStyleElement = document,createElement(tagName: 'style');
+   69  style,textContent = 'html,body,#root(height:100%;margin:e;overflow:hidden;background:#008; Lenent ( tagName:) *styAddden:background: #oof
+   70  touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
+   71  overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}';
+   72  document,head,appendChild(style);
+   73  const nofleny : (e: Event) => yold] = (e; Event) :yold = e,preventDefault();
+   74  window,addEventlistener ( lype; 'contextmenu', noMenu);
+       ⟦Dòng 75: trống hoặc chưa nhận dạng được.⟧
+   76  return () : void
+   77  window, remoyeEventListener (type: 'keydown', down);
+   78  window,removeEventListener( type; 'keyup', up);
+   79  window,remoyeEventlistener(sype: 'blur', blur);
+   80  window,remoyeEventListener(type: 'contextmenu', neHenu);
+   81  styLe,remove();
+
+============================================================================
+app.json
+============================================================================
+
+--- IMG_2126.jpeg ---
+
+{
+  "expo": {
+    "name": "mario2d",
+    "slug": "mario2d",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
+
+============================================================================
+App.tsx
+============================================================================
+
+--- IMG_2127.jpeg ---
+
+    2  imort React, ( usecallback, useEffect, useMemo, useRef, usestate } from 'react';
+    3  import { Pressable, Stylesheet, Text, useWindowDimensions, View } from 'react-native';
+    4  import { Controls, computeLayout } from './src/components/Controls';
+    5  import { GameView } from './src/components/GameView';
+    6  import { Hud, MONO } from './src/components/Hud';
+    7  import { Game, Session } from './src/game/engine';
+    8  import { generateLevel, STAGES, WORLDS } from'./src/game/levels';
+    9  import { heroSprite } from'./src/game/sprites';
+   10  import { input, installWebinput } from './src/input';
+   11  import Svg, { Path } from 'react-native-svg';
+       ⟦Dòng 12: trống hoặc chưa nhận dạng được.⟧
+   13  type Screen = 'title' | 'intro' | 'play' | 'over' | 'win';
+   14  const STEP : number = 1000 / 60;
+       ⟦Dòng 15: trống hoặc chưa nhận dạng được.⟧
+   16  function newSession(world: number): Session {
+   17  return { world, stage: 1, Lives: 3, score: 0, coins: 0, size: 0, checkpoint: false };
+       ⟦Dòng 18–19: trống hoặc chưa nhận dạng được.⟧
+   20  function Heroicon(f size }: { size: number }) : Element {
+   21  const s : Sprite = heroSprite( big: false, & 'stand'. pal: 0);
+   22  return (
+   23    <Svg width=(s.w* size} height={s.h * size} viewBox={'0 0 ${s.w} ${s.h}'}> x=[00 $s.w} $[s.h}}>  ⟦OCR độ tin cậy thấp⟧
+   24      {s.layers.map((l :Layer , 1 : number ) : Element *> ‹Path key=(i} d={L.d} fill={L.fill} />)}
+   25    </Svg>
+   26  D:
+       ⟦Dòng 27–28: trống hoặc chưa nhận dạng được.⟧
+   29  export default function App() : Element { {
+   30  const { width: W, height: H } = useWindowDimensions(;
+   31    const Layout : Layout = UseMemo(C) : Layout * computeLayout(W, H), [W, HI);
+   32    const [screen, setScreen] = useState<Screen>( initialState: 'title');
+   33  const [paused, setPaused] = useState(initialState: false);
+   34    const [round, setRound] = useState(initialState: 1);
+   35    const [, setTick] = useState(InitialState: 0);
+   36    const session : RefObject<Session› SSLolI : KeroDieci<Sessions = useRef<Session>(newSession( world: 1));
+   37    const game : RefObject<Game | null> = useRef<Game | null>( initialValue: null); Ivauea nuLL,  ⟦OCR độ tin cậy thấp⟧
+   38    const screenRef : RefObject<Screen› = useRef(screen);
+   39    screenRef.current = screen;
+   40    const pausedRef : RefObject<boolean> = useRef(paused);
+   41    pausedRef.current = paused;
+       ⟦Dòng 42: trống hoặc chưa nhận dạng được.⟧
+   43    const togglePause : 0 => void = useCallback(O : void => {
+   44    if (screenRef.current === 'play') setPaused((p : boolean ):boolean an ) : boolean => Ip); => Ip);
+   45    H [D:  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 46: trống hoặc chưa nhận dạng được.⟧
+   47    useEffect(O) : 0 => void *> installWebInput(togglePause), [togglePause]);
+       ⟦Dòng 48: trống hoặc chưa nhận dạng được.⟧
+   49    const startStage : 0=> void = useCallback(O) : void *> {  ⟦OCR độ tin cậy thấp⟧
+   50    const s : Session = session.current;
+   51    game.current = new 6ame(generateLevel(s.morld, s.stage), s, layout.viewW); enerateLevel(s.world,
+   52    setScreen( value: 'intro');
+   53  }. [layout.viewW]);
+       ⟦Dòng 54: trống hoặc chưa nhận dạng được.⟧
+   55  useEffect(() : void
+   56    game.current?.setViewW(layout.viewW);
+   57    }, [layout.viem]);
+       ⟦Dòng 58: trống hoặc chưa nhận dạng được.⟧
+   59    // intro > play after a short pause
+   60  useEffect(() : (0 => void) | undefined => {
+   61    1f (screen I== 'intro') return;
+   62    const t : number • setTimeout(() : void *> setscreen(value: 'play'), timeout: 2208);
+   63    return () : void *› clearTimeout(t);
+   64  }, [screen]);
+       ⟦Dòng 65: trống hoặc chưa nhận dạng được.⟧
+   66  const onResuLt : (r: "dead" | "clear") => void = useCallback((r: 'dead' | 'clear') : void
+   67    const s : Session = session.current;
+   68    1f (r s== 'dead') 1
+   69      s.lives-*;
+   70      8,size = 0;
+   71      if (s,lives « B) 4 setScreen(value: 'over'); return; }
+   72    › else {
+   73      s.checkpoint = false;
+   74      s,stage++;
+   75      1f (s,stage > STAGES) 1 s,stage = 1; s,World++; }
+   76      1f (s,world > WORLDS) 4 setScreen(yalue: 'win'); return; }
+       ⟦Dòng 77: trống hoặc chưa nhận dạng được.⟧
+   78    startStage();
+   79    }, IstartStage]); ge1);  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 80: trống hoặc chưa nhận dạng được.⟧
+   81    // fixed-timestep game loop
+   82    useEffect(() : (0 => void) | undefined => {
+   83    if (screen l== 'play') return;
+   84    Let raf : number = 0;
+   85    Let last :number
+   86    Let acc :number = 0; = performance,now();
+       ⟦Dòng 87: trống hoặc chưa nhận dạng được.⟧
+   88    const 1oop : (now: number) e> void • (now: number) E Yoid #> 1 raf = requestAnimationFrame(Loop); *> 1
+   89      acc += Math.min(now - last, 100);
+   90      Last = now;
+   91      const 9 : Game nuil = game, current;
+   92      46 fin  ⟦OCR độ tin cậy thấp⟧
+
+--- IMG_2128.jpeg ---
+
+   84  useEffect(() : (0 => void) | undefined => {  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 85: trống hoặc chưa nhận dạng được.⟧
+   86                      = (now: number) : void => {
+   87  const Loop : (now: number) => void
+   88    SUUS TURT  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 89–90: trống hoặc chưa nhận dạng được.⟧
+   91    const g : Game | null = game.current;
+   92    if (lg Il pausedRef.current) { acc = 0; return; }
+   93    let steps : number = 0;
+   94    while (acc >= STEP && steps < 5) €
+   95    g.step(input.read());
+   96    acc -= STEP;
+   97    steps++;
+   98    if (g.result) {
+   99      cancelAnimationFrame(raf);
+  100      onResult(g.result);
+  101      return;
+       ⟦Dòng 102: trống hoặc chưa nhận dạng được.⟧
+  103    Engel  ⟦OCR độ tin cậy thấp⟧
+  104    if (steps) setTick((t : number ) :number => (t + 1) & oxffff);
+       ⟦Dòng 105: trống hoặc chưa nhận dạng được.⟧
+  106  raf = requestAnimationFrame(loop);
+  107  return ():vold => cancelAnimationFrame(raf);
+  108  }, [screen, onResult]);
+       ⟦Dòng 109: trống hoặc chưa nhận dạng được.⟧
+  110  const begin : (world: number) => void = (world: number) : void => {
+  111  session.current = newSession(world);
+  112  setPaused(value: false); false);
+  113  startStage();
+       ⟦Dòng 114–115: trống hoặc chưa nhận dạng được.⟧
+  116  const s : Session = session.current;
+  117  const g : Game | null = game.current;
+  118  const hudFont : number = Math.max( ...values: 10, Math.min(...values: 18, layout.gameW / 34)); 34)):
+       ⟦Dòng 119: trống hoặc chưa nhận dạng được.⟧
+  120  if (screen === 'title') f
+  121  return (
+  122    ‹View style={styles.center}>
+  123    <StatusBar hidden />
+  124    ‹Texd style={[styles.title, f fontSize: Math.min(....alues 56, W / 9) 11}>SUPER PLUMBER</Text>
+  125    ‹Text style={styles.sub}>2D PLATFORMER • 18 ROUNDS » 4 STAGES</Text> US x 4 STAGES</Text>
+  126    ‹HeroIcon size={4} />
+  127    ‹Pressable style={styles.bigBtn} onPress={() : void *> begin(round)}>
+  128      ‹Text style={styles.bigBtnText}>START‹/Text>
+  129    </Pressable>
+  130    ‹Text style={styles.sub}>SELECT ROUND</Text>
+  131    ‹View style={styles.rounds}>
+  132      (Array.from(f length: WORLDS }, (_:unknown, 1: number ) :number => i + 1).map((n : number ) : Element => (
+  133        <Pressable key={n} onPress={() : void => setRound(n)} style={[styles.roundBtn, round === ound == n && styles.roundon]}>
+  134        ‹Text style={styles.roundText]>{n]</Text>
+  135        </Pressable>
+       ⟦Dòng 136: trống hoặc chưa nhận dạng được.⟧
+  137    </View>
+  138    <Text style={styles.help}>Keyboard: +>N / WASD • Z/Space = Jump • X/Shift = Run/Fire • P = Pause</Text> se</Text>
+  139    </View>
+       ⟦Dòng 140–142: trống hoặc chưa nhận dạng được.⟧
+  143  if (screen === 'over' Il screen === 'win') {
+  144  return (
+  145    ‹View style={styles.center}>
+  146    <StatusBar hidden />
+  147    «Text style=([styles.title, { fontSize: Math.min(.alues: 48, W / 10) }]}>{screen === 'over' ? 'GANE OVER' : 'THANK YOU!']</Text> • 'over' ? 'GAME OVER' : 'THANK YOU!'}</Text>
+  148    ‹Text style={styles.sub}>{screen === 'win' ? 'YOU CLEARED ALL 10 ROUNDS!' : 'WORLD ${s.world}-${s.stage}'}</Text> IORLD $(s.world}-${s.stage} ]</Text:
+  149    ‹Text style={styles.sub}>SCORE {String(s.score).padStart( maxLength: 6, fillString: 'e')</Text>
+  150    {screen === 'over' && (
+  151      ‹Pressable style={styles,bigBtn} onPress={() : vold > begin(s.world)}>
+  152      «Text style={styles.bigBtnText]>CONTINUE (ROUND (s.world})</Text>
+  153      </Pressable>
+       ⟦Dòng 154: trống hoặc chưa nhận dạng được.⟧
+  155    «Pressable style=(styles,bigBtn} onPress={() : void => setScreen(value: 'title')}>
+  156      «Text style={styles,bigBtnText}>TITLE</Text>
+  157    </Pressable>
+  158    </View>
+       ⟦Dòng 159–161: trống hoặc chưa nhận dạng được.⟧
+  162  1f (screen ses 'intro' I1 1g) 4
+  163  return (
+  164  «View style=(styles, center}>
+  165    <StetusBar hidden />
+  166    «Text style={[styles,sitle, { fontsize; Math,min(....alues:) 40, W / 12) H1}>WORLO (6,world}-{s.stago}</Text» 12) }]}>NORLO (s.world}-{s.etego)</Toxt>
+  167    «View style={styles, livesRow}>
+  168      «Heroicon size=(3} />
+  169      «iext style={styles,livesText}> » (s,lives}</Text»
+  170    </Vew>  ⟦OCR độ tin cậy thấp⟧
+  171  </View>
+       ⟦Dòng 172–174: trống hoặc chưa nhận dạng được.⟧
+  175  return (
+  176  «View style={styles,root}>
+  177  <StatusBar hidden />
+  178  «View style=ff position; 'ebsolute', left: layout,gamex, top: layout,ganeY }>
+
+--- IMG_2129.jpeg ---
+
+  129  ‹View style={styles.center}>
+  130    SIсAt DсуsCоtову Lео.SuUrосLEо поUпи /u  ⟦OCR độ tin cậy thấp⟧
+  131    ‹View style={styles.rounds}>
+  132    (Array.from(1 length: WORLDS }, C_:unknown, 1 : number ):number => i + 1) .map((n : number ) : Element => (
+  133      «Pressable key={n} onPress={() : void => setRound(n)} style={[styles.roundBtn, round sa= n && styles.roundon]}>
+  134        ‹Text style={styles.roundText}>{n}</Text>
+  135      </Pressable>
+       ⟦Dòng 136: trống hoặc chưa nhận dạng được.⟧
+  137    </View>
+  138    <Text style={styles.help}>Keyboard: +>N / WASD • Z/Space = Jump • X/Shift = Run/Fire • P = Pause</Text> Jn/Fire P = Pause</Text>
+  139  </View>
+       ⟦Dòng 140–142: trống hoặc chưa nhận dạng được.⟧
+  143  if (screen === 'over' Il screen === 'win') {
+  144  return (
+  145  ‹View style={styles.center}>
+  146    <StatusBar hidden />
+  147    «Text style={[styles.title, { fontSize: Math.min(...values: 48, W/ 10) }]}>{screen === 'over' ? 'GAME OVER' : 'THANK YOU!'}</Text>
+  148    «Text style={styles.sub}>{screen === 'win' ? 'YOU CLEARED ALL 10 ROUNDS!' : "WORLD ${s.world}-${s.stage}']</Text>
+  149    «Text style={styles.sub]>SCORE {String(s.score).padStart( maxlength: 6, [fiString: '0')}</Text>
+  150    {screen === 'over' && (
+  151      ‹Pressable style={styles.bigBtn} onPress={() :void => begin(s.world)}>
+  152      «Text style={styles.bigBtnText]>CONTINUE (ROUND {s.world})</Text>
+  153      </Pressable>
+       ⟦Dòng 154: trống hoặc chưa nhận dạng được.⟧
+  155    ‹Pressable style={styles.bigBtn} onPress={() : void => setScreen( value: 'title')}>
+  156      «Text style={styles.bigBtnText}>TITLE</Text>
+  157    ‹/Pressable>
+  158  </View>
+       ⟦Dòng 159–161: trống hoặc chưa nhận dạng được.⟧
+  162  if (screen === 'intro' Il 1g) f
+  163  return (
+  164    <View style=(styles.center}>
+  165    ‹StasusBar hidden />
+  166    ‹Text style={[styles.title, { fontSize: Math.min(...values: 40, W / 12) H}>WORLD {s.world)-{s.stage)</Text> world}-{s.stage}</Text>
+  167    ‹View style={styles.livesRow}>
+  168      ‹HeroIcon size={3} />
+  169      ‹Text style={styles.livesText}> * {s.lives}</Text> {s.Lives)</Text»
+  170    </View>
+  171    </View>
+  172  D:  ⟦OCR độ tin cậy thấp⟧
+       ⟦Dòng 173–174: trống hoặc chưa nhận dạng được.⟧
+  175  return
+  176  ‹View style={styles.root}>
+  177    <StatusBar hidden />
+  178    ‹View style={t position: 'absolute', left: layout.gamex, top: layout.gameY }}>
+  179      ‹GameView game={g} scale={layout.scale} view={layout.viewW) />
+  180    </View>
+  181    <Hud session={s} time={g.time} width={layout.gameW} left={layout.gamex} fontSize={hudFont} /> Font) />
+  182    ‹Controls layout={layout} onPause={togglePause} /> erauser a
+  183    1paused && (
+  184      ‹View style=(styles.pause0verlay}>
+  185      ‹Text style={styles.title}>PAUSED</Text›
+  186      ‹Pressable style={styles.bigBtn} onPress={():void => setPaused(value: false))>
+  187        ‹Text style={styles.bigBtnText}>RESUME</Text>
+  188      </PressabLe>
+  189      ‹Pressable style={styles.bigBtn} onPress={() :void => { setPaused( value: false); setScreen(value: 'title'); }>
+  190        «Text style={styles.bigBtnText}>QUIT</Text>
+  191      </PressabLe>
+  192      </View>
+       ⟦Dòng 193: trống hoặc chưa nhận dạng được.⟧
+  194  </View>
+       ⟦Dòng 195–197: trống hoặc chưa nhận dạng được.⟧
+  198  const styLes ; Readonly <{root: { flex: number; backgrou... = StyleSheet.create({
+  199  root: & flex: 1, backgroundColor: '#988', overflow: 'hidden' },
+  200  center: 1 flex: 1, backgroundColor: '#000', alignItems: 'center', justifyContent: 'center', padding: 16, gap: 14 },
+  201  title: { color: '#fca044', fontFamily; MONO, fontWeight: 'bold', fontsize; 40, textAlign: 'center' }
+  202  sub: 4 color: '#fff', fontFamily: MONO, fontSize; 14, textAlign: 'center' h,
+  203  help: 4 color; 'Waaa', fontFamily; MONO, fontsize; 11, textAlign: 'centen', marginTop: 8 },
+  204  bigBtn: { backgroundcolor; '#c84cec', paddingHorizontel; 28, paddingVertical; 12, borderRadius; 8, borderWidth: 2, bordercotor: 'efcbebe' he
+  205  bigBtnText: 4 color: '#fff', fontFamily; MONO, fontWeight: 'bold', fontsize; 18 h
+  206  rounds: & flexDirection; 'row', flexWrap; 'wrap', justifycontent: 'center', gap: 8, maxWidth: 420 h,
+  207  roundBtn: 4 width: 44, height; A4, borderRadius; 6, borderWidth: 2, borderCelon; '#888', alignItems: 'centen', justifycontent: 'center' h,
+  208  roundon: 1 borderColor: '#fca844', backgroundColor; '#5c2809' h
+  209  roundText: 1 color; '#fff', fontFamily; MONG, fontWeight: 'bold', fontsize: 36 h,
+  210  LivesRow: 4 flexDirection: 'pow', elignItens; 'centep' h,
+  211  livesText: & color: '#fff', fontFamily; MONO, fontsize: 24, fontWeight: 'bold' h
+  212  pauseoverlay: 4 position; 'absolute', left: e, top; 0, right: 0, bottom; e, backgroundcotor: 'rgba(e,0,0,9,6)', alignitems: 'center', justifyContent: 'cei
+
+============================================================================
+index.ts
+============================================================================
+
+--- IMG_2130.jpeg ---
+
+import { registerRootComponent } from 'expo';
+
+import App from './App';
+
+// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
+// It also ensures that whether you load the app in Expo Go or in a native build,
+// the environment is set up appropriately
+registerRootComponent(App);
+
+============================================================================
+package.json
+============================================================================
+
+--- IMG_2131.jpeg ---
+
+{
+  "name": "mario2d",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "expo": "~58.0.26",
+    "expo-status-bar": "~58.0.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-svg": "15.16.0",
+    "react-native-web": "~0.21.4"
+  },
+  "devDependencies": {
+    "@types/react": "~19.3.0",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "private": true
+}
+
+============================================================================
+README.md
+============================================================================
+
+--- IMG_2132.jpeg ---
+
+⟦Ảnh hiển thị README đã render. Bên dưới là nội dung nhìn thấy; cú pháp Markdown gốc không xuất hiện trong ảnh.⟧
+
+Super Plumber – 2D platformer (React Native / Expo)
+
+A classic side-scrolling platformer that runs on web, phones and tablets (Expo + react-native-svg).
+
+• 10 rounds (worlds) × 4 stages: overworld, underground, treetops, castle (boss + axe/bridge)
+• Classic rules: question/brick blocks, mushroom / fire flower / star / 1UP, stomp score chains, kickable shells, piranha plants, fire bars, podoboos, bullet cannons, lifts, flagpole bonus, time tally, ⟦mép phải bị cắt⟧
+• Pixel-art sprites are original look-alikes (no copyrighted assets); levels are generated deterministically per round/stage and verified beatable by a search bot.
+
+Run
+
+npm install
+npm run web       # browser
+npm start         # scan QR with Expo Go (iOS / Android, phones & tablets)
+
+Controls
+
+Touch | Keyboard | Action
+D-pad (left side, slide for diagonals) | Arrows / WASD | Move, ↓ crouch
+A (right) | Z / Space / K | Jump (hold for higher)
+B (right) | X / Shift / J | Run / throw fireball
+Ⅱ | P / Esc | Pause
+
+Press between A and B to hold both. Landscape overlays the controls on the game; portrait puts them below.
+
+Code
+
+• src/game/engine.ts – physics, entities, rules (fixed 60 Hz step)
+• src/game/levels.ts – level generator
+• src/game/sprites.ts, src/game/tiles.ts – pixel art compiled to SVG paths
+• src/components/ – renderer, HUD, touch controls; src/input.ts – keyboard/touch state
+
+============================================================================
+tsconfig.json
+============================================================================
+
+--- IMG_2133.jpeg ---
+
+⟦Cùng nội dung tsconfig.json với IMG_2134.jpeg. Dùng bản chép từ ảnh 2134 vì ảnh đó rõ hơn.⟧
+
+--- IMG_2134.jpeg ---
+
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true
+  }
+}
