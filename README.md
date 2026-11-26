@@ -1,6 +1,8 @@
 # Super Plumber
 
-A 2D side-scrolling platformer for browsers and for iOS and Android phones and tablets. Each of the ten rounds contains four generated stages.
+Super Plumber is a pixel-art, 2D side-scrolling platformer for browsers, iOS, and Android. Jump over gaps, dodge enemies, and collect coins and power-ups as you race the clock to the end of each stage.
+
+Play through 10 worlds with four generated stages each. Every world takes you from the overworld through an underground stage and a platforming course before ending in a castle. Reach the flagpole in the first three stages and grab the axe to clear the castle.
 
 ## Run locally
 
