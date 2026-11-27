@@ -10,7 +10,6 @@ export function Hud({ session, time, width, left, fontSize }: { session: Session
   const cells: [string, string][] = [
     ['SCORE', pad(session.score, 6)],
     ['COINS', 'x' + pad(session.coins, 2)],
-    // The editor tooltip covers the end of WORLD and TIME in IMG_2092.
     ['WORLD', `${session.world}-${session.stage}`],
     ['TIME', pad(time, 3)],
     ['LIVES', 'x' + Math.max(0, session.lives)],
