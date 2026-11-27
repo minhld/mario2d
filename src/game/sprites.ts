@@ -1,50 +1,3 @@
-import type { Ent } from './engine';
-
-const walker = [
-  '....rrr.....', '..rrrrrrr...', '.rrrrrrrrr..', '.rrsrrsrrr..',
-  'rrrsrrsrrrr.', 'rrrrrrrrrrr.', '..yyyyyyy...', '...yyyyy....',
-  '..hhhhh.hh..', '.hhhh.hhhhh.',
-];
-const turtle = [
-  '.........yy.', '........yys.', '........yyy.', '.........yy.', '.........yy.',
-  '...ggg..yy..', '..gggggyyy..', '.ggtgggyyy..', '.ggggggyy...',
-  '..yyyyyyy...', '..hh...hh...',
-];
-const plant = [
-  '...rrr...', '..ryrrr..', '.rryyyrr.', '..rrrrr..', '...rrr...',
-  '....g....', '.gg.g.gg.', '..ggggg..', '....g....',
-];
-
-const palette: Record<string, string> = {
-  g: '#7dba62', y: '#ffd293', t: '#1d7e79', b: '#263c58',
-  s: '#202534', h: '#51384c', r: '#ce594e', w: '#fff4bf',
-};
-
-export function pixelLayers(rows: string[], colors = palette) {
-  const paths: Record<string, string> = {};
-  rows.forEach((row, y) => {
-    for (let x = 0; x < row.length; x++) {
-      const ch = row[x];
-      if (!colors[ch]) continue;
-      let stop = x + 1;
-      while (row[stop] === ch) stop++;
-      paths[ch] = (paths[ch] ?? '') + `M${x} ${y}h${stop - x}v1H${x}Z`;
-      x = stop - 1;
-    }
-  });
-  return Object.entries(paths).map(([ch, d]) => ({ d, fill: colors[ch] }));
-}
-
-export function entitySprite(kind: Ent['kind']) {
-  if (kind === 'walker') return { rows: walker, colors: palette };
-  if (kind === 'turtle' || kind === 'redturtle' || kind === 'paratroopa' || kind === 'boss') {
-    return { rows: turtle, colors: kind === 'redturtle' || kind === 'boss' ? { ...palette, g: '#d65861' } : palette };
-  }
-  if (kind === 'piranha') return { rows: plant, colors: palette };
-  if (kind === 'shell') return { rows: ['...gggg...', '..ggtggg..', '.gggggggg.', 'yyyyyyyyyy'], colors: palette };
-  return null;
-}
-
 export type Layer = { fill: string; d: string };
 export type Sprite = { w: number; h: number; layers: Layer[]; flipped: Layer[] };
 export type Palette = Record<string, string>;
@@ -202,6 +155,8 @@ const BIG_TORSO = [
   '...BBBBB.BBBBB..',
 ];
 
+const BIG_TORSO_WALK = [...BIG_TORSO.slice(0, 11), '.....BBBBBBB....'];
+
 const BIG_TORSO_JUMP = [
   '....SSSSSSSS.SSS',
   '....SSSSSSS..SSS',
@@ -296,14 +251,66 @@ export const HERO_PALETTES: Palette[] = [
   { R: '#000000', B: '#d82800', S: '#fca044', H: '#7c3c00', K: '#fcfcfc', W: '#fcfcfc', Y: '#fce000' },
 ];
 
-export type HeroFrame = 'stand' | 'walk1' | 'walk2' | 'walk3' | 'jump' | 'skid' | 'crouch' | 'die';
+export const WALK_FRAMES = ['step0', 'step1', 'step2', 'step3', 'step4', 'step5', 'step6', 'step7'] as const;
+export const RUN_FRAMES = ['run0', 'run1', 'run2', 'run3', 'run4', 'run5', 'run6', 'run7'] as const;
+type RunFrame = (typeof RUN_FRAMES)[number];
+type WalkFrame = (typeof WALK_FRAMES)[number];
+export type HeroFrame = 'stand' | 'jump' | 'skid' | 'crouch' | 'die' | WalkFrame | RunFrame;
+
+// One foot sweeps backward at ground level while the other bends and swings forward.
+const FOOT_X = [4, 2, 0, -2, -4, -2, 0, 2];
+const FOOT_LIFT = [0, 0, 0, 0, 0, 2, 3, 2];
+
+const RUN_FOOT_X = [6, 4, 1, -3, -6, -4, -1, 4];
+const RUN_FOOT_LIFT = [0, 0, 0, 0, 0, 3, 4, 2];
+
+function walkingLegs(big: boolean, phase: number, running: boolean): string[] {
+  const height = big ? 11 : 4;
+  const rows = Array.from({ length: height }, () => Array<string>(16).fill('.'));
+
+  for (const far of [true, false]) {
+    const step = (phase + (far ? 4 : 0)) % WALK_FRAMES.length;
+    const center = far ? 7 : 8;
+    const hip = big ? center + (far ? -1 : 1) : center;
+    const rise = (running ? RUN_FOOT_LIFT : FOOT_LIFT)[step];
+    const lift = big ? rise : Number(rise > 0);
+    const ankle = center + (running ? RUN_FOOT_X : FOOT_X)[step];
+    const knee = Math.round((hip + ankle) / 2) + Number(lift > 0);
+    const boot = height - lift - 2;
+
+    for (let y = 0; y < boot; y++) {
+      const progress = y / boot;
+      const x = progress < 0.5
+        ? hip + (knee - hip) * progress * 2
+        : knee + (ankle - knee) * (progress * 2 - 1);
+      const column = Math.round(x);
+      for (let i = column - 1; i <= column + (big ? 1 : 0); i++) rows[y][i] = 'B';
+    }
+    for (let x = Math.max(0, ankle - 1); x <= Math.min(15, ankle + (big ? 2 : 1)); x++) rows[boot][x] = far ? 'h' : 'H';
+    for (let x = Math.max(0, ankle - 1); x <= Math.min(15, ankle + (big ? 3 : 2)); x++) rows[boot + 1][x] = far ? 'h' : 'H';
+  }
+  return rows.map(row => row.join(''));
+}
 
 function heroRows(big: boolean, f: HeroFrame): string[] {
   if (f === 'die') return SMALL_DIE;
+  if (f === 'crouch' && big) return BIG_CROUCH;
+  const run = RUN_FRAMES.indexOf(f as RunFrame);
+  const walk = run >= 0 ? run : WALK_FRAMES.indexOf(f as WalkFrame);
+  if (walk >= 0) {
+    const swing = ['walk1', 'walk1', 'walk2', 'walk3', 'walk3', 'walk3', 'walk2', 'walk1'][walk];
+    const legs = walkingLegs(big, walk, run >= 0);
+    if (big) return [...HEAD, ...BIG_TORSO_WALK, ...legs];
+    return [...HEAD, ...SMALL_BODY[swing].slice(0, 5), ...legs.slice(1)];
+  }
   if (!big) return [...HEAD, ...SMALL_BODY[f === 'crouch' ? 'stand' : f]];
-  if (f === 'crouch') return BIG_CROUCH;
   const legs = BIG_LEGS[f === 'skid' ? 'walk3' : f];
   return [...HEAD, ...(f === 'jump' ? BIG_TORSO_JUMP : BIG_TORSO), ...legs];
+}
+
+function shadow(hex: string): string {
+  return '#' + [1, 3, 5].map(i => Math.round(parseInt(hex.slice(i, i + 2), 16) * 0.72)
+    .toString(16).padStart(2, '0')).join('');
 }
 
 const heroCache = new Map<string, Sprite>();
@@ -311,8 +318,241 @@ export function heroSprite(big: boolean, f: HeroFrame, pal: number): Sprite {
   const key = `${big}-${f}-${pal}`;
   let s = heroCache.get(key);
   if (!s) {
-    s = makeSprite(heroRows(big, f), HERO_PALETTES[pal]);
+    const colors = HERO_PALETTES[pal];
+    s = makeSprite(heroRows(big, f), { ...colors, h: shadow(colors.H) });
     heroCache.set(key, s);
   }
   return s;
+}
+
+const WALKER = [
+  '......DDDD......',
+  '....DDDDDDDD....',
+  '...DDDDDDDDDD...',
+  '..DDKKDDDDKKDD..',
+  '.DDDWWKDDKWWDDD.',
+  '.DDDWKWDDWKWDDD.',
+  'DDDDWWWDDWWWDDDD',
+  'DDDDDDDDDDDDDDDD',
+  'DDDDDKKKKKKDDDDD',
+  '.DDDKKKKKKKKDDD.',
+  '....TTTTTTTT....',
+  '...TTTTTTTTTT...',
+  '...TTTTTTTTTTKK.',
+  '..KKKTTTTTTKKKK.',
+  '.KKKKKTTTTKKKKK.',
+  '.KKKKK....KKKK..',
+];
+const WALKER_FLAT = [
+  '....DDDDDDDD....',
+  '..DDKWWDDWWKDD..',
+  '.DDDDDKKKKDDDDD.',
+  'DDDDDDDDDDDDDDDD',
+  '..TTTTTTTTTTTT..',
+  '.KKKKK....KKKKK.',
+];
+const WALKER_PAL = { D: '#c84c0c', T: '#fcb890', K: '#000000', W: '#fcfcfc' };
+
+const TURTLE_TOP = [
+  '....YYY.........',
+  '...YYYYY........',
+  '..YYKWYY........',
+  '..YYKWYY........',
+  '.YYYYYYY........',
+  '.YYYYYYY........',
+  '..YYYYY.........',
+  '...YYYY.........',
+  '....YYY..GGGG...',
+  '....YYY.GGWGGG..',
+  '....YYYGGWGGWGG.',
+  '....YYGGWGGWGGG.',
+  '....YYGWGGWGGWGG',
+  '....YYGGWGGWGGGG',
+  '...YYYWWGGWGGGG.',
+  '...YYYWWGGWGGWGW',
+  '...YYYYWWWWWWWW.',
+  '....YYYYWWWWWW..',
+  '.....YYYYYYYY...',
+];
+const TURTLE_LEGS = [
+  ['......YYY.YYY...', '.....YYYY.YYYY..', '....HHHH..HHHH..', '...HHHHH.HHHHH..'],
+  ['.....YYY...YYY..', '....YYYY...YYYY.', '...HHHH...HHHH..', '..HHHHH..HHHHH..'],
+];
+const SHELL = [
+  '.....GGGGGG.....', '...GGGGGGGGGG...', '..GGGGWGGWGGGG..', '.GGGGGGGGGGGGGG.',
+  '.GGGGGGGGGGGGGG.', 'GGGGGGGGGGGGGGGG', 'GGGWGGGGGGWGGGGG', 'GGGGGGGGGGGGGGGG',
+  '.WWWWWWWWWWWWWW.', '..YYYYYYYYYYYY..', '...YYYYYYYYYY...', '....KKKKKKKK....',
+];
+const WINGS = [
+  ['..WW....', '.WWWW...', 'WWWWWW..', 'WWWWWWK.', '.WWWWWK.', '..WWWK..'],
+  ['........', '........', 'WWWWWW..', 'WWWWWWK.', '.WWWWWK.', '...WWK..'],
+];
+const TURTLE_PAL = { Y: '#f8d878', G: '#00a800', W: '#fcfcfc', K: '#000000', H: '#e09030' };
+const RED_TURTLE_PAL = { ...TURTLE_PAL, G: '#d82800' };
+
+const PIRANHA_OPEN = [
+  '...R.......R...', '..RRR.....RRR..', '.RRWRR...RRWRR.', '.RRRRR...RRRRR.',
+  'RRRRRRR.RRRRRRR', 'RRRRRRR.RRRRRRR', 'RRRRRRRRRRRRRRRR', '.RRWRRWRRRRWRR.',
+  '..RRRRRRRRWRRR..', '...RRRWWRRRR....', '....RRRRRRRR....', '......GGGG......',
+];
+const PIRANHA_CLOSED = [
+  '......RRRR......', '....RRRRRRRR....', '...RRRRWRRRRR...', '..RWRRRRRRRRRR..',
+  '..RRRRRRRRRRRR..', '..RRRRRRRRRRRR..', '..WWWWWWWWWWWW..', '..RRRRRRRRRRRR..',
+  '..RRWRRRRRWRRR..', '...RRRRRRRRRR...', '....RRRRRRRR....', '......GGGG......',
+];
+const PIRANHA_STEM = [
+  '.......GG.......', '..GG...GG...GG..', '.GGGG..GG..GGGG.', 'GGGGGG.GG.GGGGGG',
+  'GgGGGGGGGGGGGGgG', 'GGgGGGGGGGGGGgGG', '.GGgGGGGGGGGgGG.', '..GGGGGGGGGGGG..',
+  '....GGGGGGGG....', '.......GG.......', '.......GG.......', '.......GG.......',
+];
+const PIRANHA_PAL = { R: '#d82800', W: '#fcfcfc', G: '#00a800', g: '#80d010' };
+
+const BULLET = [
+  '....KKKKKKKK....', '..KKKKKKKKKKKK..', '.KKKKKKKKKKKKKK.', '.KKKKKKKKKKKKKK.',
+  'KKKKKKKKKKKKKKKK', 'KKKKKKKKKKKKKKKK', 'KKKKKKKKKKKKKKKK', 'KKKWWWKKKKKKKKKK',
+  'KKWWWWWWKKKKKKKK', 'KKKKKKKKKKKKKKKK', '.KKKKKKKKKKKKKK.', '.KKKKKKKKKKKKKK.',
+  '..KKKKKKKKKKKK..', '....KKKKKKKK....',
+];
+const PODOBOO = [
+  '.....YYYY.....', '...YYRRRRYY...', '..YRRWRWRRY..', '.YRRWWWRRRRY.',
+  '.YRRWRRRRRRY.', 'YRRWRRRRRRRRRY', 'YRRRRRRRRRRRRY', 'YRRRRRRRRRRRRY',
+  '.YRRRRRRRRRY.', '..YRRRRRRRY...', '...YRRRRRY....', '....YRRRY.....',
+  '.....YRRY.....', '......YY......',
+];
+const BOSS = [
+  '..........W......W..............', '.........WW.....WW..............',
+  '........WWGRRRGGWW..............', '......GGGRRRRRRRGGG.............',
+  '.....GGGGRRRRRRRGGGG............', '....GGWKGGRRRGGGGGGGG...........',
+  '...GGGKGGGGGGGGGGGGGGG..........', '..GGGGGGGGGGGGGGGGGGGG...SSS....',
+  '.GWWGGGGGGGGGGGGGGGGGG..SSWSS...', 'GWWGGGGGGGGGGGGGGGGGG..SSWSSS...',
+  'KGGGGGGGGGGGGGGGGGGG..SSSSSSSS..', 'GGGGGGGGGGGGGGGGGGG..SSSSSSSSSS.',
+  '.GWWWGGGGGGGGGGGGG..SSWSSSSSSSS.', '..GGWGGGGGGGGGGGG..SSWSSSSSSSSS.',
+  '...WWWGGGGGGGGGG..SSSSWSSSSSSSS.', '......YYYYYYGG..SSSSSSSSSSSSSSS.',
+  '.....YYYYYYYYGSSSSSSSSSSSSSSSSS.', '....YYYYYYYYYSSSSSSSSSSSSSSSSS..',
+  '...GGYYYYYYYYYSSSSSSSSSSSSSSSS..', '..GGGYYYYYYYYYSSSSSSSSSSSSSSS...',
+  '..GGWGYYYYYYYYYYSSSSSSSSSSSS....', '...GGGYYYYYYYYYYYSSSSSSSSSS.....',
+  '......YYYYYYYYYYYYYSSSS.........', '......YYYYYYYYYYYYYGGG..........',
+  '.......YYYYYYYYYYYYGGGG.........', '........YYYYYYYYYYGGGGGG........',
+  '........GGGGGG...GGGGGGGGG......', '.......GGGGGGG...GGGGGGG........',
+  '......GGGGGGG....GGGGGG.........', '......GGGGGG.....GGGGG..........',
+];
+const BOSS_PAL = { G: '#00a800', W: '#fcfcfc', K: '#000000', R: '#d82800', Y: '#f8d878', S: '#e09030' };
+const BOSS_FIRE = [
+  '....RRRRRRRRYYYY........', '..RRYYYYYYYYYYYYRR......', 'RRYYYYYWWWWYYYYYYYRR....',
+  '..RRYYYYYYYYYYYYRR......', '....RRRRRRRRYYYY........',
+];
+const MUSHROOM = [
+  '......RRRR......', '....RRWWWWRR....', '...RRWWWWWWRR...', '..RRRWWWWWWRRR..',
+  '.RRRRRWWWWRRRRR.', '.RWWRRRRRRRRWWR.', 'RWWWRRRRRRRRWWWR', 'RWWWWRRRRRRWWWWR',
+  'RWWWRRRRRRRRWWWR', '.RRRKTTTTTTKRRR.', '...TTKTTTKT.....', '...TTKTTTKTT....',
+  '...TTTTTTTTT....', '....TTTTTTT.....', '.....TTTTTT.....',
+];
+const FLOWER = [
+  '....FFFFFFFF....', '..FFOOOOOOOOFF..', '.FOOYYYYYYYYOOF.', 'FOOYYYYYYYYYYOOF',
+  '.FOOYYYYYYYYOOF.', '..FFOOOOOOOOFF..', '....FFFFFFFF....', '.......GG.......',
+  'GG.....GG.....GG', 'GGG....GG....GGG', '.GGG...GG...GGG.', '..GGG..GG..GGG..',
+  '...GGGGGGGGGG...', '....GGGGGGGG....', '.....GGGGGG.....', '......GGGG......',
+];
+const STAR = [
+  '.......YY.......', '......YYYY......', '......YYYY......', '.....YYYYYY.....',
+  'YYYYYYYYYYYYYYYY', '.YYYYYYYYYYYYYY.', '..YYYYYYYYYYYY..', '...YYYYYYYYYY...',
+  '....YYYYYYYY....', '...YYYYYYYYYY...', '..YYYYYYYYYYYY..', '..YYYY..YYYY....',
+  '.YYYY....YYYY...', '.YYY......YYY...', 'YY..........YY..',
+];
+const FIREBALL = [
+  '..RRRR..',
+  '.RYYYYR.',
+  'RYYWWYYR',
+  'RYWWWWYR',
+  'RYWWWWYR',
+  'RYYWWYYR',
+  '.RYYYYR.',
+  '..RRRR..',
+];
+const DEBRIS = [
+  '..DDDD..',
+  '.DOOOOD.',
+  'DOOPOOOD',
+  'DOPOOOOD',
+  'DOOOOOOD',
+  'DOOOOOOD',
+  '.DOOOOD.',
+  '..DDDD..',
+];
+const FLAG = [
+  'WWWWWWWWWWWWWWWW',
+  '.WWWWWWWWWWWWWWW',
+  '..WWWWGGGGWWWWWW',
+  '...WWGGWWGGWWWWW',
+  '....WGWGGWGWWWWW',
+  '.....GGWWGGWWWWW',
+  '......WGGGGWWWWW',
+  '.......WWWWWWWWW',
+  '........WWWWWWWW',
+  '.........WWWWWWW',
+  '..........WWWWWW',
+  '...........WWWWW',
+  '............WWWW',
+  '.............WWW',
+  '..............WW',
+  '...............W',
+];
+
+function coinRows(width: number): string[] {
+  const half = width / 2;
+  const rows: string[] = [];
+  for (let y = 0; y < 14; y++) {
+    let row = '';
+    const dy = (y - 6.5) / 7;
+    for (let x = 0; x < 8; x++) {
+      const dx = (x - 3.5) / Math.max(half, 0.5);
+      const d = dx * dx + dy * dy;
+      row += d > 1 ? '.' : d > 0.6 ? 'O' : width > 3 && x === 3 ? 'W' : 'Y';
+    }
+    rows.push(row);
+  }
+  return rows;
+}
+
+const COIN_PAL = { Y: '#fcbc3c', O: '#c84c0c', W: '#fcfcfc' };
+const FIRE_PAL = { R: '#d82800', Y: '#fca044', W: '#fce000' };
+const FLOWER_PALS = [
+  { F: '#d82800', O: '#fca044', Y: '#fcfcfc', K: '#000000', G: '#00a800' },
+  { F: '#00a800', O: '#fcfcfc', Y: '#fca044', K: '#000000', G: '#00a800' },
+  { F: '#fca044', O: '#d82800', Y: '#fce000', K: '#000000', G: '#00a800' },
+  { F: '#2038ec', O: '#fcfcfc', Y: '#fca044', K: '#000000', G: '#00a800' },
+];
+
+export const SPRITES = {
+  walker: makeSprite(WALKER, WALKER_PAL),
+  walkerFlat: makeSprite(WALKER_FLAT, WALKER_PAL),
+  turtle: TURTLE_LEGS.map(legs => makeSprite([...TURTLE_TOP, ...legs], TURTLE_PAL)),
+  redTurtle: TURTLE_LEGS.map(legs => makeSprite([...TURTLE_TOP, ...legs], RED_TURTLE_PAL)),
+  shell: makeSprite(SHELL, TURTLE_PAL),
+  redShell: makeSprite(SHELL, RED_TURTLE_PAL),
+  wings: WINGS.map(rows => makeSprite(rows, { W: '#fcfcfc', K: '#000000' })),
+  piranha: [PIRANHA_OPEN, PIRANHA_CLOSED].map(head => makeSprite([...head, ...PIRANHA_STEM], PIRANHA_PAL)),
+  bullet: makeSprite(BULLET, { K: '#202020', W: '#bcbcbc' }),
+  podoboo: makeSprite(PODOBOO, { R: '#fc7400', Y: '#fce000', W: '#fcfcfc', K: '#000000' }),
+  boss: makeSprite(BOSS, BOSS_PAL),
+  bossHurt: makeSprite(BOSS, { ...BOSS_PAL, G: '#fcfcfc', Y: '#fca044' }),
+  bossFire: makeSprite(BOSS_FIRE, FIRE_PAL),
+  mushroom: makeSprite(MUSHROOM, { R: '#d82800', W: '#fcfcfc', T: '#fcd8a8', K: '#000000' }),
+  oneup: makeSprite(MUSHROOM, { R: '#00a800', W: '#fcfcfc', T: '#fcd8a8', K: '#000000' }),
+  flower: FLOWER_PALS.map(pal => makeSprite(FLOWER, pal)),
+  star: ['#fce000', '#fca044', '#fcfcfc', '#80d010'].map(Y => makeSprite(STAR, { Y, K: '#000000' })),
+  fireball: makeSprite(FIREBALL, FIRE_PAL),
+  coin: [8, 5, 2, 5].map(w => makeSprite(coinRows(w), COIN_PAL)),
+  flag: makeSprite(FLAG, { W: '#fcfcfc', G: '#00a800' }),
+};
+
+const debrisCache = new Map<string, Sprite>();
+export function debrisSprite(pal: Palette): Sprite {
+  const key = pal.O;
+  let sprite = debrisCache.get(key);
+  if (!sprite) {
+    sprite = makeSprite(DEBRIS, pal);
+    debrisCache.set(key, sprite);
+  }
+  return sprite;
 }

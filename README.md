@@ -1,6 +1,8 @@
 # Super Plumber
 
-A 2D side-scrolling platformer for browsers and for iOS and Android phones and tablets. Each of the ten rounds contains four generated stages.
+Super Plumber is a pixel-art, 2D side-scrolling platformer for browsers, iOS, and Android. Jump over gaps, dodge enemies, and collect coins and power-ups as you race the clock to the end of each stage.
+
+Play through 10 worlds with four generated stages each. Every world takes you from the overworld through an underground stage and a platforming course before ending in a castle. Reach the flagpole in the first three stages and grab the axe to clear the castle.
 
 ## Run locally
 
@@ -22,7 +24,7 @@ To play on an iOS or Android phone or tablet, run `npm start` and open the devel
 | Run or throw a fireball with the fire power-up | X, Shift, or J | B |
 | Pause | P or Escape | Pause button |
 
-Hold jump to jump higher. On touchscreens, you can hold a direction and jump at the same time.
+Hold jump to jump higher. On touchscreens, slide on the D-pad for diagonals and press between A and B to hold both. Landscape overlays the controls on the game. Portrait puts them below.
 
 ## Source
 
@@ -30,17 +32,6 @@ Hold jump to jump higher. On touchscreens, you can hold a direction and jump at 
 
 ## Photo recovery status
 
-The [JPEG transcript](ma-nguon-tu-anh-jpeg.txt) records the photographed source by file and image. The app entry point, TypeScript config, and package versions were checked against the photos. This workspace also includes a Metro web dependency and local build and type-check scripts.
+The HEIC photos in `iCloud_1` cover the level generator, game rules, SVG renderer, sprites, and tile art. The generator, engine, and renderer were restored from that sequence and integrated into the Expo app. A second comparison checked the stage chunk parameters, app and control layouts, and the engine code for tile collisions, spawn filtering, stomps, fireballs, and stage completion. Some longer sprite and tile rows, including portions of the boss and plant art, still contain reconstructed pixels where repeated characters were hard to distinguish. The [earlier JPEG transcript](ma-nguon-tu-anh-jpeg.txt) remains available for reference.
 
-The game uses the photographed menus, HUD layout, controls, hero frames, walking and jumping constants, animation timing, camera movement, timer, and level seed function. The recovered movement uses the current collision system.
-
-| Needed for the original version | Reference photos | What to look for |
-| --- | --- | --- |
-| `src/game/engine.ts` | 2093–2105 | Original entity and collision code, block bumps and effects, enemy interactions, and end-of-stage sequences. |
-| `src/game/levels.ts` | 2106–2111 | Full stage generator. Several long lines are split by OCR or obscured by editor overlays. |
-| `src/components/GameView.tsx` | 2089–2091 | Original renderer, especially decorations, entity drawing, and section caching. |
-| `src/game/sprites.ts` | 2115–2120 | Original enemy, item, and effect pixel rows. The repeated characters are easy for OCR to misread. |
-| `src/game/tiles.ts` | 2121–2124 | Tile palettes and pixel rows. A tooltip covers the palette declarations in 2121. |
-| `src/components/Hud.tsx`, `src/input.ts` | 2092, 2125 | Tooltip covers parts of the WORLD and TIME labels and input initialization. The current project has working values there. |
-| `assets/` | 2126, 2134 | Original `icon.png`, `favicon.png`, `splash-icon.png`, and three `android-icon-*.png` files. Only names are visible. |
-| `package-lock.json`, `.gitignore`, `AGENTS.md` | Project sidebar | The original contents are not visible. The lockfile and ignore file in this workspace were generated for this restored project. |
+The photographed `app.json` names a separate favicon and Android adaptive icon layers. The photos show the filenames but do not contain the PNG files. This checkout uses its existing `assets/icon.png`. The lockfile photos capture only a portion of the generated dependency entries, so this checkout uses its installed Expo dependency set and matching lockfile. The photos show `AGENTS.md` and `.gitignore` in the file tree only.
